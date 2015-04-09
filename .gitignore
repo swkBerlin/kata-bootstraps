@@ -1,0 +1,10 @@
+.DS_Store
+*~
+.*sw[a-z]
+
+*.pyc
+*.bundle
+.idea/
+.idea_modules/
+*.iml
+target/
