@@ -9,8 +9,8 @@ corresponds to your OS.
 
 #### Running the tests
 
-To execute the tests run `sbt clean test` or run the tests from IDE you are
-using (e.g. IntelliJ)
+To execute the tests run `sbt clean test` or run the tests using an IDE of
+your choice, e.g. IntelliJ.
 
 
 [sbt]: http://www.scala-sbt.org/

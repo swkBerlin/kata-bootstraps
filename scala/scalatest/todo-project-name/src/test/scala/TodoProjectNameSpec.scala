@@ -1,13 +1,12 @@
 import org.scalatest._
 
-abstract class UnitSpec extends FunSpec with Matchers
+abstract class UnitSpec extends FlatSpec with Matchers
 
 class TodoProjectNameSpec extends UnitSpec {
 
-    describe("example test") {
+  behavior of "TODO system"
 
-        it("shows that scalatest works") {
-            42 shouldBe 43
-        }
-    }
+  it should "show that scalatest works" in {
+    42 shouldBe 43
+  }
 }
