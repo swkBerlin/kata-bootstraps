@@ -1,0 +1,2 @@
+defmodule Kata do
+end
