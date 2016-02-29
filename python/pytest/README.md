@@ -23,6 +23,7 @@ An alternate version with before fixture is provided in the ```test_thing_fixtur
 To run same as before : 
 ```python -m pytest test_thing_fixture.py``` or ```python3 -m pytest test_thing_fixture.py```
 
+## Resources
 
-<http://pythontesting.net/framework/pytest/pytest­introduction/>
-<http://pytest.org/latest/overview.html>
+ - <http://pythontesting.net/framework/pytest/pytest­introduction/>
+ - <http://pytest.org/latest/overview.html>
