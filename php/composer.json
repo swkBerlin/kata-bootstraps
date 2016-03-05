@@ -1,10 +1,10 @@
 {
-    "name": "bwkberlin/php",
+    "name": "swkberlin/php",
     "description": "Shell project for PHP testing",
     "type": "Project",
     "autoload": {
         "psr-4": {
-            "bwkberlin\\": "src/"
+            "swkberlin\\": "src/"
         }
     },
     "require-dev": {

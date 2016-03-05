@@ -1,6 +1,6 @@
 <?php
 
-namespace bwkberlin;
+namespace swkberlin;
 
 class Kata
 {

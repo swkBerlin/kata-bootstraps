@@ -1,6 +1,6 @@
 <?php
 
-use bwkberlin\Kata;
+use swkberlin\Kata;
 
 class KataTest extends PHPUnit_Framework_TestCase
 {
