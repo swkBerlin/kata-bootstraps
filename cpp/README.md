@@ -3,9 +3,12 @@ CMake Setup
 
 This is a simple bootstrap project for C++ using [**CMake**](https://cmake.org/download/) and [**doctest**](https://github.com/onqtam/doctest)
 
-You can edit the CMakeLists.txt file to set the targeted C++ Standard (Default is C++11) in the varialbe _CXX_STANDARD_.
+You can edit the CMakeLists.txt file to set the targeted C++ Standard (Default is C++11) in the variable _CXX_STANDARD_.
 
-To run the project, just open a terminal (on Linux/Mac) and run the following commands (or launch the Gui tool):
+### Requirements
+
+* C++ Compiler with possibily support to modern standards (e.g. gcc >= 5, clang >= 3.8, Visual Studio >= 2013)
+* CMake
 
 ### Unix-Like Setup
 
