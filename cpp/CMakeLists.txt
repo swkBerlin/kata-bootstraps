@@ -8,13 +8,13 @@ enable_testing()
 # Set the C++ Standard to be used (Default to C++11)
 ####################################################
 set(CXX_STANDARD 11)
-set(CXX_STANDARD_REQUIRED OFF)
+set(CXX_STANDARD_REQUIRED ON)
 
-####################################################
+####################################################################
 # Set Compiler flags
-####################################################
+####################################################################
 IF (CMAKE_CXX_COMPILER_ID MATCHES "GNU" OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-  SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
+  SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -std=c++${CXX_STANDARD}")
 ELSEIF (MSVC)
   SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4")
 ENDIF()
@@ -25,8 +25,7 @@ include_directories("${CMAKE_SOURCE_DIR}/include")
 # Add Unit Tests file names (without .cpp extension)
 ####################################################
 list(APPEND UNIT_TESTS
-    hello_world
-    game_of_life
+    kata
 )
 
 ####################################################
