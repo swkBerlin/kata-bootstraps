@@ -27,7 +27,7 @@ make
 make test
 ```
 
-### Windows 
+### Windows
 
 If you have Visual Studio, just launch the CMake Gui tool and select the project source folder and a build directory and which version of Visual Studio you want to target.
 

@@ -565,7 +565,7 @@ namespace detail
     typename enable_if<can_use_op<L>::value || can_use_op<R>::value, bool>::type lte(const L& lhs, const R& rhs) { return neq(lhs, rhs) ? lhs < rhs : true; }
     template <typename L, typename R>
     typename enable_if<can_use_op<L>::value || can_use_op<R>::value, bool>::type gte(const L& lhs, const R& rhs) { return neq(lhs, rhs) ? lhs > rhs : true; }
-    
+
     inline bool eq (const char* lhs, const char* rhs) { return String(lhs) == String(rhs); }
     inline bool neq(const char* lhs, const char* rhs) { return String(lhs) != String(rhs); }
     inline bool lt (const char* lhs, const char* rhs) { return String(lhs) < String(rhs); }
