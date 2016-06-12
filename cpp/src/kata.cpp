@@ -3,6 +3,6 @@
 
 TEST_CASE("Testing Kata Hello World")
 {
-    constexpr auto message{"Hello World"};
+    std::string message{"Hello World"};
     CHECK(message == "Hello World");
 }
