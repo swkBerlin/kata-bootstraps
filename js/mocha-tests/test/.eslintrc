@@ -1,0 +1,9 @@
+{
+  "rules": {
+    "no-unused-expressions": 0
+  },
+  "globals": {
+    "expect": true,
+    "sinon": true
+  }
+}
