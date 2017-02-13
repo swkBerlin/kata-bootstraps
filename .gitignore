@@ -9,3 +9,8 @@
 *.iml
 target/
 php/vendor
+/js/**/node_modules
+csharp/dotnet/Kata/.vs
+csharp/dotnet/Kata/packages
+csharp/dotnet/Kata/**/bin
+csharp/dotnet/Kata/**/obj
