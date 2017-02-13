@@ -12,6 +12,6 @@
     "keep_array_indentation": true,
     "end_with_newline": true,
     "space_after_anon_function": true,
-    "wrap_line_length": 90
+    "wrap_line_length": 80
   }
 }
