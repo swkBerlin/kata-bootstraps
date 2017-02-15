@@ -22,17 +22,12 @@ Run the test and re-run them once a file changes:
 npm run test:watch
 ```
 
-## Lint
-
-Lint your code and tests using:
-
-```bash
-npm run lint
-```
-
 ### What's included
 
 * Support for ES-2015 and stage-0 using Babel presets
-* Linting, based on `airbnb-base` with customization to use `chai` without pain
 * [Sinon JS](http://sinonjs.org/) for all stub, spy and mocking needs
 * Mocha to run tests
+* [Assertions using Chai]((http://chaijs.com/api/bdd)), extended with the
+  [`sinon-chai` plugin](https://github.com/domenic/sinon-chai).
+  * The Expect style is used by default,
+  you can change to use `Should` instead, in `test/test-setup.js`,
