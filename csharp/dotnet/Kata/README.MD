@@ -38,7 +38,8 @@ Included packages:
 This project uses more advanced unit testing frameworks and techniques.
 The test runner is XUnit, which uses its extensibility to provide AutoMocking
 using AutoFixture through the `AutoData` attributes. A custom `AutoData` attribute
-is included to allow auto-mocking of dependencies using MoQ.
+is included to allow auto-mocking of dependencies using NSubstitute, as well as
+creating objects with dummy values.
 
 Using the `[Frozen]` attributes on theories parameters allows them to be instantiated
 as singleton within the unit test's scope. Use it if you need to setup/verify a Mock for
@@ -50,6 +51,6 @@ and hekp making tests more DAMP.
 Included packages:
 
 * XUnit 2
-* MoQ
+* NSubstitute
 * Fluent Assertions
 * AutoFixture
