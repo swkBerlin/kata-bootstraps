@@ -23,10 +23,12 @@ CRUD operations on a business entity.
 The provided Unit Tests Projects show how to test this controller and mock its
 dependencies.
 
+*Note: a suggested kata is to rework this code to be CQRS.*
+
 ### MSTEST
 
 This project is bare-bone MS Test project with MoQ. It is easy to use but will
-require length Arrange section in unit tests.
+require to write lengthy Arrange sections in unit tests.
 
 Included packages:
 
@@ -41,12 +43,12 @@ using AutoFixture through the `AutoData` attributes. A custom `AutoData` attribu
 is included to allow auto-mocking of dependencies using NSubstitute, as well as
 creating objects with dummy values.
 
-Using the `[Frozen]` attributes on theories parameters allows them to be instantiated
+Using the `[Frozen]` attributes on theories' parameters allows them to be instantiated
 as singleton within the unit test's scope. Use it if you need to setup/verify a Mock for
 example.
 
 This project also uses Fluent Assertions, which provide a fluent API to write assertions
-and hekp making tests more DAMP.
+and help making your tests more DAMP.
 
 Included packages:
 
