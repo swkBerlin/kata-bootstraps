@@ -5,7 +5,8 @@
     "main": "index.js",
     "scripts": {
         "test": "jest",
-        "test:watch": "jest --watch"
+        "test:cover": "jest --coverage",
+        "test:watch": "jest --watch --coverage"
     },
     "author": "superzadeh <superzadeh@outlook.com>",
     "license": "MIT",
