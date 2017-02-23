@@ -29,7 +29,7 @@ namespace Kata.XUnit.Tests.Advanced
             var actual = sut.Add(entity);
 
             // Assert
-            actual.Should().Equals(expected);
+            actual.Should().Be(expected);
             service.Received(1).Store(entity);
             service.Received(1).Get(expected.Id);
         }

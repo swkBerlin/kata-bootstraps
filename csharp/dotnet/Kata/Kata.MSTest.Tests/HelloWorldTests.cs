@@ -17,7 +17,7 @@ namespace Kata.MSTest.Tests
             var actual = sut.SayHelloWorld();
 
             // Assert
-            Assert.AreEqual("Hello World!", actual);
+            Assert.AreEqual("Oh oh ...", actual);
         }
     }
 }

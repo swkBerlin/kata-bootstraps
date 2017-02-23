@@ -16,7 +16,7 @@ namespace Kata.XUnit.Tests
             var actual = sut.SayHelloWorld();
 
             // Assert
-            actual.Should().Equals("Hello World!");
+            actual.Should().Be("Oh oh ...");
         }
     }
 }
