@@ -18,6 +18,13 @@
             "args": ["test", "Kata.Tests\\Kata.Tests.csproj"],
             "isTestCommand": true,
             "showOutput": "always"
+        },
+        {
+            "taskName": "test:watch",
+            "suppressTaskName": true,
+            "args": ["watch", "test", "Kata.Tests\\Kata.Tests.csproj"],
+            "isBackground": true,
+            "showOutput": "always"
         }
     ]
 }

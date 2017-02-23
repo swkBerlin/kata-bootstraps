@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Kata.Advanced
+﻿namespace Kata.Advanced
 {
     public interface IBusinessEntityService
     {

@@ -22,6 +22,15 @@ is NOT compatible with VS 2015 editions or lower.
 You can also use VSCode to write code and run unit tests, build and test tasks have been created.
 To use them, press `ctrl+shift+p` and type `task build` or `task test`.
 
+### dotnet watch
+
+You can also setup a watch command to run the tests each time you modify a file.
+To do so, open a command prompt in the `Kata.Tests` folder and run:
+
+```bash
+dotnet watch test
+```
+
 ## Commands used to create this project
 
 ```bash

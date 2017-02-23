@@ -10,11 +10,10 @@ namespace Kata.Tests
         {
             // Arrange
             var sut = new HelloWorld();
-            const string expected = "Hello World!";
             // Act
             var actual = sut.SayHelloWorld();
             // Asseert
-            actual.Should().Equals(expected);
+            actual.Should().Be("Oh oh...");
         }
     }
 }
