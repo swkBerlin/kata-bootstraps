@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kata", "Kata\Kata.csproj", "{E65F031B-1783-4D27-9D85-0C8509D1AB41}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kata.XUnit.Tests", "Kata.XUnit.Tests\Kata.XUnit.Tests.csproj", "{17D05582-5877-4157-AB25-43D75D118B1D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kata.MSTest.Tests", "Kata.MSTest.Tests\Kata.MSTest.Tests.csproj", "{D8236E65-E11A-4AEE-9EAB-EC14E19A4ADD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0897EE08-0F2D-4E27-B52C-9121B3A4360C}"
+	ProjectSection(SolutionItems) = preProject
+		README.MD = README.MD
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E65F031B-1783-4D27-9D85-0C8509D1AB41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E65F031B-1783-4D27-9D85-0C8509D1AB41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E65F031B-1783-4D27-9D85-0C8509D1AB41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E65F031B-1783-4D27-9D85-0C8509D1AB41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17D05582-5877-4157-AB25-43D75D118B1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17D05582-5877-4157-AB25-43D75D118B1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17D05582-5877-4157-AB25-43D75D118B1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17D05582-5877-4157-AB25-43D75D118B1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8236E65-E11A-4AEE-9EAB-EC14E19A4ADD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8236E65-E11A-4AEE-9EAB-EC14E19A4ADD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8236E65-E11A-4AEE-9EAB-EC14E19A4ADD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8236E65-E11A-4AEE-9EAB-EC14E19A4ADD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

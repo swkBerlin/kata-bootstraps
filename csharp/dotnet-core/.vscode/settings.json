@@ -1,0 +1,14 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/.DS_Store": true,
+        "**/bin": true,
+        "**/obj": true,
+        "**/.vs": true
+    },
+    "editor.tabSize": 4,
+    "files.eol": "\n"
+}
