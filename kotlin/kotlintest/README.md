@@ -17,7 +17,7 @@ To execute the tests run `gradle test` or run the tests from the IDE you are usi
 
 
 ## Optimized for Usage of
-- Java 1.1
+- Kotlin 1.1
 - Gradle 3.4
 - IntelliJ Idea 2017
 
