@@ -5,6 +5,6 @@ class Thing {
     }
 
     fun callForAction(food: String): String {
-        return "Dog eats " + food + "."
+        return "Dog eats $food."
     }
 }
