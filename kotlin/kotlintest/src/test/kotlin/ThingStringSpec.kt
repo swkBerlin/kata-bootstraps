@@ -5,7 +5,7 @@ import io.kotlintest.properties.row
 import io.kotlintest.properties.table
 import io.kotlintest.specs.StringSpec
 
-class ThingTest : StringSpec({
+class ThingStringSpec : StringSpec() { init {
     "it should callForAction" {
         val thing = Thing()
         val value = thing.callForAction()
@@ -26,4 +26,4 @@ class ThingTest : StringSpec({
         }
     }
 
-})
+}}
