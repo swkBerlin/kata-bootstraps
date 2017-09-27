@@ -1,12 +1,18 @@
-## Minimal setup with Ruby's rspec to get you started
+# Ruby and RSpec
 
+## Installation
 
-#### Setup
+```bash
+$ gem install bundler
+$ bundle install # Installs RSpec
+```
 
-Requires rspec. To install it, run `gem install rspec`
+Further dependencies for your project can be added via [Gemfile](https://bundler.io).
 
+## Running Specs
 
-#### Running the tests
+Tests are located in `/spec` directory. To run them:
 
-To execute the tests run `rspec` from the parent directory (the one containing
-`spec/` directory.
+```bash
+$ bundle exec rspec
+```
