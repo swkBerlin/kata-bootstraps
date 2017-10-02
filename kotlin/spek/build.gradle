@@ -1,12 +1,12 @@
 buildscript {
-    ext.kotlin_version = '1.1.4-3'
+    ext.kotlin_version = '1.1.51'
 
     repositories {
         jcenter()
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'org.junit.platform:junit-platform-gradle-plugin:1.0.0-RC3'
+        classpath 'org.junit.platform:junit-platform-gradle-plugin:1.0.0'
     }
 }
 
@@ -27,11 +27,11 @@ repositories {
 }
 
 dependencies {
-    testCompile 'org.jetbrains.spek:spek-api:1.1.4'
-    testCompile 'org.jetbrains.spek:spek-data-driven-extension:1.1.4'
-    testRuntime 'org.jetbrains.spek:spek-junit-platform-engine:1.1.4'
-    testCompile group: 'org.junit.platform', name: 'junit-platform-launcher', version: '1.0.0-RC3'
-    testCompile 'org.amshove.kluent:kluent:1.26'
+    testCompile 'org.jetbrains.spek:spek-api:1.1.5'
+    testCompile 'org.jetbrains.spek:spek-data-driven-extension:1.1.5'
+    testRuntime 'org.jetbrains.spek:spek-junit-platform-engine:1.1.5'
+    testCompile group: 'org.junit.platform', name: 'junit-platform-launcher', version: '1.0.0'
+    testCompile 'org.amshove.kluent:kluent:1.30'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
 
 }
