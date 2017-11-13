@@ -26,4 +26,4 @@ It might work with other setups, but that is not tested. Pull requests welcome!
 
 ## Test Libraries Available from the Get-Go
 - JUnit 4.12
-- AssertJ 1.7.1
+- AssertJ 3.8.0

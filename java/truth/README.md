@@ -26,4 +26,4 @@ It might work with other setups, but that is not tested. Pull requests welcome!
 
 ## Test Libraries Available from the Get-Go
 - JUnit 4.12
-- Google Truth 0.25
+- Google Truth 0.36

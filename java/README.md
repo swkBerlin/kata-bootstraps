@@ -10,6 +10,7 @@ You nedd to have a [java sdk](https://www.java.com/) installed and also a build 
   * [hamcrest](hamcrest)
   * [mockito](mockito)
   * [truth](truth)
+  * [junit5](junit5)
 
 * maven
   * [maven-junit](maven-junit)
