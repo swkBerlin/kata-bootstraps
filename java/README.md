@@ -1,7 +1,7 @@
 # Java Bootstraps
 
 Each folder has an example project for getting started with TDD fast.
-You nedd to have a [java sdk](https://www.java.com/) installed and also a build tool like [gradle](http://gradle.org/) or [maven](https://maven.apache.org/).
+You need to have a [java sdk](https://www.java.com/) installed and also a build tool like [gradle](http://gradle.org/) or [maven](https://maven.apache.org/).
 
 ## table of contents
 
