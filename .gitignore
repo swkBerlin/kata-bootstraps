@@ -15,3 +15,15 @@ csharp/dotnet/Kata/packages
 csharp/dotnet/Kata/**/bin
 csharp/dotnet/Kata/**/obj
 /csharp/dotnet/Kata/**/*.user
+
+# Build results
+fsharp/**/[Dd]ebug/
+fsharp/**/[Dd]ebugPublic/
+fsharp/**/[Rr]elease/
+fsharp/**/[Rr]eleases/
+fsharp/**/x64/
+fsharp/**/x86/
+fsharp/**/bld/
+fsharp/**/[Bb]in/
+fsharp/**/[Oo]bj/
+fsharp/**/[Ll]og/
