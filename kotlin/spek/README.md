@@ -1,11 +1,11 @@
-# Kotlin Kotlintest
+# Kotlin Spek
 
-Minimal setup with Kotlin and kotlintest to get you started
+Minimal setup with Kotlin and spek (http://spekframework.org/) to get you started
 
 ## Setup
 
     git clone https://github.com/swkBerlin/kata-bootstraps
-    cd kotlin/kotlintest
+    cd kotlin/spek
     gradle idea
 
 Open the directory in Idea.
@@ -14,6 +14,10 @@ Open the directory in Idea.
 ## Running Tests
 
 To execute the tests run `gradle test` or run the tests from the IDE you are using (e.g. IntelliJ)
+
+## Optimize Intellij Idea
+
+by installing the spek plugin from Jetbrains
 
 
 ## Optimized for Usage of
