@@ -1,28 +1,23 @@
 # Java JUnit5
 
 Minimal setup with Java and JUnit5 to get you started
+You can use [gradle](https://gradle.org/) or [maven](https://maven.apache.org/)
 
 ## Setup
 
     git clone https://github.com/swkBerlin/kata-bootstraps
     cd java/junit5
-    gradle idea
 
-Open the directory in Idea.
-
+Open as prexisting project in your favorite IDE and choose between gradle or maven nature
 
 ## Running Tests
 
-To execute the tests run `gradle test` or run the tests from the IDE you are using (e.g. IntelliJ)
+To execute the tests either run `gradle test`, `mvn test` or run the tests from the IDE you are using
 
+## Test Libraries Available from the Get-Go
+- JUnit 4.12
+- AssertJ 3.9.1
 
-## Optimized for Usage of
-- Java 1.8
-- Gradle 3.5
-- IntelliJ Idea 2017.2.4
+This repo was tested with eclipse and idea, if you encounter problems please open a issue or send a pull request.
 
-It might work with other setups after slight adjustments, but that is not tested. Pull requests welcome!
-
-
-## Test Libraries
-- JUnit 5.0.1
+Have fun!
