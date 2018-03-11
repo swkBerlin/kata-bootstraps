@@ -1,6 +1,6 @@
 # Java Hamcrest
 
-Minimal setup with Java and Hamcrest assertions to get you started
+Minimal setup with Java, [JUnit4](https://junit.org/junit4/) and [Hamcrest](http://hamcrest.org/) assertions to get you started
 You can use [gradle](https://gradle.org/) or [maven](https://maven.apache.org/)
 
 ## Setup

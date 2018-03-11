@@ -1,6 +1,6 @@
 # Java Mockito
 
-Minimal setup with Java and Mockito to get you started
+Minimal setup with Java, [JUnit4](https://junit.org/junit4/) and [Mockito](http://site.mockito.org/) to get you started
 You can use [gradle](https://gradle.org/) or [maven](https://maven.apache.org/)
 
 ## Setup

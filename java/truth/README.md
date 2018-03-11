@@ -1,6 +1,6 @@
 # Java Truth
 
-Minimal setup with Java and Truth assertions to get you started
+Minimal setup with Java, [JUnit4](https://junit.org/junit4/) and [Truth](http://google.github.io/truth/) assertions to get you started
 You can use [gradle](https://gradle.org/) or [maven](https://maven.apache.org/)
 
 ## Setup
