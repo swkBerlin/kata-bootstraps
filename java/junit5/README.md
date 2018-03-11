@@ -1,6 +1,7 @@
 # Java JUnit5
 
-Minimal setup with Java, [JUnit4](https://junit.org/junit4/) and [JUnit5](https://junit.org/junit5/) to get you started
+Minimal setup with Java, [JUnit4](https://junit.org/junit4/) and [JUnit5](https://junit.org/junit5/) to get you started.
+
 You can use [gradle](https://gradle.org/) or [maven](https://maven.apache.org/)
 
 ## Setup
