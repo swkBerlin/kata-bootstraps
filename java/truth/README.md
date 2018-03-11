@@ -9,7 +9,7 @@ You can use [gradle](https://gradle.org/) or [maven](https://maven.apache.org/)
     git clone https://github.com/swkBerlin/kata-bootstraps
     cd java/truth
 
-Open as prexisting project in your favorite IDE and choose between gradle or maven nature 
+Open as prexisting project in your favorite IDE and choose between gradle or maven nature
 
 ## Running Tests
 
