@@ -2,7 +2,7 @@ defmodule KataTest do
   use ExUnit.Case
   doctest Kata
 
-  test "the truth" do
-    assert 42 + 1 == 42
+  test "greets the world" do
+    assert Kata.hello() == :world
   end
 end
