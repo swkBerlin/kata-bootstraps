@@ -3,6 +3,6 @@ defmodule KataTest do
   doctest Kata
 
   test "greets the world" do
-    assert Kata.hello() == :world
+    assert Kata.hello() == :universe
   end
 end
