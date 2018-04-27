@@ -1,7 +1,6 @@
 .DS_Store
 *~
 .*sw[a-z]
-
 *.pyc
 *.bundle
 .idea/
@@ -15,8 +14,6 @@ csharp/dotnet/Kata/packages
 csharp/dotnet/Kata/**/bin
 csharp/dotnet/Kata/**/obj
 /csharp/dotnet/Kata/**/*.user
-
-# Build results
 fsharp/**/[Dd]ebug/
 fsharp/**/[Dd]ebugPublic/
 fsharp/**/[Rr]elease/
@@ -27,3 +24,16 @@ fsharp/**/bld/
 fsharp/**/[Bb]in/
 fsharp/**/[Oo]bj/
 fsharp/**/[Ll]og/
+clojure/**/pom.xml
+clojure/**/pom.xml.asc
+clojure/**/*.jar
+clojure/**/*.class
+clojure/**/lib/
+clojure/**/classes/
+clojure/**/target/
+clojure/**/checkouts/
+clojure/**/.lein-deps-sum
+clojure/**/.lein-repl-history
+clojure/**/.lein-plugins/
+clojure/**/.lein-failures
+clojure/**/.nrepl-port

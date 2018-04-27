@@ -1,4 +1,4 @@
-# Java Truth
+# Kotlin Kotlintest
 
 Minimal setup with Kotlin and kotlintest to get you started
 
