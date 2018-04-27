@@ -6,4 +6,4 @@ open KatasSrc
 
 [<Fact>]
 let ``My test`` () =
-    Assert.Equal("Hello You", Say.hello "You")
+    Assert.Equal("Hello You", Say.hello "World")
