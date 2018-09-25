@@ -1,0 +1,23 @@
+{
+  "name": "kata-bootstrap-node-jasmine",
+  "version": "0.0.1",
+  "description": "Basic project template using Node.js and Jasmine.",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "jasmine": "^2.8.0"
+  },
+  "scripts": {
+    "test": "jasmine spec/**/*.js"
+  },
+  "keywords": [
+    "kata",
+    "dojo",
+    "bootstrap",
+    "skeleton",
+    "jasmine",
+    "node"
+  ],
+  "author": "Daniel Carral",
+  "license": "MIT"
+}

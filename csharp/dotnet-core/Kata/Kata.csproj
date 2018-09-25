@@ -1,0 +1,10 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>library</OutputType>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <AssemblyName>Kata</AssemblyName>
+    <RootNamespace>Kata</RootNamespace>
+  </PropertyGroup>
+
+</Project>
