@@ -10,3 +10,6 @@ different testing frameworks that are supported.
 In each directory for a particular framework, there is always `README.md` file
 that contains various useful information. At minimum it contains the
 information on how to install the dependencies and run the tests.
+
+----
+(Cookiecutter)[https://github.com/audreyr/cookiecutter] has a similar goal and also supports multiple languages for setting up a bare project.
