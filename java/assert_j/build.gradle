@@ -1,5 +1,4 @@
 apply plugin: 'java'
-apply plugin: 'idea'
 
 sourceCompatibility = 1.10
 version = '1.0'
@@ -8,9 +7,14 @@ repositories {
     mavenCentral()
 }
 
+test {
+    useJUnitPlatform()
+}
+
 dependencies {
     testCompile(
-            'junit:junit:4.12',
-            'org.assertj:assertj-core:3.10.0',
+            'org.junit.jupiter:junit-jupiter-api:5.2.0',
+            'org.assertj:assertj-core:3.10.0'
     )
+    testRuntime('org.junit.jupiter:junit-jupiter-engine:5.2.0')
 }
