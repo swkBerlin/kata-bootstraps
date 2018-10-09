@@ -14,8 +14,8 @@ test {
 
 dependencies {
     testCompile(
-            'org.junit.jupiter:junit-jupiter-api:5.2.0',
+            'org.junit.jupiter:junit-jupiter-api:5.3.1',
             'org.mockito:mockito-core:2.18.3'
     )
-    testRuntime('org.junit.jupiter:junit-jupiter-engine:5.2.0')
+    testRuntime('org.junit.jupiter:junit-jupiter-engine:5.3.1')
 }
