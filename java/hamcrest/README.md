@@ -17,7 +17,7 @@ Open as prexisting project in your favorite IDE and choose between gradle or mav
 To execute the tests either run `gradle test`, `mvn test` or run the tests from the IDE you are using
 
 ## Test Libraries Available from the Get-Go
-- JUnit 5.3.1
+- JUnit 5.3.2
 - Hamcrest 1.3
 
 This repo was tested with eclipse and idea, if you encounter problems please open a issue or send a pull request.

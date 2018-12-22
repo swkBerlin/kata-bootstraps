@@ -1,7 +1,7 @@
 apply plugin: 'java'
 apply plugin: 'idea'
 
-sourceCompatibility = 1.10
+sourceCompatibility = 11
 version = '1.0'
 
 repositories {
@@ -14,8 +14,8 @@ test {
 
 dependencies {
     testCompile(
-            'org.junit.jupiter:junit-jupiter-api:5.3.1',
-            'com.google.truth:truth:0.41'
+            'org.junit.jupiter:junit-jupiter-api:5.3.2',
+            'com.google.truth:truth:0.42'
     )
-    testRuntime('org.junit.jupiter:junit-jupiter-engine:5.3.1')
+    testRuntime('org.junit.jupiter:junit-jupiter-engine:5.3.2')
 }
