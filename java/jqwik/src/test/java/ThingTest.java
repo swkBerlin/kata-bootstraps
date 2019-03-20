@@ -1,6 +1,6 @@
-import net.jqwik.api.Example;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import net.jqwik.api.Example;
 
 public class ThingTest {
 
