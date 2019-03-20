@@ -1,0 +1,24 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+apply plugin: 'java'
+apply plugin: 'idea'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile(
+            'junit:junit:4.12',
+            'org.assertj:assertj-core:3.11.1',
+    )
+}
+
+
+wrapper {
+    description = 'Generates gradlew[.bat] scripts'
+    gradleVersion = '4.10.2'
+}
