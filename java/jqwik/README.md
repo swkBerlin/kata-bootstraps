@@ -16,8 +16,8 @@ Open as preexisting project in your favorite IDE and choose between gradle or ma
 To execute the tests either run `gradle test`, `mvn test` or run the tests from the IDE you are using.
 
 ## Test Libraries Available from the Get-Go
-- JUnit 5.3.2
-- AssertJ 3.11.1
+- jqwik 1.1.1
+- assertJ 3.11.1
 
 This repo was tested with eclipse and idea, if you encounter problems please open a issue or send a pull request.
 
