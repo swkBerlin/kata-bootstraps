@@ -1,0 +1,45 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+compileTestJava {
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+    options.compilerArgs += '-parameters'
+}
+
+ext.junitPlatformVersion = '1.3.1'
+ext.junitJupiterVersion = '5.3.1'
+ext.jqwikVersion = '1.1.1'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+}
+
+test {
+    useJUnitPlatform()
+
+    include '**/*Properties.class'
+    include '**/*Test.class'
+    include '**/*Tests.class'
+    include '**/*Examples.class'
+
+    // testLogging.events = ["passed", "failed", "skipped"]
+    // testLogging.showStandardStreams = true
+}
+
+dependencies {
+    testCompile "net.jqwik:jqwik:${jqwikVersion}"
+
+    // Fluent assertions library
+    testCompile("org.assertj:assertj-core:3.11.1")
+
+    // For Jupiter tests and also necessary to work around some IntelliJ bugs
+    testCompile("org.junit.jupiter:junit-jupiter-engine:${junitJupiterVersion}")
+
+}
+
+wrapper {
+    description = 'Generates gradlew[.bat] scripts'
+    gradleVersion = '4.10.2'
+}
