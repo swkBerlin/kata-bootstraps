@@ -25,5 +25,5 @@ To run same as before :
 
 ## Resources
 
- - <http://pythontesting.net/framework/pytest/pytest­introduction/>
- - <http://pytest.org/latest/overview.html>
+ - <http://pythontesting.net/framework/pytest/pytest-introduction/>
+ - <https://docs.pytest.org/en/latest/getting-started.html>
