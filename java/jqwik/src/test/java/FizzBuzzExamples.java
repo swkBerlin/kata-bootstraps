@@ -1,6 +1,8 @@
 import net.jqwik.api.*;
 import net.jqwik.api.constraints.IntRange;
 
+import javax.annotation.Generated;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Label("FizzBuzz...")
@@ -59,6 +61,7 @@ class FizzBuzzExamples {
 
         @Property(maxDiscardRatio = 20)
         @Label("a multiple of 3 and 5 returns 'FizzBuzz'")
+        @Report(Reporting.GENERATED)
         boolean multipleOf3and5ReturnFizzBuzz(@ForAll @IntRange(min = 1, max = 100) int anInt) {
             Assume.that(anInt % 3 == 0);
             Assume.that(anInt % 5 == 0);
