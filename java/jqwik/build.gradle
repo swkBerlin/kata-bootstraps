@@ -29,6 +29,8 @@ test {
 }
 
 dependencies {
+    testCompile "org.apache.commons:commons-math3:3.6.1"
+
     testCompile "net.jqwik:jqwik:${jqwikVersion}"
 
     // Fluent assertions library
