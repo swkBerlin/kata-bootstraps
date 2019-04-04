@@ -1,7 +1,7 @@
 name:                fizzbuzz
 version:             0.1.0.0
 github:              "githubuser/fizzbuzz"
-license:             BSD3
+license:             MIT
 author:              "Author name here"
 maintainer:          "example@example.com"
 copyright:           "2019 Author name here"
