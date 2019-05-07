@@ -14,6 +14,12 @@ class PrimeFactorsProperties {
     private static final int FIRST_PRIME_NUMBER = 2;
 
     @Property
+    @Label("0 and 1 have no prime factors")
+    void noPrimeFactors(@ForAll @IntRange(max = 1) int anInt) {
+        assertThat(primeFactors(anInt)).isEmpty();
+    }
+
+    @Property
     @Report(Reporting.GENERATED)
     void all_factors_are_primes(@ForAll @IntRange(min = FIRST_PRIME_NUMBER) int anInt) {
         List<Integer> primeFactors = primeFactors(anInt);
@@ -42,10 +48,6 @@ class PrimeFactorsProperties {
         assertThat(primeFactor).containsExactly(anInt);
     }
 
-    @Property
-    @Label("0 and 1 have have no prime factors")
-    void noPrimeFactors(@ForAll @IntRange(max = 1) int anInt) {
-        assertThat(primeFactors(anInt)).isEmpty();
     }
 
     @Property
