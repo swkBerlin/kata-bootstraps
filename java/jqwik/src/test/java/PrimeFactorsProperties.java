@@ -1,17 +1,13 @@
-import static org.apache.commons.math3.primes.Primes.isPrime;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import net.jqwik.api.*;
+import net.jqwik.api.constraints.IntRange;
+import org.apache.commons.math3.primes.Primes;
 
 import java.util.Collections;
 import java.util.List;
-import net.jqwik.api.Assume;
-import net.jqwik.api.ForAll;
-import net.jqwik.api.Label;
-import net.jqwik.api.Property;
-import net.jqwik.api.Report;
-import net.jqwik.api.Reporting;
-import net.jqwik.api.constraints.IntRange;
-import org.apache.commons.math3.primes.Primes;
+
+import static org.apache.commons.math3.primes.Primes.isPrime;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class PrimeFactorsProperties {
 
