@@ -41,6 +41,13 @@ class PrimeFactorsProperties {
         assertThat(integers).isEqualTo(primes);
     }
 
+    @Provide
+    Arbitrary<List<Integer>> primes() {
+        return Arbitraries.of(2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31)
+                .list()
+                .ofMaxSize(10);
+    }
+
     @Property
     @Label("multiply all factors")
     void multiplyAllFactors(@ForAll @IntRange(min = FIRST_PRIME_NUMBER) int anInt) {
@@ -58,13 +65,6 @@ class PrimeFactorsProperties {
 
         List<Integer> primeFactor = primeFactors(anInt);
         assertThat(primeFactor).containsExactly(anInt);
-    }
-
-    @Provide
-    Arbitrary<List<Integer>> primes() {
-        return Arbitraries.of(2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31)
-                .list()
-                .ofMaxSize(10);
     }
 
     @Property
