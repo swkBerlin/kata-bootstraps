@@ -15,8 +15,7 @@ class PrimeFactorsProperties {
 
     @Property
     @Report(Reporting.GENERATED)
-    @Label("all factors are primes")
-    void allFactorsArePrime(@ForAll @IntRange(min = FIRST_PRIME_NUMBER) int anInt) {
+    void all_factors_are_primes(@ForAll @IntRange(min = FIRST_PRIME_NUMBER) int anInt) {
         List<Integer> primeFactors = primeFactors(anInt);
 
         primeFactors.forEach(
