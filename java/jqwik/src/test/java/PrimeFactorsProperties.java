@@ -30,6 +30,18 @@ class PrimeFactorsProperties {
     }
 
     @Property
+    void product_of_primes_is_factorized_to_original_primes(
+            @ForAll("primes") List<Integer> primes) {
+        long product = primes.stream().mapToLong(Long::valueOf)
+                .reduce(1L, (a, b) -> a * b);
+        Assume.that(product <= Integer.MAX_VALUE);
+
+        List<Integer> integers = primeFactors(Math.toIntExact(product));
+        primes.sort(Integer::compareTo);
+        assertThat(integers).isEqualTo(primes);
+    }
+
+    @Property
     @Label("multiply all factors")
     void multiplyAllFactors(@ForAll @IntRange(min = FIRST_PRIME_NUMBER) int anInt) {
         List<Integer> primeFactors = primeFactors(anInt);
@@ -48,6 +60,11 @@ class PrimeFactorsProperties {
         assertThat(primeFactor).containsExactly(anInt);
     }
 
+    @Provide
+    Arbitrary<List<Integer>> primes() {
+        return Arbitraries.of(2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31)
+                .list()
+                .ofMaxSize(10);
     }
 
     @Property
