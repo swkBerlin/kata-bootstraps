@@ -3,7 +3,7 @@ phpunit setup
 
 This is a simple bootstrap project for PHP with phpunit
 
-For PHP 5.6 or above just run:
+For PHP 7.1 or above just run:
 
 ```
 ./composer install
@@ -13,10 +13,9 @@ For PHP 5.6 or above just run:
 To run the tests just run:
 
 ```
-./vendor/bin/phpunit
-
+phpunit tests
 ```
-You need PHP 5.6 or above to run it since we have phpunit 5.2.
+You need PHP 7.1 or above.
 
 
 If you have legacy version of php please change composer.json file
