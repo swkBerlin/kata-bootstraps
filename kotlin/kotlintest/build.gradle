@@ -16,7 +16,11 @@ repositories {
     jcenter()
 }
 
+test {
+    useJUnitPlatform()
+}
+
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
-    testImplementation 'io.kotlintest:kotlintest:2.0.7'
+    testImplementation 'io.kotlintest:kotlintest-runner-junit5:3.4.0'
 }

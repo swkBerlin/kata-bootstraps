@@ -1,4 +1,4 @@
-import io.kotlintest.matchers.shouldBe
+import io.kotlintest.shouldBe
 import io.kotlintest.specs.BehaviorSpec
 
 class ThingBehaviorSpec : BehaviorSpec() { init {
