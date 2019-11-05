@@ -1,4 +1,4 @@
-# Java JUnit5
+# Java hue4junit
 
 
 Minimal setup for [hue4junit](https://github.com/mklose/hue4junit) which uses [Philips hue lights](https://www2.meethue.com/en-us/starter-kits) to indicate [JUnit5](https://junit.org/junit5/) test run results by turning light bulbs green or red.
