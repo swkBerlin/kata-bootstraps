@@ -10,10 +10,9 @@ You can use [gradle](https://gradle.org/) or [maven](https://maven.apache.org/)
     git clone https://github.com/swkBerlin/kata-bootstraps
     cd java/hue4j5
 
-    **NEED TO SETUP HUE**
-
-    use [this link](http://htmlpreview.github.io/?https://github.com/mklose/hue4junit/blob/master/setup_hue.html) to get a _hue.client_ (long token)
-    and set it in _pom.xml_ and/or _build.gradle_
+### Setup Hue
+use [this link](http://htmlpreview.github.io/?https://github.com/mklose/hue4junit/blob/master/setup_hue.html) to get a _hue.client_ (long token)
+and set it in _pom.xml_ and/or _build.gradle_
 
 Open as preexisting project in your favorite IDE and choose between gradle or maven nature
 
