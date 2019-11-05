@@ -1,0 +1,26 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+sourceCompatibility = 8
+version = '1.0'
+
+repositories {
+    mavenCentral()
+    maven {
+      url= "https://oss.sonatype.org/content/repositories/snapshots/"
+    }
+}
+
+test {
+    useJUnitPlatform()
+    systemProperties = [
+            //TODO  configure me:
+            "hue.client"        : "cQBrUHlhqwwu6mNhMTfYCjXafcOnVS0z5ZiWcIhQ",
+    ]
+}
+
+dependencies {
+    testCompile("org.junit.jupiter:junit-jupiter-api:5.3.2")
+    testRuntime("org.junit.jupiter:junit-jupiter-engine:5.3.2")
+    testRuntime("de.klosebrothers.hue:hue4junit:0.1.0-SNAPSHOT")
+}
