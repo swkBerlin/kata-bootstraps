@@ -7,8 +7,10 @@ You need to have a [java sdk](https://www.java.com/) installed and also a build 
 
   * [assert_j](assert_j)
   * [hamcrest](hamcrest)
-  * [mockito](mockito)
-  * [truth](truth)
+  * [hue4j5](hue4j5)
+  * [jqwik](jqwik)
+  * [junit4](junit4)
   * [junit5](junit5)
-  
-
+  * [mockito](mockito)
+  * [spock](spock)
+  * [truth](truth)
