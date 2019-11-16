@@ -1,0 +1,16 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/kata
+kata.so
+kata.dylib
+kata.dll
+kata.a
+kata.lib
+kata-test-*
+*.exe
+*.o
+*.obj
+*.lst
+bin/
