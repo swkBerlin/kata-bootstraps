@@ -1,0 +1,20 @@
+{
+	"authors": [
+		"Matthias Vill"
+	],
+	"description": "A kata in D using unit-threaded.",
+	"name": "kata",
+    "configurations": [
+        { "name": "executable" },
+        {
+            "name": "unittest",
+            "targetType": "executable",
+            "preBuildCommands": ["$DUB run --compiler=$$DC unit-threaded -c gen_ut_main -- -f bin/ut.d"],
+            "mainSourceFile": "bin/ut.d",
+            "excludedSourceFiles": ["source/app.d"],
+            "dependencies": {
+                "unit-threaded": "*"
+            }
+        }
+    ]
+}

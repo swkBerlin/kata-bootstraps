@@ -1,0 +1,10 @@
+{
+	"authors": [
+		"Matthias Vill"
+	],
+	"dependencies": {
+		"silly": "*"
+	},
+	"description": "A kata in D using silly.",
+	"name": "kata"
+}
