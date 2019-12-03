@@ -1,13 +1,11 @@
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import net.jqwik.api.Example;
+import net.jqwik.api.*;
 
 public class ThingTest {
 
-    @Example
-    void it_should_call_for_action() {
-        Thing thing = new Thing();
-        String value = thing.callForAction();
-        assertEquals("Food", value);
-    }
+	@Example
+	boolean it_should_call_for_action() {
+		Thing thing = new Thing();
+		String value = thing.callForAction();
+		return value.equals("Food");
+	}
 }
