@@ -1,8 +1,6 @@
 import net.jqwik.api.*;
 import net.jqwik.api.constraints.IntRange;
 
-import javax.annotation.Generated;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Label("FizzBuzz...")
