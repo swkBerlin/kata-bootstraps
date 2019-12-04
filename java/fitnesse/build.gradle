@@ -1,0 +1,109 @@
+defaultTasks 'compileJava', 'wiki'
+
+apply plugin: 'java'
+
+configurations {
+    fitnesse
+}
+
+repositories {
+
+        ivy {
+            url "http://docs.fitnesse.org"
+            layout 'pattern', {
+                //TODO fix me http://docs.fitnesse.org/fitnesse-standalone.jar?responder=releaseDownload&release=20191110
+                // instead of '%3F'
+                artifact "fitnesse-standalone.jar?responder=releaseDownload&release=[revision]"
+            }
+
+        }
+}
+
+def fitnesseVersion = '20191110'
+
+dependencies {
+
+    fitnesse "org.fitnesse:fitnesse:${fitnesseVersion}"
+    compile "org.fitnesse:fitnesse:${fitnesseVersion}:standalone"
+
+
+}
+
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src'
+        }
+    }
+    test {
+        java {
+            srcDir 'test'
+        }
+    }
+}
+
+// source https://github.com/amolenaar/gradle-fitnesse-classpath-builder
+
+task writeFitNesseClasspath(type: WriteFitNesseClasspath) {
+    classpath = project.configurations.fitnesse + configurations.runtime
+
+    pagePath = project.file("fitnesse/FitNesseRoot/MyApp/content.txt")
+}
+
+clean.dependsOn(cleanWriteFitNesseClasspath)
+
+task fitnesseTest(type: GradleBuild) {
+    description = "run  fitnesse tests via JUnit"
+    tasks = ['clean', 'writeFitNesseClasspath', 'test']
+}
+
+test {
+  doLast {
+
+    //TODO should look in fitnesse/results/*.html
+    def file = project.file("fitnesse/results/MyApp.html")
+    def fitnesseResult = file.text;
+
+    if (fitnesseResult.contains('<tr class="fail">') || fitnesseResult.contains('<tr class="error">'))
+        throw new GradleException("Fitnesse failed!! check $file")
+  }
+}
+
+task wiki(type: JavaExec) {
+    dependsOn writeFitNesseClasspath
+    dependsOn compileJava
+    classpath configurations.runtime
+    main "fitnesseMain.FitNesseMain"
+    args "-e", "0", "-p", "9000", "-d", "fitnesse"
+}
+
+
+/// === Custom Tasks
+class WriteFitNesseClasspath extends DefaultTask {
+    @Input
+    def classpath
+
+    @OutputFile
+    File pagePath
+
+    @TaskAction
+    def generatePage() {
+        def contentTxt = pagePath
+        contentTxt.createNewFile()
+        contentTxt.withWriter { writer ->
+            writer.writeLine("!*****> imports") //hide
+
+            writer.writeLine("!define TEST_SYSTEM {slim}")
+
+            writer.writeLine("!path ${project.sourceSets.main.output.classesDir}")
+
+            classpath.each { d ->
+                writer.writeLine("!path $d")
+            }
+            writer.writeLine("*!") //end hide
+            writer.writeLine("!contents -R2 -g -p -f -h")
+
+        }
+    }
+}
