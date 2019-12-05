@@ -80,9 +80,11 @@ class WriteFitNesseClasspath extends DefaultTask {
 
 			writer.writeLine("!define TEST_SYSTEM {slim}")
 
+			//TODO this needs some cleanup:
 			project.sourceSets.main.output.classesDirs.each { d ->
 				writer.writeLine("!path $d")
 			}
+			//TODO this needs some cleanup:
 			classpath.each { d ->
 				writer.writeLine("!path $d")
 			}
