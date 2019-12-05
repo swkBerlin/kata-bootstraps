@@ -10,6 +10,7 @@ You need to have a [java sdk](https://www.java.com/) installed and also a build 
   * [hue4j5](hue4j5)
   * [jqwik](jqwik)
   * [cucumber](cucumber)
+  * [fitnesse](fitnesse)
   * [junit4](junit4)
   * [junit5](junit5)
   * [mockito](mockito)
