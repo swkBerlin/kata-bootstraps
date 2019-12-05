@@ -14,7 +14,8 @@ def fitnesseVersion = '20191110'
 
 dependencies {
 	fitnesse "org.fitnesse:fitnesse:${fitnesseVersion}"
-	compile files("libs/fitnesse-standalone-${fitnesseVersion}.jar")
+	compile "org.fitnesse:fitnesse:${fitnesseVersion}"
+	runtime files("libs/fitnesse-standalone-${fitnesseVersion}.jar")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher:1.5.2")
 	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.5.2")
 	testRuntimeOnly("org.junit.vintage:junit-vintage-engine:5.5.2")
