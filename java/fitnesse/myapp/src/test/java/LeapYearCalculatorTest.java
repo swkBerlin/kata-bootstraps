@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class LeapYearCalculatorTest {
 
-	@org.junit.jupiter.api.Test
+	@Test
 	void isLeap() {
 		assertTrue(new LeapYearCalculator().isLeap(2000));
 	}
