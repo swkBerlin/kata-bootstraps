@@ -10,28 +10,20 @@ configurations {
 	fitnesse
 }
 
-repositories {
-	jcenter()
-}
-
 def fitnesseVersion = '20191110'
 
 dependencies {
 	fitnesse "org.fitnesse:fitnesse:${fitnesseVersion}"
+	compile files("libs/fitnesse-standalone-${fitnesseVersion}.jar")
+	testRuntimeOnly("org.junit.platform:junit-platform-launcher:1.5.2")
+	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.5.2")
+	testRuntimeOnly("org.junit.vintage:junit-vintage-engine:5.5.2")
+
+	testCompile 'junit:junit:4.12'
+
+	compile project(':myapp')
 }
 
-sourceSets {
-	main {
-		java {
-			srcDir 'src'
-		}
-	}
-	test {
-		java {
-			srcDir 'test'
-		}
-	}
-}
 
 task downloadFitnesse(type: Download) {
 	src "http://docs.fitnesse.org/fitnesse-standalone.jar?responder=releaseDownload&release=${fitnesseVersion}"
@@ -70,7 +62,7 @@ test {
 task wiki(type: JavaExec) {
 	dependsOn writeFitNesseClasspath
 	dependsOn compileJava
-	classpath = files("libs/fitnesse-standalone-${fitnesseVersion}.jar")
+	classpath configurations.runtime
 	main "fitnesseMain.FitNesseMain"
 	args "-e", "0", "-p", "9000", "-d", "fitnesse"
 }
@@ -95,14 +87,15 @@ class WriteFitNesseClasspath extends DefaultTask {
 
 			writer.writeLine("!define TEST_SYSTEM {slim}")
 
-			writer.writeLine("!path ${project.sourceSets.main.output.classesDirs}")
-
+			project.sourceSets.main.output.classesDirs.each { d ->
+				writer.writeLine("!path $d")
+			}
 			classpath.each { d ->
 				writer.writeLine("!path $d")
 			}
+
 			writer.writeLine("*!") //end hide
 			writer.writeLine("!contents -R2 -g -p -f -h")
-
 		}
 	}
 }

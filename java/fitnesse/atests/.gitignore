@@ -1,0 +1,17 @@
+/bin/
+/out/
+.gradle
+build
+.classpath
+.settings
+.project
+*.iws
+*.ipr
+target/
+libs
+
+fitnesse/results
+!fitnesse/FitNesseRoot/
+fitnesse/FitNesseRoot/*
+!fitnesse/FitNesseRoot/MyApp
+fitnesse/FitNesseRoot/MyApp/content.txt
