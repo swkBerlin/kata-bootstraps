@@ -1,80 +1,78 @@
-
 plugins {
-    id 'java'
-    id "de.undercouch.download" version "4.0.2"
+	id 'java'
+	id "de.undercouch.download" version "4.0.2"
 }
 
 defaultTasks 'compileJava', 'wiki'
 
 
 configurations {
-    fitnesse
+	fitnesse
 }
 
 repositories {
-        jcenter()
+	jcenter()
 }
 
 def fitnesseVersion = '20191110'
 
 dependencies {
-    fitnesse "org.fitnesse:fitnesse:${fitnesseVersion}"
+	fitnesse "org.fitnesse:fitnesse:${fitnesseVersion}"
 }
 
 sourceSets {
-    main {
-        java {
-            srcDir 'src'
-        }
-    }
-    test {
-        java {
-            srcDir 'test'
-        }
-    }
+	main {
+		java {
+			srcDir 'src'
+		}
+	}
+	test {
+		java {
+			srcDir 'test'
+		}
+	}
 }
 
 task downloadFitnesse(type: Download) {
-    src "http://docs.fitnesse.org/fitnesse-standalone.jar?responder=releaseDownload&release=${fitnesseVersion}"
-    dest "libs/fitnesse-standalone-${fitnesseVersion}.jar"
-    overwrite false
+	src "http://docs.fitnesse.org/fitnesse-standalone.jar?responder=releaseDownload&release=${fitnesseVersion}"
+	dest "libs/fitnesse-standalone-${fitnesseVersion}.jar"
+	overwrite false
 }
-
 
 
 // source https://github.com/amolenaar/gradle-fitnesse-classpath-builder
 
 task writeFitNesseClasspath(type: WriteFitNesseClasspath) {
-    classpath = project.configurations.fitnesse + configurations.runtime
+	classpath = project.configurations.fitnesse + configurations.runtime
 
-    pagePath = project.file("fitnesse/FitNesseRoot/MyApp/content.txt")
+	pagePath = project.file("fitnesse/FitNesseRoot/MyApp/content.txt")
 }
 
 clean.dependsOn(cleanWriteFitNesseClasspath)
 
 task fitnesseTest(type: GradleBuild) {
-    description = "run  fitnesse tests via JUnit"
-    tasks = ['clean', 'writeFitNesseClasspath', 'test']
+	description = "run  fitnesse tests via JUnit"
+	tasks = ['clean', 'writeFitNesseClasspath', 'test']
 }
 
 test {
-  doLast {
+	doLast {
 
-    //TODO should look in fitnesse/results/*.html
-    def file = project.file("fitnesse/results/MyApp.html")
-    def fitnesseResult = file.text;
+		//TODO should look in fitnesse/results/*.html
+		def file = project.file("fitnesse/results/MyApp.html")
+		def fitnesseResult = file.text;
 
-    if (fitnesseResult.contains('<tr class="fail">') || fitnesseResult.contains('<tr class="error">'))
-        throw new GradleException("Fitnesse failed!! check $file")
-  }
+		if (fitnesseResult.contains('<tr class="fail">') || fitnesseResult.contains('<tr class="error">'))
+			throw new GradleException("Fitnesse failed!! check $file")
+	}
 }
 
 task wiki(type: JavaExec) {
-    dependsOn writeFitNesseClasspath
-    dependsOn compileJava
-    classpath = files("libs/fitnesse-standalone-${fitnesseVersion}.jar")
-    main "fitnesseMain.FitNesseMain"
-    args "-e", "0", "-p", "9000", "-d", "fitnesse"
+	dependsOn writeFitNesseClasspath
+	dependsOn compileJava
+	classpath = files("libs/fitnesse-standalone-${fitnesseVersion}.jar")
+	main "fitnesseMain.FitNesseMain"
+	args "-e", "0", "-p", "9000", "-d", "fitnesse"
 }
 
 wiki.dependsOn downloadFitnesse
@@ -82,29 +80,29 @@ wiki.dependsOn downloadFitnesse
 
 /// === Custom Tasks
 class WriteFitNesseClasspath extends DefaultTask {
-    @Input
-    def classpath
+	@Input
+	def classpath
 
-    @OutputFile
-    File pagePath
+	@OutputFile
+	File pagePath
 
-    @TaskAction
-    def generatePage() {
-        def contentTxt = pagePath
-        contentTxt.createNewFile()
-        contentTxt.withWriter { writer ->
-            writer.writeLine("!*****> imports") //hide
+	@TaskAction
+	def generatePage() {
+		def contentTxt = pagePath
+		contentTxt.createNewFile()
+		contentTxt.withWriter { writer ->
+			writer.writeLine("!*****> imports") //hide
 
-            writer.writeLine("!define TEST_SYSTEM {slim}")
+			writer.writeLine("!define TEST_SYSTEM {slim}")
 
-            writer.writeLine("!path ${project.sourceSets.main.output.classesDirs}")
+			writer.writeLine("!path ${project.sourceSets.main.output.classesDirs}")
 
-            classpath.each { d ->
-                writer.writeLine("!path $d")
-            }
-            writer.writeLine("*!") //end hide
-            writer.writeLine("!contents -R2 -g -p -f -h")
+			classpath.each { d ->
+				writer.writeLine("!path $d")
+			}
+			writer.writeLine("*!") //end hide
+			writer.writeLine("!contents -R2 -g -p -f -h")
 
-        }
-    }
+		}
+	}
 }
