@@ -10,19 +10,18 @@ configurations {
 	fitnesse
 }
 
-
 dependencies {
 	fitnesse "org.fitnesse:fitnesse:${fitnesseVersion}:standalone"
 
 	implementation "org.fitnesse:fitnesse:${fitnesseVersion}"
 
-	testRuntimeOnly("org.junit.platform:junit-platform-launcher:1.5.2")
-	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.5.2")
-	testRuntimeOnly("org.junit.vintage:junit-vintage-engine:5.5.2")
+	testRuntimeOnly "org.junit.platform:junit-platform-launcher:1.5.2"
+	testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.5.2"
+	testRuntimeOnly "org.junit.vintage:junit-vintage-engine:5.5.2"
 
-	testImplementation 'junit:junit:4.12'
+	testImplementation "junit:junit:4.12"
 
-	implementation project(':myapp')
+	implementation project(":myapp")
 }
 
 // inspired by https://github.com/amolenaar/gradle-fitnesse-classpath-builder

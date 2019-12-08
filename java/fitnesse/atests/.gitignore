@@ -8,7 +8,6 @@ build
 *.iws
 *.ipr
 target/
-libs
 
 fitnesse/results
 !fitnesse/FitNesseRoot/
