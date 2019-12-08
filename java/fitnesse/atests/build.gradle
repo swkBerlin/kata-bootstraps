@@ -7,9 +7,12 @@ defaultTasks 'compileJava', 'wiki'
 
 def fitnesseVersion = '20191110'
 
+configurations {
+		fitnesse
+}
+
 dependencies {
-	//TODO should be runtimeOnly but this breaks writeFitNesseClasspath
-	runtime files("libs/fitnesse-standalone-${fitnesseVersion}.jar")
+	fitnesse files("libs/fitnesse-standalone-${fitnesseVersion}.jar")
 	implementation "org.fitnesse:fitnesse:${fitnesseVersion}"
 
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher:1.5.2")
@@ -18,21 +21,21 @@ dependencies {
 
 	testImplementation 'junit:junit:4.12'
 
-	//TODO should be implementation but this breaks wiki
-	compile project(':myapp')
+	implementation project(':myapp')
 }
 
 task downloadFitnesse(type: Download) {
 	src "http://docs.fitnesse.org/fitnesse-standalone.jar?responder=releaseDownload&release=${fitnesseVersion}"
 	dest "libs/fitnesse-standalone-${fitnesseVersion}.jar"
 	overwrite false
- }
+}
 
 
 // inspired by https://github.com/amolenaar/gradle-fitnesse-classpath-builder
 
 task writeFitNesseClasspath(type: WriteFitNesseClasspath) {
-	classpath = configurations.runtime
+	classpath = project.configurations.compileClasspath + sourceSets.main.output.classesDirs
+
 	pagePath = project.file("fitnesse/FitNesseRoot/MyApp/content.txt")
 }
 
@@ -56,7 +59,8 @@ test {
 task wiki(type: JavaExec) {
 	dependsOn writeFitNesseClasspath
 	dependsOn compileJava
-	classpath configurations.runtime
+	classpath project.configurations.fitnesse
+
 	main "fitnesseMain.FitNesseMain"
 	args "-e", "0", "-p", "9000", "-d", "fitnesse"
 }
@@ -80,11 +84,6 @@ class WriteFitNesseClasspath extends DefaultTask {
 
 			writer.writeLine("!define TEST_SYSTEM {slim}")
 
-			//TODO this needs some cleanup:
-			project.sourceSets.main.output.classesDirs.each { d ->
-				writer.writeLine("!path $d")
-			}
-			//TODO this needs some cleanup:
 			classpath.each { d ->
 				writer.writeLine("!path $d")
 			}
