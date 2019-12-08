@@ -42,7 +42,7 @@ test {
 task wiki(type: JavaExec) {
 	dependsOn writeFitNesseClasspath
 	dependsOn compileJava
-	classpath project.configurations.fitnesse
+	classpath project.configurations.fitnesse[0]
 
 	main "fitnesseMain.FitNesseMain"
 	args "-e", "0", "-p", "9000", "-d", "fitnesse"
