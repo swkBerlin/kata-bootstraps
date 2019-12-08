@@ -1,6 +1,5 @@
 plugins {
 	id 'java'
-	id "de.undercouch.download" version "4.0.2"
 }
 
 defaultTasks 'compileJava', 'wiki'
@@ -8,11 +7,13 @@ defaultTasks 'compileJava', 'wiki'
 def fitnesseVersion = '20191110'
 
 configurations {
-		fitnesse
+	fitnesse
 }
 
+
 dependencies {
-	fitnesse files("libs/fitnesse-standalone-${fitnesseVersion}.jar")
+	fitnesse "org.fitnesse:fitnesse:${fitnesseVersion}:standalone"
+
 	implementation "org.fitnesse:fitnesse:${fitnesseVersion}"
 
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher:1.5.2")
@@ -24,15 +25,7 @@ dependencies {
 	implementation project(':myapp')
 }
 
-task downloadFitnesse(type: Download) {
-	src "http://docs.fitnesse.org/fitnesse-standalone.jar?responder=releaseDownload&release=${fitnesseVersion}"
-	dest "libs/fitnesse-standalone-${fitnesseVersion}.jar"
-	overwrite false
-}
-
-
 // inspired by https://github.com/amolenaar/gradle-fitnesse-classpath-builder
-
 task writeFitNesseClasspath(type: WriteFitNesseClasspath) {
 	classpath = project.configurations.compileClasspath + sourceSets.main.output.classesDirs
 
@@ -64,8 +57,6 @@ task wiki(type: JavaExec) {
 	main "fitnesseMain.FitNesseMain"
 	args "-e", "0", "-p", "9000", "-d", "fitnesse"
 }
-
-wiki.dependsOn downloadFitnesse
 
 /// === Custom Tasks
 class WriteFitNesseClasspath extends DefaultTask {
