@@ -37,16 +37,6 @@ clean.dependsOn(cleanWriteFitNesseClasspath)
 test {
 	dependsOn compileJava, writeFitNesseClasspath
 	inputs.dir("fitnesse/FitNesseRoot/MyApp")
-
-	doLast {
-
-		//TODO should look in fitnesse/results/*.html
-		def file = project.file("fitnesse/results/MyApp.html")
-		def fitnesseResult = file.text;
-
-		if (fitnesseResult.contains('<tr class="fail">') || fitnesseResult.contains('<tr class="error">'))
-			throw new GradleException("Fitnesse failed!! check $file")
-	}
 }
 
 task wiki(type: JavaExec) {
