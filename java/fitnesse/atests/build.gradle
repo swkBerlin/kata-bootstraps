@@ -1,0 +1,75 @@
+plugins {
+	id 'java'
+}
+
+defaultTasks 'compileJava', 'wiki'
+
+def fitnesseVersion = '20191110'
+
+configurations {
+	fitnesse
+}
+
+dependencies {
+	fitnesse "org.fitnesse:fitnesse:${fitnesseVersion}:standalone"
+
+	implementation "org.fitnesse:fitnesse:${fitnesseVersion}"
+
+	testRuntimeOnly "org.junit.platform:junit-platform-launcher:1.5.2"
+	testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.5.2"
+	testRuntimeOnly "org.junit.vintage:junit-vintage-engine:5.5.2"
+
+	testImplementation "junit:junit:4.12"
+
+	implementation project(":myapp")
+}
+
+// inspired by https://github.com/amolenaar/gradle-fitnesse-classpath-builder
+task writeFitNesseClasspath(type: WriteFitNesseClasspath) {
+	classpath = project.configurations.compileClasspath + sourceSets.main.output.classesDirs
+
+	pagePath = project.file("fitnesse/FitNesseRoot/MyApp/content.txt")
+}
+
+clean.dependsOn(cleanWriteFitNesseClasspath)
+
+test {
+	dependsOn compileJava, writeFitNesseClasspath
+	inputs.dir("fitnesse/FitNesseRoot/MyApp")
+}
+
+task wiki(type: JavaExec) {
+	dependsOn writeFitNesseClasspath
+	dependsOn compileJava
+	classpath project.configurations.fitnesse[0]
+
+	main "fitnesseMain.FitNesseMain"
+	args "-e", "0", "-p", "9000", "-d", "fitnesse"
+}
+
+/// === Custom Tasks
+class WriteFitNesseClasspath extends DefaultTask {
+	@Input
+	def classpath
+
+	@OutputFile
+	File pagePath
+
+	@TaskAction
+	def generatePage() {
+		def contentTxt = pagePath
+		contentTxt.createNewFile()
+		contentTxt.withWriter { writer ->
+			writer.writeLine("!*****> imports") //hide
+
+			writer.writeLine("!define TEST_SYSTEM {slim}")
+
+			classpath.each { d ->
+				writer.writeLine("!path $d")
+			}
+
+			writer.writeLine("*!") //end hide
+			writer.writeLine("!contents -R2 -g -p -f -h")
+		}
+	}
+}
