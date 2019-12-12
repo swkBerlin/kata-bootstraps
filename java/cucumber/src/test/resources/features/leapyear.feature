@@ -3,7 +3,7 @@ Feature: Leap Year Calculator
 
   Scenario Outline: Not a leap year
     Given the year <year>
-    When I check for leap year
+
     Then the check result is <isLeap>
 
     Examples: year not div by 4
@@ -41,5 +41,3 @@ Feature: Leap Year Calculator
       | 2000 | yes    |
       | 1600 | yes    |
       | 2400 | yes    |
-
-
