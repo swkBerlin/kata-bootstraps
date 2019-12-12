@@ -28,12 +28,12 @@ jobs:
           java-version: ${{ matrix.java }}
      #### BEGIN junit5
       - name: build junit5 with maven
-        working-directory: java/junit5
-        run: mvn -B clean package --file pom.xml -Dtest=ThingTest\#it_should_not_fail  -Dmaven.compiler.source=${{matrix.java}} -Dmaven.compiler.target=${{matrix.java}}
+        working-directory: java/${{matrix.java}}/junit5
+        run: mvn -B clean package --file pom.xml -Dtest=ThingTest\#it_should_not_fail
       # gradle:
       - uses: eskatos/gradle-command-action@v1
         with:
-          build-root-directory: java/junit5
+          build-root-directory: java/${{matrix.java}}/junit5
           gradle-version: current
           arguments: test --warning-mode all --tests ThingTest.it_should_not_fail
       #### END junit5
