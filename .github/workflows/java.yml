@@ -18,7 +18,7 @@ jobs:
     strategy:
       matrix:
         java: [ 1.8, 11 ]
-    name: Java ${{ matrix.java }} junit5 sub dir maven build
+    name: Java ${{ matrix.java }} junit5 sub dir Build
 
     steps:
       - uses: actions/checkout@v1
@@ -26,9 +26,19 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: ${{ matrix.java }}
-      - name: build junit5 with maven in sub dir
-        working-directory: java/${{matrix.java}}/junit5
+     #### BEGIN junit5
+      - name: build junit5 with maven
+        working-directory: java/junit5
         run: mvn -B clean package --file pom.xml -Dtest=ThingTest\#it_should_not_fail  -Dmaven.compiler.source=${{matrix.java}} -Dmaven.compiler.target=${{matrix.java}}
+      # gradle:
+      - uses: eskatos/gradle-command-action@v1
+        with:
+          build-root-directory: java/junit5
+          gradle-version: current
+          arguments: test --warning-mode all --tests ThingTest.it_should_not_fail
+      #### END junit5
+
+
 
   matrix_build:
     runs-on: ubuntu-16.04
@@ -36,7 +46,7 @@ jobs:
     strategy:
       matrix:
         java: [ 1.8, 11, 12, 13 ]
-    name: Java ${{ matrix.java }} Maven Build
+    name: Java ${{ matrix.java }} Build
 
     steps:
       - uses: actions/checkout@v1
@@ -44,9 +54,17 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: ${{ matrix.java }}
+     #### BEGIN junit5
       - name: build junit5 with maven
         working-directory: java/junit5
         run: mvn -B clean package --file pom.xml -Dtest=ThingTest\#it_should_not_fail  -Dmaven.compiler.source=${{matrix.java}} -Dmaven.compiler.target=${{matrix.java}}
+      # gradle:
+      - uses: eskatos/gradle-command-action@v1
+        with:
+          build-root-directory: java/junit5
+          gradle-version: current
+          arguments: test --warning-mode all --tests ThingTest.it_should_not_fail
+      #### END junit5
 
       - name: build cucumber with maven
         working-directory: java/cucumber
