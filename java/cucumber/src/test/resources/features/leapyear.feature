@@ -41,5 +41,3 @@ Feature: Leap Year Calculator
       | 2000 | yes    |
       | 1600 | yes    |
       | 2400 | yes    |
-
-

@@ -1,6 +1,7 @@
 # kata-bootstraps
 
-Empty projects for different languages with a failing test
+Empty projects for e.g. Katas with testing support in different languages
+(usually with a with a failing test, in order to know where to start)
 
 On the top level you can find different languages that are supported.
 

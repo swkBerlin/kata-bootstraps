@@ -15,6 +15,9 @@ Open as preexisting project in your favorite IDE.
 
 To execute the tests run `mvn integration-test` or run the tests from the IDE you are using
 
+## IDEA hint
+
+in order to [display scenario outline steps correctly](docs/feature_steps.png) use IDEA >= 2019.3 and click on the feature files or the package with in __src/test/resources_ [to run all features](docs/run_all_features.png) 
 ## Test Libraries Available from the Get-Go
 - Cucumber 5.0.0-RC2
 

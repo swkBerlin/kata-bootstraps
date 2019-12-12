@@ -1,7 +1,12 @@
-name: Java CI
+name: Java_CI
 
-on: [push]
-
+on:
+  push:
+    paths:
+    - 'java/**'
+  pull_request:
+    paths:
+    - 'java/**'
 jobs:
   build:
 
