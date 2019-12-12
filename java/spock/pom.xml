@@ -8,8 +8,6 @@
     <version>1.0</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
 
         <groovy.core.version>2.4.11</groovy.core.version>
         <groovy.spock.version>1.2-groovy-2.4</groovy.spock.version>
