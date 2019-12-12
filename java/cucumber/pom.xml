@@ -9,7 +9,6 @@
     <description>Cucumber for the JVM</description>
 
     <properties>
-        <java.version>1.8</java.version>
         <cucumber.version>5.0.0-RC2</cucumber.version>
         <junit-jupiter.version>5.5.2</junit-jupiter.version>
         <junit-platform.version>1.5.2</junit-platform.version>
@@ -78,14 +77,6 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>8</source>
-                    <target>8</target>
-                </configuration>
             </plugin>
         </plugins>
     </build>
