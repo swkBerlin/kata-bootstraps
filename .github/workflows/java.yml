@@ -18,7 +18,7 @@ jobs:
     strategy:
       matrix:
         java: [ 1.8, 11 ]
-    name: Java ${{ matrix.java }} junit5 sub dir Build
+    name: Java ${{ matrix.java }} subdir Build
 
     steps:
       - uses: actions/checkout@v1
@@ -54,7 +54,65 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: ${{ matrix.java }}
-     #### BEGIN junit5
+    #### BEGIN assertJ
+      - name: build assertJ with maven
+        working-directory: java/assert_j
+        run: mvn -B clean package --file pom.xml -Dtest=ThingTest\#it_should_not_fail  -Dmaven.compiler.source=${{matrix.java}} -Dmaven.compiler.target=${{matrix.java}}
+      # gradle:
+      - uses: eskatos/gradle-command-action@v1
+        with:
+          build-root-directory: java/assert_j
+          gradle-version: current
+          arguments: test --warning-mode all --tests ThingTest.it_should_not_fail
+    #### END assertJ
+
+    #### BEGIN cucumber
+      - name: build cucumber with maven
+        working-directory: java/cucumber
+        run: mvn -B clean package --file pom.xml -Dmaven.compiler.source=${{matrix.java}} -Dmaven.compiler.target=${{matrix.java}}
+    #### END cucumber
+
+    #### BEGIN cucumber
+      - uses: eskatos/gradle-command-action@v1
+        with:
+          build-root-directory: java/fitnesse
+          gradle-version: current
+          arguments: test --warning-mode all
+    #### END cucumber
+
+    #### BEGIN hamcrest
+      - name: build hamcrest with maven
+        working-directory: java/hamcrest
+        run: mvn -B clean package --file pom.xml -Dtest=ThingTest\#it_should_not_fail  -Dmaven.compiler.source=${{matrix.java}} -Dmaven.compiler.target=${{matrix.java}}
+      # gradle:
+      - uses: eskatos/gradle-command-action@v1
+        with:
+          build-root-directory: java/hamcrest
+          gradle-version: current
+          arguments: test --warning-mode all --tests ThingTest.it_should_not_fail
+    #### END hamcrest
+
+    #### BEGIN hue4j5
+      - name: build hamcrest with maven
+        working-directory: java/hue4j5
+        run: mvn -B clean package --file pom.xml -Dtest=ThingTest\#it_should_not_fail  -Dmaven.compiler.source=${{matrix.java}} -Dmaven.compiler.target=${{matrix.java}}
+      # gradle:
+      - uses: eskatos/gradle-command-action@v1
+        with:
+          build-root-directory: java/hue4j5
+          gradle-version: current
+          arguments: test --warning-mode all --tests ThingTest.it_should_not_fail
+    #### END hue4j5
+
+    #### BEGIN jqwik
+    # TODO
+    #### END jqwik
+
+    #### BEGIN junit4
+    # TODO
+    #### END junit4
+
+    #### BEGIN junit5
       - name: build junit5 with maven
         working-directory: java/junit5
         run: mvn -B clean package --file pom.xml -Dtest=ThingTest\#it_should_not_fail  -Dmaven.compiler.source=${{matrix.java}} -Dmaven.compiler.target=${{matrix.java}}
@@ -64,8 +122,16 @@ jobs:
           build-root-directory: java/junit5
           gradle-version: current
           arguments: test --warning-mode all --tests ThingTest.it_should_not_fail
-      #### END junit5
+     #### END junit5
 
-      - name: build cucumber with maven
-        working-directory: java/cucumber
-        run: mvn -B clean package --file pom.xml -Dmaven.compiler.source=${{matrix.java}} -Dmaven.compiler.target=${{matrix.java}}
+    #### BEGIN mockito
+    # TODO
+    #### END mockito
+
+    #### BEGIN spock
+    # TODO
+    #### END spock
+
+    #### BEGIN truth
+    # TODO
+    #### END truth

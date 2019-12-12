@@ -1,3 +1,4 @@
+import org.hamcrest.*;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -11,5 +12,10 @@ public class ThingTest {
         Thing thing = new Thing();
         String value = thing.callForAction();
         assertThat(value, is(equalTo("Food")));
+    }
+
+    @Test
+    void it_should_not_fail() {
+        assertThat(true, is(true));
     }
 }
