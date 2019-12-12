@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
-    xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+        xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
     <groupId>swkBerlin</groupId>
     <artifactId>spock</artifactId>
     <version>1.0</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
         <groovy.core.version>2.4.11</groovy.core.version>
         <groovy.spock.version>1.2-groovy-2.4</groovy.spock.version>
         <groovy.gmaven.pluginVersion>1.6.1</groovy.gmaven.pluginVersion>
-
-
     </properties>
     <dependencies>
         <dependency>
@@ -23,66 +20,66 @@
         </dependency>
         <!-- Mandatory dependencies for using Spock -->
         <dependency>
-          <groupId>org.spockframework</groupId>
-          <artifactId>spock-core</artifactId>
-			<version>${groovy.spock.version}</version>
-          <scope>test</scope>
+            <groupId>org.spockframework</groupId>
+            <artifactId>spock-core</artifactId>
+            <version>${groovy.spock.version}</version>
+            <scope>test</scope>
         </dependency>
         <!-- Optional dependencies for using Spock -->
         <dependency> <!-- use a specific Groovy version rather than the one specified by spock-core -->
-          <groupId>org.codehaus.groovy</groupId>
-          <artifactId>groovy-all</artifactId>
-          <version>${groovy.core.version}</version>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-all</artifactId>
+            <version>${groovy.core.version}</version>
         </dependency>
         <dependency> <!-- enables mocking of classes (in addition to interfaces) -->
-          <groupId>net.bytebuddy</groupId>
-          <artifactId>byte-buddy</artifactId>
-          <version>1.9.3</version>
-          <scope>test</scope>
+            <groupId>net.bytebuddy</groupId>
+            <artifactId>byte-buddy</artifactId>
+            <version>1.9.3</version>
+            <scope>test</scope>
         </dependency>
         <dependency> <!-- enables mocking of classes without default constructor (together with CGLIB) -->
-          <groupId>org.objenesis</groupId>
-          <artifactId>objenesis</artifactId>
-          <version>2.6</version>
-          <scope>test</scope>
+            <groupId>org.objenesis</groupId>
+            <artifactId>objenesis</artifactId>
+            <version>2.6</version>
+            <scope>test</scope>
         </dependency>
         <dependency> <!-- only required if Hamcrest matchers are used -->
-          <groupId>org.hamcrest</groupId>
-          <artifactId>hamcrest-core</artifactId>
-          <version>1.3</version>
-          <scope>test</scope>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-core</artifactId>
+            <version>1.3</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
     <build>
         <plugins>
             <!-- Mandatory plugins for using Spock -->
             <plugin>
-              <!-- The gmavenplus plugin is used to compile Groovy code. To learn more about this plugin,
-              visit https://github.com/groovy/GMavenPlus/wiki -->
-              <groupId>org.codehaus.gmavenplus</groupId>
-              <artifactId>gmavenplus-plugin</artifactId>
-              <version>${groovy.gmaven.pluginVersion}</version>
-              <executions>
-                <execution>
-                  <goals>
-                    <goal>compile</goal>
-                    <goal>compileTests</goal>
-                  </goals>
-                </execution>
-              </executions>
+                <!-- The gmavenplus plugin is used to compile Groovy code. To learn more about this plugin,
+                visit https://github.com/groovy/GMavenPlus/wiki -->
+                <groupId>org.codehaus.gmavenplus</groupId>
+                <artifactId>gmavenplus-plugin</artifactId>
+                <version>${groovy.gmaven.pluginVersion}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                            <goal>compileTests</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <!-- Optional plugins for using Spock -->
             <!-- Only required if names of spec classes don't match default Surefire patterns (`*Test` etc.) -->
             <plugin>
-              <artifactId>maven-surefire-plugin</artifactId>
-              <version>2.22.2</version>
-              <configuration>
-                <useFile>false</useFile>
-                <includes>
-                  <include>**/*Test.java</include>
-                  <include>**/*Spec.java</include>
-                </includes>
-              </configuration>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.2</version>
+                <configuration>
+                    <useFile>false</useFile>
+                    <includes>
+                        <include>**/*Test.java</include>
+                        <include>**/*Spec.java</include>
+                    </includes>
+                </configuration>
             </plugin>
         </plugins>
     </build>
