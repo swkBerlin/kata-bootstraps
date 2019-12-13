@@ -4,17 +4,17 @@ apply plugin: 'idea'
 version = '1.0'
 
 repositories {
-    mavenCentral()
+	mavenCentral()
 }
 
 test {
-    useJUnitPlatform()
+	useJUnitPlatform()
 }
 
 dependencies {
-    testCompile(
-            'org.junit.jupiter:junit-jupiter-api:5.5.2',
-            'org.hamcrest:hamcrest-all:1.3'
-    )
-    testRuntime('org.junit.jupiter:junit-jupiter-engine:5.5.2')
+	testCompile(
+		'org.junit.jupiter:junit-jupiter-api:5.5.2',
+		'org.hamcrest:hamcrest-all:1.3'
+	)
+	testRuntime('org.junit.jupiter:junit-jupiter-engine:5.5.2')
 }
