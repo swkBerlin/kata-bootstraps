@@ -18,7 +18,7 @@ jobs:
     strategy:
       matrix:
         java: [ 1.8, 11 ]
-    name: Java ${{ matrix.java }} subdir Build
+    name: Java ${{ matrix.java }} subdir Build (with java version set in pom.xml)
 
     steps:
       - uses: actions/checkout@v1
