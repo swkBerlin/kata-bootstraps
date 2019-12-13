@@ -1,6 +1,6 @@
 import org.junit.jupiter.api.Test;
 
-import static com.google.common.truth.Truth.assertThat;
+import static com.google.common.truth.Truth.*;
 
 public class ThingTest {
 
@@ -9,5 +9,10 @@ public class ThingTest {
         Thing thing = new Thing();
         String value = thing.callForAction();
         assertThat(value).isEqualTo("Food");
+    }
+
+    @Test
+    void it_should_not_fail() {
+        assertThat(true).isTrue();
     }
 }

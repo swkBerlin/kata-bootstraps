@@ -1,7 +1,6 @@
 apply plugin: 'java'
 apply plugin: 'idea'
 
-sourceCompatibility = 11
 version = '1.0'
 
 repositories {

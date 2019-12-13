@@ -9,4 +9,9 @@ public class ThingTest {
         String value = thing.callForAction();
         assertEquals("Food", value);
     }
+
+    @Test
+    public void it_should_not_fail() {
+        assertTrue(true);
+    }
 }
