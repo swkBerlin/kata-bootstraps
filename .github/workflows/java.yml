@@ -43,8 +43,8 @@ jobs:
 
     strategy:
       matrix:
-        java: [ 1.8]
-    name: Java builds which don't work in all java versions
+        java: [ 1.8 ]
+    name: Java builds ${{ matrix.java }} which don't work in all java versions
     steps:
       - uses: actions/checkout@v1
       - name: setup java
@@ -177,9 +177,11 @@ jobs:
     #### END mockito
 
     #### BEGIN spock
-    #- name: build spock with maven
-    #    working-directory: java/spock
-    #    run: mvn -B clean package --file pom.xml -Dtest=ThingSpec\#notfail -Dmaven.compiler.source=${{matrix.java}} -Dmaven.compiler.target=${{matrix.java}}
+      - name: build spock with maven
+        working-directory: java/spock
+        run: mvn -B clean package --file pom.xml -Dtest=ThingSpec\#notfail
+        # will break with java 11 :
+        #  -Dmaven.compiler.source=${{matrix.java}} -Dmaven.compiler.target=${{matrix.java}}
     #### END spock
 
     #### BEGIN truth
