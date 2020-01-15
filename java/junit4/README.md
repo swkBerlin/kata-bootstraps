@@ -17,7 +17,7 @@ To execute the tests either run `gradlew test`, `mvn test` or run the tests from
 
 ## Test Libraries Available from the Get-Go
 - JUnit 4.12
-- AssertJ 3.11.1
+- AssertJ 3.14.0
 
 This repo was tested with eclipse and idea, if you encounter problems please open a issue or send a pull request.
 

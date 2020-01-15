@@ -24,7 +24,7 @@ use **IDEA >= 2019.3** and click on the feature files or the package with in **s
 ![](docs/run_all_features.png)
 
 ## Test Libraries Available from the Get-Go
-- Cucumber 5.0.0-RC2
+- Cucumber 5.0.0-RC4
 
 This repo was tested with idea, if you encounter problems please open a issue or send a pull request.
 

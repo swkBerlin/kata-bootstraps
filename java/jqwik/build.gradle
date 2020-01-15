@@ -1,5 +1,8 @@
-apply plugin: 'java'
-apply plugin: 'idea'
+plugins {
+    id 'java'
+    id 'eclipse' // optional (to generate Eclipse project files)
+    id 'idea' // optional (to generate IntelliJ IDEA project files)
+}
 
 compileTestJava {
     sourceCompatibility = 1.8
@@ -29,16 +32,11 @@ test {
 }
 
 dependencies {
-    testCompile "org.apache.commons:commons-math3:3.6.1"
+    testImplementation "org.apache.commons:commons-math3:3.6.1"
 
-    testCompile "net.jqwik:jqwik:${jqwikVersion}"
+    testImplementation "net.jqwik:jqwik:${jqwikVersion}"
 
     // Fluent assertions library
-    testCompile("org.assertj:assertj-core:3.13.2")
+    testImplementation("org.assertj:assertj-core:3.14.0")
 
-}
-
-wrapper {
-    description = 'Generates gradlew[.bat] scripts'
-    gradleVersion = '4.10.2'
 }
