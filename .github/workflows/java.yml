@@ -62,7 +62,7 @@ jobs:
     #### BEGIN assertJ
       - name: build assertJ with maven
         working-directory: java/assert_j
-        run: mvn -B clean package --file pom.xml -Dtest=ThingTest\#it_should_not_fail  -Dmaven.compiler.source=${{matrix.java}} -Dmaven.compiler.target=${{matrix.java}}
+        run: mvn -B clean package --file pom.xml -Dtest=ThingTest\#it_should_not_fail
 
       # gradlew:
       - name: build with gradlew
@@ -80,7 +80,7 @@ jobs:
     #### BEGIN cucumber
       - name: build cucumber with maven
         working-directory: java/cucumber
-        run: mvn -B clean package --file pom.xml -Dmaven.compiler.source=${{matrix.java}} -Dmaven.compiler.target=${{matrix.java}}
+        run: mvn -B clean package --file pom.xml
     #### END cucumber
 
     #### BEGIN fitnesse
@@ -94,7 +94,7 @@ jobs:
     #### BEGIN hamcrest
       - name: build hamcrest with maven
         working-directory: java/hamcrest
-        run: mvn -B clean package --file pom.xml -Dtest=ThingTest\#it_should_not_fail  -Dmaven.compiler.source=${{matrix.java}} -Dmaven.compiler.target=${{matrix.java}}
+        run: mvn -B clean package --file pom.xml -Dtest=ThingTest\#it_should_not_fail
 
       # gradlew:
       - name: build with gradlew
@@ -112,8 +112,7 @@ jobs:
     #### BEGIN hue4j5
       - name: build hamcrest with maven
         working-directory: java/hue4j5
-        run: mvn -B clean package --file pom.xml -Dtest=ThingTest\#it_should_not_fail  -Dmaven.compiler.source=${{matrix.java}} -Dmaven.compiler.target=${{matrix.java}}
-
+        run: mvn -B clean package --file pom.xml -Dtest=ThingTest\#it_should_not_fail
       # gradlew:
       - name: build with gradlew
         working-directory: java/hue4j5
@@ -148,8 +147,7 @@ jobs:
     #### BEGIN junit4
       - name: build junit4 with maven
         working-directory: java/junit4
-        run: mvn -B clean package --file pom.xml -Dtest=ThingTest\#it_should_not_fail  -Dmaven.compiler.source=${{matrix.java}} -Dmaven.compiler.target=${{matrix.java}}
-
+        run: mvn -B clean package --file pom.xml -Dtest=ThingTest\#it_should_not_fail
       # gradlew:
       - name: build with gradlew
         working-directory: java/junit4
@@ -166,7 +164,7 @@ jobs:
     #### BEGIN junit5
       - name: build junit5 with maven
         working-directory: java/junit5
-        run: mvn -B clean package --file pom.xml -Dtest=ThingTest\#it_should_not_fail  -Dmaven.compiler.source=${{matrix.java}} -Dmaven.compiler.target=${{matrix.java}}
+        run: mvn -B clean package --file pom.xml -Dtest=ThingTest\#it_should_not_fail
 
       # gradlew:
       - name: build with gradlew
@@ -184,7 +182,7 @@ jobs:
     #### BEGIN mockito
       - name: build mockito with maven
         working-directory: java/mockito
-        run: mvn -B clean package --file pom.xml -Dtest=ThingTest\#it_should_not_fail  -Dmaven.compiler.source=${{matrix.java}} -Dmaven.compiler.target=${{matrix.java}}
+        run: mvn -B clean package --file pom.xml -Dtest=ThingTest\#it_should_not_fail
 
       # gradlew:
       - name: build with gradlew
@@ -208,8 +206,7 @@ jobs:
     #### BEGIN truth
       - name: build truth with maven
         working-directory: java/truth
-        run: mvn -B clean package --file pom.xml -Dtest=ThingTest\#it_should_not_fail  -Dmaven.compiler.source=${{matrix.java}} -Dmaven.compiler.target=${{matrix.java}}
-
+        run: mvn -B clean package --file pom.xml -Dtest=ThingTest\#it_should_not_fail
       # gradlew:
       - name: build with gradlew
         working-directory: java/truth
