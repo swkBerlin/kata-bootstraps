@@ -1,8 +1,7 @@
 {
   "name": "swkberlin/php",
   "description": "Shell project for PHP testing",
-  "type": "Project",
-  "license": "none",
+  "license": "MIT",
   "authors": [
     {
       "name": "Damijan Cavar",
