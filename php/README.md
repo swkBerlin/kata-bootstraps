@@ -28,3 +28,9 @@ If you change the phpunit version do not forget to run:
 ./composer update --with-dependencies
 
 ```
+
+# run from docker
+
+```
+ docker run --rm -v ${PWD}:/data  composer   /bin/sh -c  'cd /data  && rm -rf composer.lock && composer install --prefer-dist && ./vendor/bin/phpunit --bootstrap vendor/autoload.php tests'
+```
