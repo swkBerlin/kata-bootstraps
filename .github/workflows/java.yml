@@ -49,7 +49,8 @@ jobs:
 
     strategy:
       matrix:
-        operating-system: [ubuntu-latest, windows-latest, macOS-latest]
+        operating-system: [ubuntu-latest, macOS-latest]
+        #TODO fix: , windows-latest,
         java: [ 1.8, 11, 12, 13 ]
     name: Java ${{ matrix.java }} Build on ${{ matrix.operating-system }}
 
