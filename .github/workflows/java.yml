@@ -30,10 +30,12 @@ jobs:
       - name: build junit5 with maven
         working-directory: java/${{matrix.java}}/junit5
         run: mvn -B clean package --file pom.xml -Dtest=ThingTest\#it_should_not_fail
+        
       # gradlew:
       - name: build with gradlew
         working-directory: java/${{matrix.java}}/junit5
         run: ./gradlew test --warning-mode all --tests ThingTest.it_should_not_fail
+
       # gradle:
       - uses: eskatos/gradle-command-action@v1
         with:
@@ -41,28 +43,6 @@ jobs:
           gradle-version: current
           arguments: test --warning-mode all --tests ThingTest.it_should_not_fail
       #### END junit5
-
-  only_1_8_build:
-    runs-on: ubuntu-16.04
-
-    strategy:
-      matrix:
-        java: [ 1.8 ]
-    name: Java builds ${{ matrix.java }} which don't work in all java versions
-    steps:
-      - uses: actions/checkout@v1
-      - name: setup java
-        uses: actions/setup-java@v1
-        with:
-          java-version: ${{ matrix.java }}
-
-      - name: build junit5 with maven without setting source / target
-        working-directory: java/junit5
-        run: mvn -B clean package --file pom.xml -Dtest=ThingTest\#it_should_not_fail
-
-      - name: build spock with maven
-        working-directory: java/spock
-        run: mvn -B clean package --file pom.xml -Dtest=ThingSpec\#notfail
 
   matrix_build:
     runs-on: ubuntu-16.04
@@ -198,10 +178,6 @@ jobs:
           build-root-directory: java/junit5
           gradle-version: current
           arguments: test --warning-mode all --tests ThingTest.it_should_not_fail
-      # TODO does not work with java 12, 13
-      # - name: build junit5 with maven without setting source / target
-      #  working-directory: java/junit5
-      #  run: mvn -B clean package --file pom.xml -Dtest=ThingTest\#it_should_not_fail
      #### END junit5
 
     #### BEGIN mockito
@@ -226,8 +202,6 @@ jobs:
       - name: build spock with maven
         working-directory: java/spock
         run: mvn -B clean package --file pom.xml -Dtest=ThingSpec\#notfail
-        # will break with java 11 :
-        #  -Dmaven.compiler.source=${{matrix.java}} -Dmaven.compiler.target=${{matrix.java}}
     #### END spock
 
     #### BEGIN truth
