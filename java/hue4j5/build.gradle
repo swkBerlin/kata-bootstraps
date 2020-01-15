@@ -1,22 +1,22 @@
-apply plugin: 'java'
-apply plugin: 'idea'
-
-version = '1.0'
+plugins {
+    id 'java'
+    id 'eclipse' // optional (to generate Eclipse project files)
+    id 'idea' // optional (to generate IntelliJ IDEA project files)
+}
 
 repositories {
     mavenCentral()
 }
-
 test {
     useJUnitPlatform()
     systemProperties = [
             //TODO  configure me:
-            "hue.client"        : "cQBrUHlhqwwu6mNhMTfYCjXafcOnVS0z5ZiWcIhQ",
+            "hue.client": "cQBrUHlhqwwu6mNhMTfYCjXafcOnVS0z5ZiWcIhQ",
     ]
 }
 
 dependencies {
-    testCompile("org.junit.jupiter:junit-jupiter-api:5.3.2")
-    testRuntime("org.junit.jupiter:junit-jupiter-engine:5.3.2")
-    testRuntime("de.klosebrothers.hue:hue4junit:0.1.0")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.3.2")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.3.2",
+                    "de.klosebrothers.hue:hue4junit:0.1.0")
 }

@@ -1,20 +1,16 @@
-apply plugin: 'java'
-apply plugin: 'idea'
-
+plugins {
+    id 'java'
+    id 'eclipse' // optional (to generate Eclipse project files)
+    id 'idea' // optional (to generate IntelliJ IDEA project files)
+}
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testCompile(
+    testImplementation(
             'junit:junit:4.12',
-            'org.assertj:assertj-core:3.11.1'
+            'org.assertj:assertj-core:3.14.0'
     )
-}
-
-
-wrapper {
-    description = 'Generates gradlew[.bat] scripts'
-    gradleVersion = '4.10.2'
 }

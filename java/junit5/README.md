@@ -4,6 +4,8 @@ Minimal setup with Java [JUnit5](https://junit.org/junit5/) to get you started.
 
 You can use [gradle](https://gradle.org/) or [maven](https://maven.apache.org/)
 
+[More complicated JUnit5 setups](https://github.com/junit-team/junit5-samples)
+
 ## Setup
 
     git clone https://github.com/swkBerlin/kata-bootstraps

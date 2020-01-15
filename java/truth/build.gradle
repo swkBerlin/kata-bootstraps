@@ -1,20 +1,24 @@
-apply plugin: 'java'
-apply plugin: 'idea'
-
-version = '1.0'
+plugins {
+    id 'java'
+    id 'eclipse' // optional (to generate Eclipse project files)
+    id 'idea' // optional (to generate IntelliJ IDEA project files)
+}
 
 repositories {
     mavenCentral()
 }
 
-test {
-    useJUnitPlatform()
-}
 
 dependencies {
-    testCompile(
-            'org.junit.jupiter:junit-jupiter-api:5.5.2',
+    testImplementation(
+            'org.junit.jupiter:junit-jupiter:5.5.2',
             'com.google.truth:truth:1.0'
     )
-    testRuntime('org.junit.jupiter:junit-jupiter-engine:5.5.2')
+}
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
 }
