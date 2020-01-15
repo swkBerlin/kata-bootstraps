@@ -13,7 +13,7 @@ For PHP 7.1 or above just run:
 To run the tests just run:
 
 ```
-phpunit tests
+phpunit --bootstrap vendor/autoload.php tests --filter testNotFailing
 ```
 You need PHP 7.1 or above.
 

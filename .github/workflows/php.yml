@@ -37,4 +37,4 @@ jobs:
 
     - name: Run phpunit
       working-directory: php
-      run: phpunit tests --filter testNotFaling
+      run: phpunit --bootstrap vendor/autoload.php tests --filter testNotFailing
