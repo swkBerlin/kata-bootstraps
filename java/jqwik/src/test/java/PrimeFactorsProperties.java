@@ -58,7 +58,7 @@ class PrimeFactorsProperties {
         assertThat(allMultiply).isEqualTo(anInt);
     }
 
-    @Property
+    @Property(maxDiscardRatio = 10)
     @Label("a prime number is the only prime factor")
     void primeIsOnlyFactor(@ForAll @IntRange(min = FIRST_PRIME_NUMBER) int anInt) {
         Assume.that(Primes.isPrime(anInt));

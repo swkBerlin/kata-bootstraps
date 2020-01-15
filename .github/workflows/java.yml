@@ -56,10 +56,6 @@ jobs:
         working-directory: java/junit5
         run: mvn -B clean package --file pom.xml -Dtest=ThingTest\#it_should_not_fail
 
-      - name: build jqwik with maven
-        working-directory: java/jqwik
-        run: mvn -B clean package --file pom.xml
-
       - name: build spock with maven
         working-directory: java/spock
         run: mvn -B clean package --file pom.xml -Dtest=ThingSpec\#notfail
@@ -131,11 +127,16 @@ jobs:
     #### END hue4j5
 
     #### BEGIN jqwik
-    #TODO fix me break with java 11
-    #  - name: build jqwik with maven
-    #    working-directory: java/jqwik
-    #    run: mvn -B clean package --file pom.xml
+      - name: build jqwik with maven
+        working-directory: java/jqwik
+        run: mvn -B clean package --file pom.xml
+      - uses: eskatos/gradle-command-action@v1
+        with:
+          build-root-directory: java/jqwik
+          gradle-version: current
+          arguments: test --warning-mode all
     #### END jqwik
+
     #### BEGIN junit4
       - name: build junit4 with maven
         working-directory: java/junit4
