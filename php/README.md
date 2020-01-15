@@ -3,7 +3,7 @@ phpunit setup
 
 This is a simple bootstrap project for PHP with phpunit
 
-For PHP 7.1 or above just run:
+For PHP 7.2 or above just run:
 
 ```
 ./composer install
@@ -13,9 +13,9 @@ For PHP 7.1 or above just run:
 To run the tests just run:
 
 ```
-phpunit tests
+phpunit --bootstrap vendor/autoload.php tests --filter testNotFailing
 ```
-You need PHP 7.1 or above.
+You need PHP 7.2 or above.
 
 
 If you have legacy version of php please change composer.json file
@@ -27,4 +27,10 @@ If you change the phpunit version do not forget to run:
 ```
 ./composer update --with-dependencies
 
+```
+
+# run from docker
+
+```
+ docker run --rm -v ${PWD}:/data  composer   /bin/sh -c  'cd /data  && rm -rf composer.lock && composer install --prefer-dist && ./vendor/bin/phpunit --bootstrap vendor/autoload.php tests'
 ```

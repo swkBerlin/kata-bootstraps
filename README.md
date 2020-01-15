@@ -1,6 +1,6 @@
 # kata-bootstraps
 
-[![ci-badge]][ci-actions]
+[![java-ci-badge]][ci-actions][![php-ci-badge]][ci-actions]
 
 Empty projects for e.g. Katas with testing support in different languages
 (usually with a failing test, in order to know where to start)
@@ -19,5 +19,7 @@ You are welcome to contribute by submitting likewise a min setup for your langua
 ----
 [Cookiecutter](https://github.com/audreyr/cookiecutter) has a similar goal and also supports multiple languages for setting up a bare project.
 
-[ci-badge]:https://github.com/swkBerlin/kata-bootstraps/workflows/Java_CI/badge.svg "CI build status"
+[java-ci-badge]:https://github.com/swkBerlin/kata-bootstraps/workflows/Java_CI/badge.svg "CI build status"
+[php-ci-badge]:https://github.com/swkBerlin/kata-bootstraps/workflows/php_CI/badge.svg "CI build status"
+
 [ci-actions]: https://github.com/swkBerlin/kata-bootstraps/actions

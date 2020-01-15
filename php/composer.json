@@ -1,8 +1,7 @@
 {
   "name": "swkberlin/php",
   "description": "Shell project for PHP testing",
-  "type": "Project",
-  "license": "none",
+  "license": "MIT",
   "authors": [
     {
       "name": "Damijan Cavar",
@@ -10,7 +9,8 @@
     }
   ],
   "require": {
-    "php": "^7.1.3"
+    "php": "^7.1.3",
+    "phpunit/phpunit": "^8"
   },
   "require-dev": {
     "mockery/mockery": "dev-master"
