@@ -30,6 +30,10 @@ jobs:
       - name: build junit5 with maven
         working-directory: java/${{matrix.java}}/junit5
         run: mvn -B clean package --file pom.xml -Dtest=ThingTest\#it_should_not_fail
+      # gradlew:
+      - name: build with gradlew
+        working-directory: java/${{matrix.java}}/junit5
+        run: ./gradlew test --warning-mode all --tests ThingTest.it_should_not_fail
       # gradle:
       - uses: eskatos/gradle-command-action@v1
         with:
@@ -78,6 +82,12 @@ jobs:
       - name: build assertJ with maven
         working-directory: java/assert_j
         run: mvn -B clean package --file pom.xml -Dtest=ThingTest\#it_should_not_fail  -Dmaven.compiler.source=${{matrix.java}} -Dmaven.compiler.target=${{matrix.java}}
+
+      # gradlew:
+      - name: build with gradlew
+        working-directory: java/assert_j
+        run: ./gradlew test --warning-mode all --tests ThingTest.it_should_not_fail
+
       # gradle:
       - uses: eskatos/gradle-command-action@v1
         with:
@@ -92,18 +102,24 @@ jobs:
         run: mvn -B clean package --file pom.xml -Dmaven.compiler.source=${{matrix.java}} -Dmaven.compiler.target=${{matrix.java}}
     #### END cucumber
 
-    #### BEGIN cucumber
+    #### BEGIN fitnesse
       - uses: eskatos/gradle-command-action@v1
         with:
           build-root-directory: java/fitnesse
           gradle-version: current
           arguments: test --warning-mode all
-    #### END cucumber
+    #### END fitnesse
 
     #### BEGIN hamcrest
       - name: build hamcrest with maven
         working-directory: java/hamcrest
         run: mvn -B clean package --file pom.xml -Dtest=ThingTest\#it_should_not_fail  -Dmaven.compiler.source=${{matrix.java}} -Dmaven.compiler.target=${{matrix.java}}
+
+      # gradlew:
+      - name: build with gradlew
+        working-directory: java/hamcrest
+        run: ./gradlew test --warning-mode all --tests ThingTest.it_should_not_fail
+
       # gradle:
       - uses: eskatos/gradle-command-action@v1
         with:
@@ -116,6 +132,12 @@ jobs:
       - name: build hamcrest with maven
         working-directory: java/hue4j5
         run: mvn -B clean package --file pom.xml -Dtest=ThingTest\#it_should_not_fail  -Dmaven.compiler.source=${{matrix.java}} -Dmaven.compiler.target=${{matrix.java}}
+
+      # gradlew:
+      - name: build with gradlew
+        working-directory: java/hue4j5
+        run: ./gradlew test --warning-mode all --tests ThingTest.it_should_not_fail
+
       # gradle:
       - uses: eskatos/gradle-command-action@v1
         with:
@@ -128,6 +150,13 @@ jobs:
       - name: build jqwik with maven
         working-directory: java/jqwik
         run: mvn -B clean package --file pom.xml
+
+      # gradlew:
+      - name: build with gradlew
+        working-directory: java/jqwik
+        run: ./gradlew test --warning-mode all
+
+      # gradle:
       - uses: eskatos/gradle-command-action@v1
         with:
           build-root-directory: java/jqwik
@@ -139,6 +168,12 @@ jobs:
       - name: build junit4 with maven
         working-directory: java/junit4
         run: mvn -B clean package --file pom.xml -Dtest=ThingTest\#it_should_not_fail  -Dmaven.compiler.source=${{matrix.java}} -Dmaven.compiler.target=${{matrix.java}}
+
+      # gradlew:
+      - name: build with gradlew
+        working-directory: java/junit4
+        run: ./gradlew test --warning-mode all --tests ThingTest.it_should_not_fail
+
       # gradle:
       - uses: eskatos/gradle-command-action@v1
         with:
@@ -151,6 +186,12 @@ jobs:
       - name: build junit5 with maven
         working-directory: java/junit5
         run: mvn -B clean package --file pom.xml -Dtest=ThingTest\#it_should_not_fail  -Dmaven.compiler.source=${{matrix.java}} -Dmaven.compiler.target=${{matrix.java}}
+
+      # gradlew:
+      - name: build with gradlew
+        working-directory: java/junit5
+        run: ./gradlew test --warning-mode all --tests ThingTest.it_should_not_fail
+
       # gradle:
       - uses: eskatos/gradle-command-action@v1
         with:
@@ -167,6 +208,12 @@ jobs:
       - name: build mockito with maven
         working-directory: java/mockito
         run: mvn -B clean package --file pom.xml -Dtest=ThingTest\#it_should_not_fail  -Dmaven.compiler.source=${{matrix.java}} -Dmaven.compiler.target=${{matrix.java}}
+
+      # gradlew:
+      - name: build with gradlew
+        working-directory: java/mockito
+        run: ./gradlew test --warning-mode all --tests ThingTest.it_should_not_fail
+
       # gradle:
       - uses: eskatos/gradle-command-action@v1
         with:
@@ -187,6 +234,12 @@ jobs:
       - name: build truth with maven
         working-directory: java/truth
         run: mvn -B clean package --file pom.xml -Dtest=ThingTest\#it_should_not_fail  -Dmaven.compiler.source=${{matrix.java}} -Dmaven.compiler.target=${{matrix.java}}
+
+      # gradlew:
+      - name: build with gradlew
+        working-directory: java/truth
+        run: ./gradlew test --warning-mode all --tests ThingTest.it_should_not_fail
+
       # gradle:
       - uses: eskatos/gradle-command-action@v1
         with:
