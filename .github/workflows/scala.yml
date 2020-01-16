@@ -19,8 +19,8 @@ jobs:
       matrix:
         operating-system: [ubuntu-latest]
         # TODO fix me:  windows-latest, macOS-latest,
-        java: [ 1.8]
-        # TODO fix me:  10, 11, 12, 13
+        java: [ 1.8, 10]
+        # TODO fix me: 11, 12, 13
     name: Scala ${{ matrix.java }} Build on ${{ matrix.operating-system }}
 
     steps:
