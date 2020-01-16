@@ -27,3 +27,9 @@ To run same as before :
 
  - <http://pythontesting.net/framework/pytest/pytest-introduction/>
  - <https://docs.pytest.org/en/latest/getting-started.html>
+
+## run from docker
+
+ ```
+ './test.sh'
+ ```
