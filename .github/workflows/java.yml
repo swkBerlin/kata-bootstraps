@@ -19,6 +19,8 @@ jobs:
       matrix:
         operating-system: [ubuntu-latest, macOS-latest]
         #TODO fix: , windows-latest,
+        # on windows it needs to be done without the "\" before "#"
+        # mvn -B clean package --file pom.xml -Dtest=ThingTest#it_should_not_fail
         java: [ 1.8, 11, 12, 13 ]
     name: Java ${{ matrix.java }} Build on ${{ matrix.operating-system }}
 
