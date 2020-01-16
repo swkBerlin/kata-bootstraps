@@ -17,11 +17,8 @@ jobs:
 
     strategy:
       matrix:
-        operating-system: [ubuntu-latest, macOS-latest]
-        #TODO fix: , windows-latest,
-        # on windows it needs to be done without the "\" before "#"
-        # mvn -B clean package --file pom.xml -Dtest=ThingTest#it_should_not_fail
-        java: [ 1.8, 11, 12, 13 ]
+        operating-system: [ubuntu-latest, macOS-latest,  windows-latest]
+        java: [ 1.8, 10, 11, 12, 13 ]
     name: Java ${{ matrix.java }} Build on ${{ matrix.operating-system }}
 
     steps:
@@ -33,7 +30,7 @@ jobs:
     #### BEGIN assertJ
       - name: build assertJ with maven
         working-directory: java/assert_j
-        run: mvn -B clean package --file pom.xml -Dtest=ThingTest\#it_should_not_fail
+        run: mvn -B clean package --file pom.xml -Dtest="ThingTest#it_should_not_fail"
 
       # gradlew:
       - name: build with gradlew
@@ -65,7 +62,7 @@ jobs:
     #### BEGIN hamcrest
       - name: build hamcrest with maven
         working-directory: java/hamcrest
-        run: mvn -B clean package --file pom.xml -Dtest=ThingTest\#it_should_not_fail
+        run: mvn -B clean package --file pom.xml -Dtest="ThingTest#it_should_not_fail"
 
       # gradlew:
       - name: build with gradlew
@@ -83,7 +80,7 @@ jobs:
     #### BEGIN hue4j5
       - name: build hamcrest with maven
         working-directory: java/hue4j5
-        run: mvn -B clean package --file pom.xml -Dtest=ThingTest\#it_should_not_fail
+        run: mvn -B clean package --file pom.xml -Dtest="ThingTest#it_should_not_fail"
       # gradlew:
       - name: build with gradlew
         working-directory: java/hue4j5
@@ -118,7 +115,7 @@ jobs:
     #### BEGIN junit4
       - name: build junit4 with maven
         working-directory: java/junit4
-        run: mvn -B clean package --file pom.xml -Dtest=ThingTest\#it_should_not_fail
+        run: mvn -B clean package --file pom.xml -Dtest="ThingTest#it_should_not_fail"
       # gradlew:
       - name: build with gradlew
         working-directory: java/junit4
@@ -135,7 +132,7 @@ jobs:
     #### BEGIN junit5
       - name: build junit5 with maven
         working-directory: java/junit5
-        run: mvn -B clean package --file pom.xml -Dtest=ThingTest\#it_should_not_fail
+        run: mvn -B clean package --file pom.xml -Dtest="ThingTest#it_should_not_fail"
 
       # gradlew:
       - name: build with gradlew
@@ -153,7 +150,7 @@ jobs:
     #### BEGIN mockito
       - name: build mockito with maven
         working-directory: java/mockito
-        run: mvn -B clean package --file pom.xml -Dtest=ThingTest\#it_should_not_fail
+        run: mvn -B clean package --file pom.xml -Dtest="ThingTest#it_should_not_fail"
 
       # gradlew:
       - name: build with gradlew
@@ -171,13 +168,13 @@ jobs:
     #### BEGIN spock
       - name: build spock with maven
         working-directory: java/spock
-        run: mvn -B clean package --file pom.xml -Dtest=ThingSpec\#notfail
+        run: mvn -B clean package --file pom.xml -Dtest="ThingSpec#notfail"
     #### END spock
 
     #### BEGIN truth
       - name: build truth with maven
         working-directory: java/truth
-        run: mvn -B clean package --file pom.xml -Dtest=ThingTest\#it_should_not_fail
+        run: mvn -B clean package --file pom.xml -Dtest="ThingTest#it_should_not_fail"
       # gradlew:
       - name: build with gradlew
         working-directory: java/truth
