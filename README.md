@@ -4,6 +4,7 @@
 [![java-ci-badge]][ci-actions]
 [![php-ci-badge]][ci-actions]
 [![rust-ci-badge]][ci-actions]
+[![python-ci-badge]][ci-actions]
 
 
 Empty projects for e.g. Katas with testing support in different languages
@@ -26,4 +27,5 @@ You are welcome to contribute by submitting likewise a min setup for your langua
 [java-ci-badge]:https://github.com/swkBerlin/kata-bootstraps/workflows/java/badge.svg "CI build status"
 [php-ci-badge]:https://github.com/swkBerlin/kata-bootstraps/workflows/php/badge.svg "CI build status"
 [rust-ci-badge]:https://github.com/swkBerlin/kata-bootstraps/workflows/rust/badge.svg "CI build status"
+[python-ci-badge]:https://github.com/swkBerlin/kata-bootstraps/workflows/python/badge.svg "CI build status"
 [ci-actions]: https://github.com/swkBerlin/kata-bootstraps/actions
