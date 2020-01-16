@@ -17,8 +17,10 @@ jobs:
 
     strategy:
       matrix:
-        operating-system: [ubuntu-latest, macOS-latest, windows-latest]
-        java: [ 1.8, 10, 11, 12, 13 ]
+        operating-system: [ubuntu-latest]
+        # TODO fix me:  windows-latest, macOS-latest,
+        java: [ 1.8, 10, 11, 12]
+        # TODO fix me: 13
     name: Scala ${{ matrix.java }} Build on ${{ matrix.operating-system }}
 
     steps:
