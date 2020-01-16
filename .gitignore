@@ -36,6 +36,5 @@ clojure/**/.lein-repl-history
 clojure/**/.lein-plugins/
 clojure/**/.lein-failures
 clojure/**/.nrepl-port
-rust/Cargo.lock
 python/pytest/.pytest_cache
 python/pytest/__pycache__
