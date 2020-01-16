@@ -1,6 +1,8 @@
 # kata-bootstraps
 
-[![java-ci-badge]][ci-actions][![php-ci-badge]][ci-actions]
+[![GitSpo Mentions](https://gitspo.com/badges/mentions/swkBerlin/kata-bootstraps?style=flat-square)](https://gitspo.com/mentions/swkBerlin/kata-bootstraps)
+[![java-ci-badge]][ci-actions]
+[![php-ci-badge]][ci-actions]
 
 Empty projects for e.g. Katas with testing support in different languages
 (usually with a failing test, in order to know where to start)
