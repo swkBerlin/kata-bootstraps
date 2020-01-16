@@ -18,7 +18,7 @@ jobs:
     strategy:
       max-parallel: 4
       matrix:
-        python-version: [2.7, 3.5, 3.6, 3.7]
+        python-version: [ 3.6, 3.7]
 
     steps:
     - uses: actions/checkout@v1
@@ -43,4 +43,4 @@ jobs:
       working-directory: python/pytest
       run: |
         pip install pytest
-        pytest
+        pytest -k test_correct_greeting
