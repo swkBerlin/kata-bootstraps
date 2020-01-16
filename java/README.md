@@ -1,6 +1,6 @@
 # Java Bootstraps
 
-![](https://github.com/swkBerlin/kata-bootstraps/workflows/Java_CI/badge.svg)
+[![java-ci-badge]][ci-actions]
 
 Each folder has an example project for getting started with TDD fast.
 You need to have a [java sdk](https://www.java.com/) installed and also a build tool like [gradle](http://gradle.org/) or [maven](https://maven.apache.org/), both build files are in directories.
@@ -9,7 +9,7 @@ You need to have a [java sdk](https://www.java.com/) installed and also a build 
 
 ## table of contents
 
-Java _no_specific_version_
+Java >= _1.8_
   * [junit4](junit4)
   * [junit5](junit5)
   * [assert_j](assert_j)
@@ -22,11 +22,5 @@ Java _no_specific_version_
   * [cucumber](cucumber)
   * [fitnesse](fitnesse)
 
-Java 11
-
-  * [junit5](11/junit5)
-
-
-Java 1.8
-
-  * [junit5](1.8/junit5)
+  [java-ci-badge]:https://github.com/swkBerlin/kata-bootstraps/workflows/java/badge.svg "CI build status"
+  [ci-actions]: https://github.com/swkBerlin/kata-bootstraps/actions
