@@ -3,6 +3,8 @@
 [![GitSpo Mentions](https://gitspo.com/badges/mentions/swkBerlin/kata-bootstraps?style=flat-square)](https://gitspo.com/mentions/swkBerlin/kata-bootstraps)
 [![java-ci-badge]][ci-actions]
 [![php-ci-badge]][ci-actions]
+[![rust-ci-badge]][ci-actions]
+
 
 Empty projects for e.g. Katas with testing support in different languages
 (usually with a failing test, in order to know where to start)
@@ -23,5 +25,5 @@ You are welcome to contribute by submitting likewise a min setup for your langua
 
 [java-ci-badge]:https://github.com/swkBerlin/kata-bootstraps/workflows/Java_CI/badge.svg "CI build status"
 [php-ci-badge]:https://github.com/swkBerlin/kata-bootstraps/workflows/php_CI/badge.svg "CI build status"
-
+[rust-ci-badge]:https://github.com/swkBerlin/kata-bootstraps/workflows/Rust/badge.svg "CI build status"
 [ci-actions]: https://github.com/swkBerlin/kata-bootstraps/actions

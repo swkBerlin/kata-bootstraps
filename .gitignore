@@ -37,3 +37,4 @@ clojure/**/.lein-repl-history
 clojure/**/.lein-plugins/
 clojure/**/.lein-failures
 clojure/**/.nrepl-port
+rust/Cargo.lock

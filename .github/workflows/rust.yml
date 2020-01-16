@@ -1,0 +1,25 @@
+name: Rust
+
+on:
+  push:
+    paths:
+      - 'rust/**'
+      - '.github/workflows/rust**'
+  pull_request:
+    paths:
+      - 'rust/**'
+      - '.github/workflows/rust**'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build
+      working-directory: rust
+      run: cargo build --verbose
+    - name: Run tests
+      working-directory: rust
+      run: cargo test test_should_not_fail --verbose
