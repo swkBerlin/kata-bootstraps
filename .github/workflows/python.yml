@@ -10,7 +10,6 @@ on:
       - 'python/**'
       - '.github/workflows/python**'
 
-
 jobs:
   build:
 
