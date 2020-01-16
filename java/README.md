@@ -9,7 +9,7 @@ You need to have a [java sdk](https://www.java.com/) installed and also a build 
 
 ## table of contents
 
-Java _no_specific_version_
+Java _no_specific_version_ >= _1.8_
   * [junit4](junit4)
   * [junit5](junit5)
   * [assert_j](assert_j)
@@ -21,12 +21,3 @@ Java _no_specific_version_
   * [jqwik](jqwik)
   * [cucumber](cucumber)
   * [fitnesse](fitnesse)
-
-Java 11
-
-  * [junit5](11/junit5)
-
-
-Java 1.8
-
-  * [junit5](1.8/junit5)
