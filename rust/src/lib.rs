@@ -11,4 +11,9 @@ mod tests {
     fn test_say_hello() {
         assert!("hello" == say_hello());
     }
+
+    #[test]
+    fn test_should_not_fail() {
+        assert!("ok" == "ok");
+    }
 }
