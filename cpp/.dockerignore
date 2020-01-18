@@ -1,0 +1,5 @@
+README.md
+*.txt
+src/
+include/
+*.sh
