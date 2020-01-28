@@ -11,7 +11,7 @@ repositories {
 dependencies {
     testImplementation(
             'org.junit.jupiter:junit-jupiter:5.5.2',
-            'org.mockito:mockito-core:3.2.9'
+            'org.mockito:mockito-core:3.2.4'
     )
 }
 

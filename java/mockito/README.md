@@ -17,7 +17,7 @@ To execute the tests either run `./gradlew test`, `mvn test` or run the tests fr
 
 ## Test Libraries Available from the Get-Go
 - JUnit 5.5.2
-- [Mockito 3.2.9](https://github.com/mockito/mockito/tree/v3.2.9)
+- [Mockito 3.2.4](https://github.com/mockito/mockito/tree/v3.2.4)
 
 This repo was tested with eclipse and idea, if you encounter problems please open a issue or send a pull request.
 
