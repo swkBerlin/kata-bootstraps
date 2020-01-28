@@ -6,17 +6,31 @@ plugins {
 
 repositories {
     mavenCentral()
+    maven {
+        url "https://oss.sonatype.org/content/repositories/snapshots/"
+    }
 }
 test {
     useJUnitPlatform()
     systemProperties = [
-            //TODO  configure me:
-            "hue.client": "cQBrUHlhqwwu6mNhMTfYCjXafcOnVS0z5ZiWcIhQ",
+            //configuration is done in src/test/resources/hue4junit.properties
+            "hue.username": "I7oEDmdNmB2bSez7K-ZKw0JDbFBzP5NMqp6dvdwj",
+
+            //optional:
+            //"hue.ip": "192.168.178.49",
+            //"hue.timeout"       : 2500,
+            //"hue.listener.lamps": [1, 5]
     ]
 }
 
 dependencies {
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.3.2")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.3.2",
-                    "de.klosebrothers.hue:hue4junit:0.1.0")
+    testImplementation(
+            "org.junit.jupiter:junit-jupiter-api:5.5.2",
+            "org.assertj:assertj-core:3.14.0"
+    )
+
+    testRuntimeOnly(
+            "org.junit.jupiter:junit-jupiter-engine:5.5.2",
+            "de.klosebrothers.hue:hue4junit:0.2.0"
+    )
 }

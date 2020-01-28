@@ -11,11 +11,24 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>${maven.compiler.source}</maven.compiler.target>
     </properties>
+    <repositories>
+        <repository>
+            <id>repo</id>
+            <name>sonatype snapshots</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+        </repository>
+    </repositories>
     <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
             <version>5.5.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>3.14.0</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -27,7 +40,7 @@
         <dependency>
             <groupId>de.klosebrothers.hue</groupId>
             <artifactId>hue4junit</artifactId>
-            <version>0.1.0</version>
+            <version>0.2.0</version>
         </dependency>
     </dependencies>
     <build>
@@ -42,7 +55,9 @@
                 <configuration>
                     <systemPropertyVariables>
                         <!-- TODO  configure me -->
-                        <hue.client>cQBrUHlhqwwu6mNhMTfYCjXafcOnVS0z5ZiWcIhQ</hue.client>
+                        <!-- configuration is done in src/test/resources/hue4junit.properties -->
+
+                        <hue.username>cQBrUHlhqwwu6mNhMTfYCjXafcOnVS0z5ZiWcIhQ</hue.username>
 
                     </systemPropertyVariables>
                 </configuration>
