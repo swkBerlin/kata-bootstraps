@@ -31,6 +31,6 @@ dependencies {
 
     testRuntimeOnly(
             "org.junit.jupiter:junit-jupiter-engine:5.5.2",
-            "de.klosebrothers.hue:hue4junit:0.2.0"
+            "de.klosebrothers.hue:hue4junit:0.2.1"
     )
 }

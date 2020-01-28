@@ -40,7 +40,7 @@
         <dependency>
             <groupId>de.klosebrothers.hue</groupId>
             <artifactId>hue4junit</artifactId>
-            <version>0.2.0</version>
+            <version>0.2.1</version>
         </dependency>
     </dependencies>
     <build>
