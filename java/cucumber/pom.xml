@@ -9,7 +9,7 @@
     <description>Cucumber for the JVM</description>
 
     <properties>
-        <cucumber.version>5.0.0-RC4</cucumber.version>
+        <cucumber.version>5.1.2</cucumber.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>${maven.compiler.source}</maven.compiler.target>
         <junit-jupiter.version>5.5.2</junit-jupiter.version>
