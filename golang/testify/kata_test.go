@@ -6,11 +6,11 @@ import (
 )
 
 func TestFailing(t *testing.T) {
-	assert.Equal(t, doSomething("a"), 42, "I'm faling you can start with me...")
+	assert.Equal(t, 42, doSomething("a"), "I'm faling you can start with me...")
 }
 
 func TestSomething(t *testing.T) {
-	assert.Equal(t, doSomething("b"), 42, "Answer to the Ultimate Question of Life, the Universe, and Everything")
+	assert.Equal(t, 42, doSomething("b"), "Answer to the Ultimate Question of Life, the Universe, and Everything")
 }
 
 func TestGen(t *testing.T) {
