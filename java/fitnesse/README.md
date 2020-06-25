@@ -7,7 +7,7 @@ You can use [gradle](https://gradle.org/).
 ## Setup
 
     git clone https://github.com/swkBerlin/kata-bootstraps
-    cd java/fintnesse
+    cd java/fitnesse
 
 Open as preexisting project in your favorite IDE and choose gradle.
 
