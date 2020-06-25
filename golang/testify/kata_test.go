@@ -8,7 +8,6 @@ import (
 func TestFailing(t *testing.T) {
 	assert.Equal(t, doSomething("a"), 42, "I'm faling you can start with me...")
 }
-//go test -v -run TestGen && go test -v -run TestSomething
 
 func TestSomething(t *testing.T) {
 	assert.Equal(t, doSomething("b"), 42, "Answer to the Ultimate Question of Life, the Universe, and Everything")
