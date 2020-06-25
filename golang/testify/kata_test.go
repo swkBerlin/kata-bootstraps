@@ -6,7 +6,7 @@ import (
 )
 
 func TestFailing(t *testing.T) {
-	assert.Equal(t, 42, doSomething("a"), "I'm faling you can start with me...")
+	assert.Equal(t, 42, doSomething("a"), "I'm failing you can start with me...")
 }
 
 func TestSomething(t *testing.T) {
