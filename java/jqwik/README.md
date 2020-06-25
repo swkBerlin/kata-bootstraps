@@ -18,7 +18,3 @@ To execute the tests either run `./gradlew test`, `mvn test` or run the tests fr
 ## Test Libraries Available from the Get-Go
 - jqwik 1.2.1
 - assertJ 3.14.0
-
-This repo was tested with eclipse and idea, if you encounter problems please open a issue or send a pull request.
-
-Have fun!
