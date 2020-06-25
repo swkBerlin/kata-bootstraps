@@ -17,7 +17,3 @@ To execute the tests either run `./gradlew wiki` and go to [http://localhost:900
 
 ## Test Libraries Available from the Get-Go
 - FitNesse 20191110
-
-This repo was tested with eclipse and idea, if you encounter problems please open a issue or send a pull request.
-
-Have fun!
