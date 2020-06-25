@@ -16,4 +16,4 @@ Open as preexisting project in your favorite IDE and choose gradle.
 To execute the tests either run `./gradlew wiki` and go to [http://localhost:9000/MyApp?suite](http://localhost:9000/MyApp?suite) or run the tests from the IDE you are using.
 
 ## Test Libraries Available from the Get-Go
-- FitNesse 20191110
+- FitNesse v20200501
