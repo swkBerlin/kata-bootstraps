@@ -1,0 +1,35 @@
+name: GO CI
+
+on:
+  push:
+    paths:
+      - 'golang/**'
+      - '.github/workflows/go**'
+  pull_request:
+    paths:
+      - 'golang/**'
+      - '.github/workflows/go**'
+
+jobs:
+
+  matrix_build:
+    runs-on: ${{ matrix.operating-system }}
+
+    strategy:
+      matrix:
+        operating-system: [ubuntu-latest, macOS-latest,  windows-latest]
+        go: [  '1.14', '1.13', '1.12' ]
+    name: Go ${{ matrix.java }} Build on ${{ matrix.operating-system }}
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Setup go
+        uses: actions/setup-go@v1
+        with:
+          go-version: ${{ matrix.go }}
+
+    #### BEGIN testify
+      - name: run with testify
+        working-directory: golang/testify
+        run: go mod tidy && go test -v -run TestGen && go test -v -run TestSomething
+    #### END testify

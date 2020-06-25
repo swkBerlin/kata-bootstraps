@@ -1,5 +1,7 @@
 If you have Golang installed locally and your $GOPATH already configured,
 
+https://github.com/onsi/ginkgo
+
 ```
 go get github.com/onsi/ginkgo/ginkgo  # installs the ginkgo CLI
 go get github.com/onsi/gomega         # fetches the matcher library
