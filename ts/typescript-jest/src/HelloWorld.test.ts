@@ -1,6 +1,6 @@
 import { HelloWorld } from './HelloWorld'
 import { RemoteLogger } from './RemoteLogger'
-t
+
 // 👇 Test example using a mock/spy without async/await
 describe('Saying Hello World', () => {
   it('should log something using the remote logger', () => {
