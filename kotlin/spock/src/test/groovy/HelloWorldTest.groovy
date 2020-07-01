@@ -5,7 +5,9 @@ class HelloWorldTest extends Specification {
     private ClockService clock
     private HelloWorld sut
 
-    void setup() {
+    @SuppressWarnings('unused')
+    // false positive from IntelliJ for some reason
+    def setup() {
         // setup method necessary for dependency injection
         clock = Mock(ClockService)
         sut = new HelloWorld(clock)
