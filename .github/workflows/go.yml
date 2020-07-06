@@ -32,4 +32,8 @@ jobs:
       - name: run with testify
         working-directory: golang/testify
         run: go mod tidy && go test -v -run TestGen && go test -v -run TestSomething
+
+      - name: assure one failing test
+        working-directory: golang/testify
+        run: "sh ../../scripts/assure_failing_test.sh 'go test -v' 'Error Trace:	kata_test.go:9'"
     #### END testify
