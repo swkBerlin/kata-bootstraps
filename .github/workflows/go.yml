@@ -19,7 +19,7 @@ jobs:
       matrix:
         operating-system: [ubuntu-latest, macOS-latest,  windows-latest]
         go: [  '1.14', '1.13', '1.12' ]
-    name: Go ${{ matrix.java }} Build on ${{ matrix.operating-system }}
+    name: Go ${{ matrix.go }} Build on ${{ matrix.operating-system }}
 
     steps:
       - uses: actions/checkout@v1
