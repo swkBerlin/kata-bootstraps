@@ -78,7 +78,7 @@ jobs:
     #### END hamcrest
 
     #### BEGIN hue4j5
-      - name: build hamcrest with maven
+      - name: build hue4j5 with maven
         working-directory: java/hue4j5
         run: mvn -B clean package --file pom.xml -Dtest="ThingTest#it_should_not_fail"
       # gradlew:
