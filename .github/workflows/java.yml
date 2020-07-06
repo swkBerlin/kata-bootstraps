@@ -43,6 +43,10 @@ jobs:
           build-root-directory: java/assert_j
           gradle-version: current
           arguments: test --warning-mode all --tests ThingTest.it_should_not_fail
+
+      - name: assure one failing test
+        working-directory: java/assert_j
+        run: "sh ../../scripts/assure_failing_test.sh './gradlew test' 'ThingTest > it_should_call_for_action() FAILED'"
     #### END assertJ
 
     #### BEGIN cucumber
@@ -75,6 +79,10 @@ jobs:
           build-root-directory: java/hamcrest
           gradle-version: current
           arguments: test --warning-mode all --tests ThingTest.it_should_not_fail
+
+      - name: assure one failing test
+        working-directory: java/hamcrest
+        run: "sh ../../scripts/assure_failing_test.sh './gradlew test' 'ThingTest > it_should_call_for_action() FAILED'"
     #### END hamcrest
 
     #### BEGIN hue4j5
@@ -92,6 +100,10 @@ jobs:
           build-root-directory: java/hue4j5
           gradle-version: current
           arguments: test --warning-mode all --tests ThingTest.it_should_not_fail
+
+      - name: assure one failing test
+        working-directory: java/hue4j5
+        run: "sh ../../scripts/assure_failing_test.sh './gradlew test' 'ThingTest > it_should_call_for_action() FAILED'"
     #### END hue4j5
 
     #### BEGIN jqwik
@@ -127,6 +139,10 @@ jobs:
           build-root-directory: java/junit4
           gradle-version: current
           arguments: test --warning-mode all --tests ThingTest.it_should_not_fail
+
+      - name: assure one failing test
+        working-directory: java/junit4
+        run: "sh ../../scripts/assure_failing_test.sh './gradlew test' 'ThingTest > it_should_call_for_action FAILED'"
     #### END junit4
 
     #### BEGIN junit5
@@ -145,6 +161,10 @@ jobs:
           build-root-directory: java/junit5
           gradle-version: current
           arguments: test --warning-mode all --tests ThingTest.it_should_not_fail
+
+      - name: assure one failing test
+        working-directory: java/junit5
+        run: "sh ../../scripts/assure_failing_test.sh './gradlew test' 'ThingTest > fail() FAILED'"
      #### END junit5
 
     #### BEGIN mockito
@@ -163,12 +183,20 @@ jobs:
           build-root-directory: java/mockito
           gradle-version: current
           arguments: test --warning-mode all --tests ThingTest.it_should_not_fail
+
+      - name: assure one failing test
+        working-directory: java/mockito
+        run: "sh ../../scripts/assure_failing_test.sh './gradlew test' 'ThingTest > it_should_call_for_action() FAILED'"
     #### END mockito
 
     #### BEGIN spock
       - name: build spock with maven
         working-directory: java/spock
         run: mvn -B clean package --file pom.xml -Dtest="ThingSpec#notfail"
+
+      - name: assure one failing test
+        working-directory: java/spock
+        run: "sh ../../scripts/assure_failing_test.sh 'mvn -B verify' 'ThingSpec.it should call for action:13 Condition not satisfied:'"
     #### END spock
 
     #### BEGIN truth
@@ -186,4 +214,8 @@ jobs:
           build-root-directory: java/truth
           gradle-version: current
           arguments: test --warning-mode all --tests ThingTest.it_should_not_fail
+
+      - name: assure one failing test
+        working-directory: java/truth
+        run: "sh ../../scripts/assure_failing_test.sh './gradlew test' 'truth.ComparisonFailureWithFacts at ThingTest.java:11'"
     #### END truth
