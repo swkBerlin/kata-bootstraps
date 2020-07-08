@@ -19,7 +19,7 @@ jobs:
       matrix:
         operating-system: [ubuntu-latest, macOS-latest,  windows-latest]
         go: [  '1.14', '1.13', '1.12' ]
-    name: Go ${{ matrix.java }} Build on ${{ matrix.operating-system }}
+    name: Go ${{ matrix.go }} Build on ${{ matrix.operating-system }}
 
     steps:
       - uses: actions/checkout@v1
@@ -32,4 +32,8 @@ jobs:
       - name: run with testify
         working-directory: golang/testify
         run: go mod tidy && go test -v -run TestGen && go test -v -run TestSomething
+
+      - name: assure one failing test
+        working-directory: golang/testify
+        run: "sh ../../scripts/assure_failing_test.sh 'go test -v' 'Error Trace:	kata_test.go:9'"
     #### END testify

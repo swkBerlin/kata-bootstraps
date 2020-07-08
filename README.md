@@ -1,6 +1,5 @@
 # kata-bootstraps
 
-[![GitSpo Mentions](https://gitspo.com/badges/mentions/swkBerlin/kata-bootstraps?style=flat-square)](https://gitspo.com/mentions/swkBerlin/kata-bootstraps)
 [![java-ci-badge]][ci-actions]
 [![php-ci-badge]][ci-actions]
 [![rust-ci-badge]][ci-actions]
