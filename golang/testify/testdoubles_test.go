@@ -11,7 +11,6 @@ import (
 //https://github.com/stretchr/testify#mock-package
 //https://martinfowler.com/bliki/TestDouble.html
 
-
 type Service interface {
 	DoSomething(number int) (bool, error)
 }
@@ -39,6 +38,18 @@ func (m *MyTestDoubleObject) DoSomething(number int) (bool, error) {
 func TestRealServiceIsFailing(t *testing.T) {
 	_, err := UnderTest(new(RealService), 42)
 	assert.Equal(t, "really expensive 3rd party call", err.Error())
+}
+
+type MyStub struct {
+}
+
+func (m *MyStub) DoSomething(number int) (bool, error) {
+	return true, nil
+}
+func TestMyStubIsReturningTrue(t *testing.T) {
+	result, err := UnderTest(new(MyStub), 42)
+	assert.True(t, result)
+	assert.Nil(t, err)
 }
 
 func TestStubIsReturningTrue(t *testing.T) {
