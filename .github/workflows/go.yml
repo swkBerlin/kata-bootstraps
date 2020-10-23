@@ -37,3 +37,13 @@ jobs:
         working-directory: golang/testify
         run: "sh ../../scripts/assure_failing_test.sh 'go test -v' 'Error Trace:	kata_test.go:9'"
     #### END testify
+
+    #### BEGIN testify test doubles
+      - name: run with testify
+        working-directory: golang/testify
+        run: go mod tidy && go test -v -run TestStubIsReturningTrue && go test -v -run TestMockIsCalledWith42
+
+      - name: assure one failing test
+        working-directory: golang/testify
+        run: "sh ../../scripts/assure_failing_test.sh 'go test -v TestMockIsFailingWhenNotCalledWith42' 'mock: Unexpected Method Call'"
+    #### END testify  test doubles
