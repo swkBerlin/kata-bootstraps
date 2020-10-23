@@ -31,19 +31,19 @@ jobs:
     #### BEGIN testify
       - name: run with testify
         working-directory: golang/testify
-        run: go mod tidy && go test -v -run TestGen && go test -v -run TestSomething
+        run: go mod tidy && go test kata_test.go -v -run TestGen && go test kata_test.go -v -run TestSomething
 
       - name: assure one failing test
         working-directory: golang/testify
-        run: "sh ../../scripts/assure_failing_test.sh 'go test -v' 'Error Trace:	kata_test.go:9'"
+        run: "sh ../../scripts/assure_failing_test.sh 'go test kata_test.go -v' 'Error Trace:	kata_test.go:9'"
     #### END testify
 
     #### BEGIN testify test doubles
       - name: run with testify
         working-directory: golang/testify
-        run: go mod tidy && go test -v -run TestStubIsReturningTrue && go test -v -run TestMockIsCalledWith42
+        run: go mod tidy && go test testdoubles_test.go -v -run TestStubIsReturningTrue && go test testdoubles_test.go -v -run TestMockIsCalledWith42
 
       - name: assure one failing test
         working-directory: golang/testify
-        run: "sh ../../scripts/assure_failing_test.sh 'go test -v TestMockIsFailingWhenNotCalledWith42' 'mock: Unexpected Method Call'"
-    #### END testify  test doubles
+        run: "sh ../../scripts/assure_failing_test.sh 'go test testdoubles_test.go -v -run TestMockIsFailingWhenNotCalledWith42' 'mock: Unexpected Method Call'"
+    #### END testify test doubles
