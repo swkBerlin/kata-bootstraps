@@ -17,3 +17,8 @@ class ServiceStub:
 def test_stub():
     result = under_test(ServiceStub(), 0)
     assert result == "42"
+
+
+def test_mock():
+    result = under_test(ServiceStub(), 0)
+    assert result == "42"
