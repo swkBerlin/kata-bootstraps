@@ -11,6 +11,20 @@ or if using python >= 3 on a Mac :
 pip3 install -U pytest
 ```
 
+or alternativly:
+Create virtual environment
+```bash
+python3 -m venv VENV
+```
+activate it:
+```bash
+sourve VENV/bin/activate
+```
+and install requirments listed in requirements.txt file:
+```
+pip install -r requirements.txt
+```
+
 ## Run
  - Write your test in a python file (```test_thing.py``` in the example)
  - Go to the source directory of the test file
