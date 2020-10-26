@@ -42,4 +42,4 @@ jobs:
       working-directory: python/pytest
       run: |
         pip install pytest
-        pytest -k test_correct_greeting
+        python -m pytest -k test_correct_greeting
