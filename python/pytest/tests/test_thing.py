@@ -1,4 +1,4 @@
-from thing import Thing
+from app.thing import Thing
 
 
 def test_correct_greeting():

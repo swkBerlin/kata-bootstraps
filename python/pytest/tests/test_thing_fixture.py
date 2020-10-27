@@ -1,5 +1,5 @@
 import pytest
-from thing import Thing
+from app.thing import Thing
 
 
 @pytest.fixture
@@ -13,5 +13,3 @@ def test_correct_greeting(thing):
 
 def test_fail(thing):
     assert "Wrong!" == thing.return_hello_name()
-
-
