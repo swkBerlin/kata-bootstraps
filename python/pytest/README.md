@@ -5,6 +5,9 @@
 
 # Python with pytest
 
+## Recommended Editor
+VSCode + Python extension.
+
 
 ## Installation
 Simply install pytest & pytest-mock :
@@ -36,7 +39,7 @@ pip install -r requirements.txt
  - Write your test in a python file (```test_thing.py``` in the example)
  - run : ```python -m pytest tests/test_thing.py```
  - or if using python >= 3 on a Mac : ```python3 -m pytest tests/test_thing.py```
- - or if using VSCode, right-click any test and select 'Run All Tests'
+ - or if using VSCode, right-click any test and select 'Run All Tests' (select 'pytest' when prompted to configure a test framework)
 
 ## Other
 An alternate version with before fixture is provided in the ```test_thing_fixture.py``` file.
