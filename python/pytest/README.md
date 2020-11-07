@@ -7,34 +7,36 @@
 
 
 ## Installation
-Simply install pytest :
+Simply install pytest & pytest-mock :
 ```
 pip install -U pytest
+pip install -U pytest-mock
 ```
 or if using python >= 3 on a Mac :
 ```
 pip3 install -U pytest
+pip3 install -U pytest-mock
 ```
 
-or alternativly:
-Create virtual environment
+or alternatively:
+Create virtual environment...
 ```bash
 python3 -m venv VENV
 ```
-activate it:
+...activate it:
 ```bash
-sourve VENV/bin/activate
+source VENV/bin/activate
 ```
-and install requirements listed in requirements.txt file:
+...and install requirements listed in requirements.txt file:
 ```
 pip install -r requirements.txt
 ```
 
 ## Run
  - Write your test in a python file (```test_thing.py``` in the example)
- - Go to the source directory of the test file
  - run : ```python -m pytest tests/test_thing.py```
  - or if using python >= 3 on a Mac : ```python3 -m pytest tests/test_thing.py```
+ - or if using VSCode, right-click any test and select 'Run All Tests'
 
 ## Other
 An alternate version with before fixture is provided in the ```test_thing_fixture.py``` file.
