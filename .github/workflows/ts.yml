@@ -1,0 +1,45 @@
+name: ts CI
+
+on:
+  push:
+    paths:
+      - 'ts/**'
+      - '.github/workflows/ts**'
+
+  pull_request:
+    paths:
+      - 'ts/**'
+      - '.github/workflows/ts**'
+
+jobs:
+
+  matrix_build:
+    runs-on: ${{ matrix.operating-system }}
+
+    strategy:
+      matrix:
+        operating-system: [ubuntu-latest]
+        #TODO
+        # , macOS-latest,  windows-latest
+        node-version: [10.x, 12.x, 14.x, 15.x]
+    name: Node.js ${{ matrix.node-version }} Build on ${{ matrix.operating-system }}
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+
+### ts/
+    - name: typescript-jest
+      working-directory: ts/typescript-jest
+      run: |
+        yarn install
+        yarn test
+#TODO
+#    - name: typescript-jest-fast-check
+#      working-directory: ts/typescript-jest-fast-check
+#      run: |
+#        yarn install
+#        yarn test

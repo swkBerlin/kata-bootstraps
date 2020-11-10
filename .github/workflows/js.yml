@@ -1,4 +1,4 @@
-name: Node CI
+name: js CI
 
 on:
   push:
@@ -62,16 +62,3 @@ jobs:
         npm test
       env:
         CI: true
-
-### ts/
-    - name: typescript-jest
-      working-directory: ts/typescript-jest
-      run: |
-        yarn install
-        yarn test
-
-    - name: typescript-jest-fast-check
-      working-directory: ts/typescript-jest-fast-check
-      run: |
-        yarn install
-        yarn test
