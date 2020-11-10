@@ -4,10 +4,13 @@ on:
   push:
     paths:
       - 'js/**'
+      - 'ts/**'
       - '.github/workflows/nodejs**'
+
   pull_request:
     paths:
       - 'js/**'
+      - 'ts/**'
       - '.github/workflows/nodejs**'
 
 jobs:
@@ -59,3 +62,10 @@ jobs:
         npm test
       env:
         CI: true
+
+### ts/
+    - name: typescript-jest
+      working-directory: ts/typescript-jest
+      run: |
+        yarn install
+        yarn test
