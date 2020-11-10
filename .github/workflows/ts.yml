@@ -38,8 +38,8 @@ jobs:
         yarn install
         yarn test
 #TODO
-    - name: typescript-jest-fast-check
-      working-directory: ts/typescript-jest-fast-check
-      run: |
-        yarn install
-        yarn test
+#    - name: typescript-jest-fast-check
+#      working-directory: ts/typescript-jest-fast-check
+#      run: |
+#        yarn install
+#        yarn test
