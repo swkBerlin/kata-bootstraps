@@ -1,0 +1,38 @@
+name: Node CI
+
+on:
+  push:
+    paths:
+      - 'rescript/**'
+      - '.github/workflows/rescript**'
+  pull_request:
+    paths:
+      - 'rescript/**'
+      - '.github/workflows/rescript**'
+
+jobs:
+
+  matrix_build:
+    runs-on: ${{ matrix.operating-system }}
+
+    strategy:
+      matrix:
+        operating-system: [ubuntu-latest]
+        node-version: [10.x, 12.x, 14.x, 15.x]
+    name: Node.js ${{ matrix.node-version }} Build on ${{ matrix.operating-system }}
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: jest-tests
+      working-directory: js/jest-tests
+      run: |
+        npm ci
+        npm run build
+        npm run test:ci
+      env:
+        CI: true
