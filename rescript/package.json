@@ -1,0 +1,26 @@
+{
+  "name": "rescript",
+  "version": "0.1.0",
+  "scripts": {
+    "clean": "bsb -clean-world",
+    "build": "bsb -make-world",
+    "watch": "bsb -make-world -w",
+    "test": "npm run build && jest --watchAll --environment=node"
+  },
+  "keywords": [
+    "BuckleScript"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "bs-platform": "^8.3.1",
+    "@glennsl/bs-jest": "^0.6.0",
+    "jest": "^26.6.3"
+  },
+  "jest": {
+    "testMatch": [
+      "**/*_spec.bs.js"
+    ],
+    "verbose": true
+  }
+}
