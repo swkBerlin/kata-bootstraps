@@ -5,7 +5,8 @@
     "clean": "bsb -clean-world",
     "build": "bsb -make-world",
     "watch": "bsb -make-world -w",
-    "test": "npm run build && jest --watchAll --environment=node"
+    "test:ci": "jest --environment=node",
+    "test:watch": "npm run build && jest --watchAll --environment=node"
   },
   "keywords": [
     "BuckleScript"

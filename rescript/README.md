@@ -13,6 +13,6 @@ npm run watch
 
 # Test
 ```
-npm run test
+npm run test:watch
 ```
 

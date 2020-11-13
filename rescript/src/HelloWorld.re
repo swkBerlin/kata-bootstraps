@@ -1,1 +1,1 @@
-let answer = () => 6 * 9;
+let answer = () => 6 * 7;
