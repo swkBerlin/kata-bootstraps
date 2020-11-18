@@ -34,7 +34,10 @@ jobs:
       working-directory: ts/typescript-jest
       run: |
         yarn install
-        yarn test
+        yarn check-types
+        yarn lint
+        yarn test:ensure-failure
+
 #TODO
 #    - name: typescript-jest-fast-check
 #      working-directory: ts/typescript-jest-fast-check
