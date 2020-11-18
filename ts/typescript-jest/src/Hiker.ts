@@ -1,5 +1,5 @@
 export class Hiker {
   getAnswer () {
-    return 42;
+    return 6 * 9;
   }
 }
