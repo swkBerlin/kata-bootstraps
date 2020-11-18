@@ -1,4 +1,4 @@
-import { Hiker } from './Hiker';
+import { Hiker } from './Hiker'
 
 describe('Hiker', () => {
   it('answers 42', () => {

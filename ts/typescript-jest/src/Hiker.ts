@@ -1,5 +1,5 @@
 export class Hiker {
-  getAnswer () {
-    return 6 * 9;
+  public getAnswer() {
+    return 6 * 9
   }
 }
