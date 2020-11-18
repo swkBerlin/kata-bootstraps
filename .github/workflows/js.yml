@@ -1,13 +1,16 @@
-name: Node CI
+name: js CI
 
 on:
   push:
     paths:
       - 'js/**'
+      - 'ts/**'
       - '.github/workflows/nodejs**'
+
   pull_request:
     paths:
       - 'js/**'
+      - 'ts/**'
       - '.github/workflows/nodejs**'
 
 jobs:
@@ -20,7 +23,7 @@ jobs:
         operating-system: [ubuntu-latest]
         #TODO
         # , macOS-latest,  windows-latest
-        node-version: [8.x, 10.x, 12.x]
+        node-version: [10.x, 12.x, 14.x, 15.x]
     name: Node.js ${{ matrix.node-version }} Build on ${{ matrix.operating-system }}
 
     steps:

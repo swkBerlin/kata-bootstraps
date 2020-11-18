@@ -5,7 +5,8 @@
 [![rust-ci-badge]][ci-actions]
 [![python-ci-badge]][ci-actions]
 [![scala-ci-badge]][ci-actions]
-[![node-ci-badge]][ci-actions]
+[![js-ci-badge]][ci-actions]
+[![ts-ci-badge]][ci-actions]
 [![go-ci-badge]][ci-actions]
 
 
