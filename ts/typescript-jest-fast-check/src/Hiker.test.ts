@@ -1,5 +1,5 @@
-import { assert, property, string } from 'fast-check';
-import { Hiker } from './Hiker';
+import { assert, property, string } from 'fast-check'
+import { Hiker } from './Hiker'
 
 describe('Hiker', () => {
   it('answers 42 for any question', () => {
