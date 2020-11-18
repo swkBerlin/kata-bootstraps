@@ -4,13 +4,11 @@ on:
   push:
     paths:
       - 'js/**'
-      - 'ts/**'
       - '.github/workflows/nodejs**'
 
   pull_request:
     paths:
       - 'js/**'
-      - 'ts/**'
       - '.github/workflows/nodejs**'
 
 jobs:
