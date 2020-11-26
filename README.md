@@ -1,29 +1,46 @@
 # kata-bootstraps
 
-[![java-ci-badge]][ci-actions]
-[![php-ci-badge]][ci-actions]
-[![rust-ci-badge]][ci-actions]
-[![python-ci-badge]][ci-actions]
-[![scala-ci-badge]][ci-actions]
-[![js-ci-badge]][ci-actions]
-[![ts-ci-badge]][ci-actions]
-[![go-ci-badge]][ci-actions]
+This is a collection of testing setups for katas in different programming languages. The goal is, to make it easy for everyone to try katas in different languages.
 
+| Language | Testing framework | README | Succeeding Test | Failing Test | CI check                         | Property-based testing | Test doubles | ... |
+|----------|-------------------|--------|-----------------|--------------|----------------------------------|------------------------|--------------|-----|
+| Java     | Assert_j          | ✔️      |                 |              | [![java-ci-badge]][ci-actions]   |                        |              |     |
+|          | Cucumber          | ✔️      |                 |              |                                  |                        |              |     |
+| PHP      |                   | ✔️      |                 |              | [![php-ci-badge]][ci-actions]    |                        |              |     |
+| Rust     |                   | ✔️      |                 |              | [![rust-ci-badge]][ci-actions]   |                        |              |     |
+| Python   |                   | ✔️      |                 |              | [![python-ci-badge]][ci-actions] |                        |              |     |
+| Scala    |                   | ✔️      |                 |              | [![scala-ci-badge]][ci-actions]  |                        |              |     |
+| JS       |                   | ✔️      | ✔️               | ❌            | [![js-ci-badge]][ci-actions]     | ❌                      |              |     |
+| TS       |                   | ✔️      |                 |              | [![ts-ci-badge]][ci-actions]     |                        |              |     |
+| Go       |                   | ✔️      |                 |              | [![go-ci-badge]][ci-actions]     |                        |              |     |
 
+## Features
 
-Empty projects for e.g. Katas with testing support in different languages
-(usually with a failing test, in order to know where to start)
+The following features are available per language (see table above):
 
-On the top level you can find different languages that are supported.
-
-On the second level (in a particular language's directory) you'll find
-different testing frameworks that are supported.
+### README
 
 In each directory for a particular framework, there is always `README.md` file
 that contains various useful information. At minimum it contains the
 information on how to install the dependencies and run the tests.
 
-You are welcome to contribute by submitting likewise a min setup for your language or framework of choice with a pull request. If possible please also create a [github workflow](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/configuring-a-workflow#in-this-article).
+### Succeeding test
+
+### Failing test
+
+### Automatic CI check
+
+### Property based testing framework
+
+### Test doubles
+
+???
+
+### ...
+
+## Contributing
+
+You are welcome to contribute by submitting likewise a min setup for your language or framework of choice with a pull request. Please add it to the table above. We require README, a succeeding test and CI setup that confirms the succeding test as a minimum, but are happy for any additional features. You can also add missing features to existing languages. Please look into one of the languages with many checkmarks in the table above as an example first.
 
 ----
 [Cookiecutter](https://github.com/audreyr/cookiecutter) has a similar goal and also supports multiple languages for setting up a bare project.
@@ -36,4 +53,3 @@ You are welcome to contribute by submitting likewise a min setup for your langua
 [js-ci-badge]:https://github.com/swkBerlin/kata-bootstraps/workflows/js%20CI/badge.svg "CI build status"
 [ts-ci-badge]:https://github.com/swkBerlin/kata-bootstraps/workflows/ts%20CI/badge.svg "CI build status"
 [go-ci-badge]:https://github.com/swkBerlin/kata-bootstraps/workflows/GO%20CI/badge.svg "CI build status"
-[ci-actions]:https://github.com/swkBerlin/kata-bootstraps/actions
