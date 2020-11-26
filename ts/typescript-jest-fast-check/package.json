@@ -4,10 +4,11 @@
   "license": "MIT",
   "author": "Charles Ahmadzadeh <superzadeh@outlook.com>",
   "scripts": {
-    "test": "yarn lint && yarn compile && cross-env NODE_ENV=test jest",
-    "test:ci": "yarn test --ci --maxWorkers=2 --verbose --coverage",
+    "check-types": "yarn compile:ts --noEmit",
+    "test": "cross-env NODE_ENV=test jest",
     "test:cover": "yarn test --coverage",
     "test:changed": "yarn test --watch",
+    "test:ensure-failure": "bash ./ensure-a-failing-test.sh",
     "test:update": "yarn test -u",
     "test:watch": "yarn test --watchAll",
     "lint": "yarn lint:ts",
