@@ -16,7 +16,7 @@ If you do not have Golang but do have Docker,
 ./docker_up.sh   # volume-mounts this directory
 
 ## inside the Docker container
-cd /go/src/game-of-life
+cd /kata
 ./run_tests.sh
 ```
 
