@@ -11,13 +11,14 @@ on:
       - '.github/workflows/python**'
 
 jobs:
-  build:
+  matrix_build:
+    runs-on: ${{ matrix.operating-system }}
 
-    runs-on: ubuntu-latest
     strategy:
       max-parallel: 4
       matrix:
-        python-version: [ 3.6, 3.7]
+        operating-system: [ubuntu-latest, macOS-latest,  windows-latest]
+        python-version: [ 3.6, 3.7, 3.8, 3.9 ]
 
     steps:
     - uses: actions/checkout@v1
@@ -25,6 +26,8 @@ jobs:
       uses: actions/setup-python@v1
       with:
         python-version: ${{ matrix.python-version }}
+
+    #### BEGIN pytest
     - name: Install dependencies
       working-directory: python/pytest
       run: |
@@ -43,3 +46,12 @@ jobs:
       run: |
         pip install -r requirements.txt
         python -m pytest -k test_correct_greeting
+    ### ENDE pytest
+
+    #### BEGIN codewars
+    - name: Test with codewars
+      working-directory: python/codewars
+      run: |
+        pip install -r requirements.txt
+        python tests/example.py
+    ### ENDE pytest
