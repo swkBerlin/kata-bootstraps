@@ -9,4 +9,8 @@ var _ = Describe("Something", func() {
 	It("does something", func() {
 		Expect(SayHello()).To(Equal("Hello"))
 	})
+
+	It("passing", func() {
+		Expect(42).To(Equal(42))
+	})
 })

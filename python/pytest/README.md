@@ -52,5 +52,5 @@ To run same as before :
 ## run from docker
 
  ```
- './test.sh'
+ './docker_test.sh'
  ```
