@@ -47,3 +47,18 @@ jobs:
         working-directory: golang/testify
         run: "sh ../../scripts/assure_failing_test.sh 'go test testdoubles_test.go -v -run TestMockIsFailingWhenNotCalledWith42' 'mock: Unexpected Method Call'"
     #### END testify test doubles
+
+    #### BEGIN ginkgo
+      - name: run with ginkgo
+        working-directory: golang/ginkgo
+        run: go mod tidy
+
+      - name: run with ginkgo passing test
+        working-directory: golang/ginkgo
+        # no idea how to just run the passing test with ginkgo, therefore this hack:
+        run: "sh ../../scripts/assure_failing_test.sh 'go test' '1 Passed'"
+
+      - name: assure one failing test
+        working-directory: golang/ginkgo
+        run: "sh ../../scripts/assure_failing_test.sh 'go test' 'Summarizing 1 Failure:'"
+    #### END ginkgo
