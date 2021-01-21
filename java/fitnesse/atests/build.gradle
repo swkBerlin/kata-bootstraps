@@ -15,7 +15,7 @@ dependencies {
 
 	implementation "org.fitnesse:fitnesse:${fitnesseVersion}"
 
-    testRuntimeOnly "org.junit.platform:junit-platform-launcher:1.7.0"
+	testRuntimeOnly "org.junit.platform:junit-platform-launcher:1.7.0"
 	testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.7.0"
 	testRuntimeOnly "org.junit.vintage:junit-vintage-engine:5.7.0"
 
