@@ -9,10 +9,9 @@ repositories {
 }
 
 dependencies {
-    testImplementation(
-            'org.junit.jupiter:junit-jupiter:5.5.2',
-            'org.assertj:assertj-core:3.14.0'
-    )
+    testImplementation(platform('org.junit:junit-bom:5.7.0'))
+    testImplementation('org.junit.jupiter:junit-jupiter')
+    testImplementation('org.assertj:assertj-core:3.18.1')
 }
 
 test {
