@@ -79,4 +79,4 @@ jobs:
       - name: assure one failing test
         working-directory: golang/ginkgo
         run: "sh ../../.scripts/assure_failing_test.sh 'go test' 'Summarizing 1 Failure:'"
-    #### END ginkgo
+      #### END ginkgo
