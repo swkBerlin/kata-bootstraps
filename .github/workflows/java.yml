@@ -46,7 +46,7 @@ jobs:
 
       - name: assure one failing test
         working-directory: java/assert_j
-        run: "sh ../../scripts/assure_failing_test.sh './gradlew test' 'ThingTest > it_should_call_for_action() FAILED'"
+        run: "sh ../../.scripts/assure_failing_test.sh './gradlew test' 'ThingTest > it_should_call_for_action() FAILED'"
     #### END assertJ
 
     #### BEGIN cucumber
@@ -82,7 +82,7 @@ jobs:
 
       - name: assure one failing test
         working-directory: java/hamcrest
-        run: "sh ../../scripts/assure_failing_test.sh './gradlew test' 'ThingTest > it_should_call_for_action() FAILED'"
+        run: "sh ../../.scripts/assure_failing_test.sh './gradlew test' 'ThingTest > it_should_call_for_action() FAILED'"
     #### END hamcrest
 
     #### BEGIN hue4j5
@@ -103,7 +103,7 @@ jobs:
 
       - name: assure one failing test
         working-directory: java/hue4j5
-        run: "sh ../../scripts/assure_failing_test.sh './gradlew test' 'ThingTest > it_should_call_for_action() FAILED'"
+        run: "sh ../../.scripts/assure_failing_test.sh './gradlew test' 'ThingTest > it_should_call_for_action() FAILED'"
     #### END hue4j5
 
     #### BEGIN jqwik
@@ -142,7 +142,7 @@ jobs:
 
       - name: assure one failing test
         working-directory: java/junit4
-        run: "sh ../../scripts/assure_failing_test.sh './gradlew test' 'ThingTest > it_should_call_for_action FAILED'"
+        run: "sh ../../.scripts/assure_failing_test.sh './gradlew test' 'ThingTest > it_should_call_for_action FAILED'"
     #### END junit4
 
     #### BEGIN junit5
@@ -164,7 +164,7 @@ jobs:
 
       - name: assure one failing test
         working-directory: java/junit5
-        run: "sh ../../scripts/assure_failing_test.sh './gradlew test' 'ThingTest > fail() FAILED'"
+        run: "sh ../../.scripts/assure_failing_test.sh './gradlew test' 'ThingTest > fail() FAILED'"
      #### END junit5
 
     #### BEGIN mockito
@@ -186,7 +186,7 @@ jobs:
 
       - name: assure one failing test
         working-directory: java/mockito
-        run: "sh ../../scripts/assure_failing_test.sh './gradlew test' 'ThingTest > it_should_call_for_action() FAILED'"
+        run: "sh ../../.scripts/assure_failing_test.sh './gradlew test' 'ThingTest > it_should_call_for_action() FAILED'"
     #### END mockito
 
     #### BEGIN spock
@@ -196,7 +196,7 @@ jobs:
 
       - name: assure one failing test
         working-directory: java/spock
-        run: "sh ../../scripts/assure_failing_test.sh 'mvn -B verify' 'ThingSpec.it should call for action:13 Condition not satisfied:'"
+        run: "sh ../../.scripts/assure_failing_test.sh 'mvn -B verify' 'ThingSpec.it should call for action:13 Condition not satisfied:'"
     #### END spock
 
     #### BEGIN truth
@@ -217,5 +217,5 @@ jobs:
 
       - name: assure one failing test
         working-directory: java/truth
-        run: "sh ../../scripts/assure_failing_test.sh './gradlew test' 'truth.ComparisonFailureWithFacts at ThingTest.java:11'"
+        run: "sh ../../.scripts/assure_failing_test.sh './gradlew test' 'truth.ComparisonFailureWithFacts at ThingTest.java:11'"
     #### END truth
