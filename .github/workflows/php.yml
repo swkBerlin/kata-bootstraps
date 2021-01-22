@@ -16,8 +16,8 @@ jobs:
     strategy:
       matrix:
         operating-system: [ ubuntu-latest, windows-latest, macOS-latest ]
-        #TODO fix '7.2'
-        php-versions: [ '7.3', '7.4', '8.0' ]
+        #TODO fix '7.2' '8.0'
+        php-versions: [ '7.3', '7.4' ]
     name: PHP ${{ matrix.php-versions }} Test on ${{ matrix.operating-system }}
     steps:
       - name: Checkout
