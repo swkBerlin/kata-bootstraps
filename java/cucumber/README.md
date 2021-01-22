@@ -1,6 +1,6 @@
 # Java cucumber
 
-Minimal setup with Java [Cucumber](https://cucumber.io/docs/guides/10-minute-tutorial/) to get you started.
+A minimal setup with Java [Cucumber](https://cucumber.io/docs/guides/10-minute-tutorial/) to get you started.
 
 You can use [maven](https://maven.apache.org/)
 

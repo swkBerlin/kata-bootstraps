@@ -1,4 +1,4 @@
-## Minimal setup with Scala's scalatest to get you started
+## A minimal setup with Scala's scalatest to get you started
 
 
 #### Setup

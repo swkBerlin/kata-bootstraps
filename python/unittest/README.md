@@ -1,5 +1,4 @@
-## Minimal setup with Python's unittest to get you started
-
+## A minimal setup with Python's unittest to get you started
 
 #### Setup
 

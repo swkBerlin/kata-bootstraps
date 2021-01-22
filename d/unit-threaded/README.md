@@ -1,7 +1,7 @@
 d/unit-threaded setup
 ==========
 
-This is a simple bootstrap project for D with unit-threaded. unit-threaded is an advanced multi-threaded unit testing framework with minimal to no boilerplate using built-in unittest blocks.
+This is a simple bootstrap project for D with unit-threaded. unit-threaded is an advanced multi-threaded unit testing framework with a minimal to no boilerplate using built-in unittest blocks.
 
 Using DUB just run
 

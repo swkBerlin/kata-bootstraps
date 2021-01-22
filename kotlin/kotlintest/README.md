@@ -1,6 +1,6 @@
 # Kotlin Kotlintest
 
-Minimal setup with Kotlin and kotlintest to get you started
+A minimal setup with Kotlin and kotlintest to get you started
 
 ## Setup
 

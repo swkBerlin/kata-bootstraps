@@ -1,6 +1,6 @@
 # FitNesse
 
-Minimal setup with [FitNesse](http://fitnesse.org) to get you started.
+A minimal setup with [FitNesse](http://fitnesse.org) to get you started.
 
 You can use [gradle](https://gradle.org/).
 

@@ -1,6 +1,6 @@
 # JS Jasmine
 
-Minimal setup for JS with [jasmine](http://jasmine.github.io/)
+A minimal setup for JS with [jasmine](http://jasmine.github.io/)
 
 ## Setup
 
