@@ -35,9 +35,6 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      #TODO
-      # js/jasmine
-
       - name: jasmine-node
         working-directory: js/jasmine-node
         run: |
