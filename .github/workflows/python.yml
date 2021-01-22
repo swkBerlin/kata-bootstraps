@@ -46,7 +46,12 @@ jobs:
         run: |
           pip install -r requirements.txt
           python -m pytest -k test_correct_greeting
-      ### ENDE pytest
+
+      - name: assure one failing test
+        working-directory: python/pytest
+        run: "sh ../../.scripts/assure_failing_test.sh 'python -m pytest tests/test_thing_fixture.py' ''assert \"Wrong!\" == thing.return_hello_name()'"
+
+      #### END pytest
 
       #### BEGIN codewars
       - name: Test with codewars
