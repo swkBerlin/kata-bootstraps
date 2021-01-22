@@ -15,26 +15,26 @@ jobs:
     runs-on: ${{ matrix.operating-system }}
     strategy:
       matrix:
-        operating-system: [ubuntu-latest, windows-latest, macOS-latest]
-        php-versions: ['7.2', '7.3', '7.4']
+        operating-system: [ ubuntu-latest, windows-latest, macOS-latest ]
+        php-versions: [ '7.2', '7.3', '7.4' ]
     name: PHP ${{ matrix.php-versions }} Test on ${{ matrix.operating-system }}
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
 
-    - name: Setup PHP
-      uses: shivammathur/setup-php@v1
-      with:
-        php-version: ${{ matrix.php-versions }}
-        extensions: mbstring, intl #optional, setup extensions
-        ini-values: post_max_size=256M, short_open_tag=On #optional, setup php.ini configuration
-        coverage: xdebug #optional, setup coverage driver
-        tools: php-cs-fixer, phpunit #optional, setup tools globally
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v1
+        with:
+          php-version: ${{ matrix.php-versions }}
+          extensions: mbstring, intl #optional, setup extensions
+          ini-values: post_max_size=256M, short_open_tag=On #optional, setup php.ini configuration
+          coverage: xdebug #optional, setup coverage driver
+          tools: php-cs-fixer, phpunit #optional, setup tools globally
 
-    - name: Install Dependencies
-      working-directory: php
-      run: composer install --prefer-dist
+      - name: Install Dependencies
+        working-directory: php
+        run: composer install --prefer-dist
 
-    - name: Run phpunit
-      working-directory: php
-      run: phpunit --bootstrap vendor/autoload.php tests --filter testNotFailing
+      - name: Run phpunit
+        working-directory: php
+        run: phpunit --bootstrap vendor/autoload.php tests --filter testNotFailing

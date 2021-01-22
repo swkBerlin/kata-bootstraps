@@ -18,45 +18,45 @@ jobs:
 
     strategy:
       matrix:
-        operating-system: [ubuntu-latest]
+        operating-system: [ ubuntu-latest ]
         #TODO
         # , macOS-latest,  windows-latest
-        node-version: [10.x, 12.x, 14.x, 15.x]
+        node-version: [ 10.x, 12.x, 14.x, 15.x ]
     name: Node.js ${{ matrix.node-version }} Build on ${{ matrix.operating-system }}
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
 
-   #TODO
-   # js/jasmine
+      #TODO
+      # js/jasmine
 
-    - name: jasmine-node
-      working-directory: js/jasmine-node
-      run: |
-        npm ci
-        npm run build --if-present
-        npm test
-      env:
-        CI: true
+      - name: jasmine-node
+        working-directory: js/jasmine-node
+        run: |
+          npm ci
+          npm run build --if-present
+          npm test
+        env:
+          CI: true
 
-    - name: jest-tests
-      working-directory: js/jest-tests
-      run: |
-        npm ci
-        npm run build --if-present
-        npm test -t ES6Class
-      env:
-        CI: true
+      - name: jest-tests
+        working-directory: js/jest-tests
+        run: |
+          npm ci
+          npm run build --if-present
+          npm test -t ES6Class
+        env:
+          CI: true
 
-    - name: mocha-tests
-      working-directory: js/mocha-tests
-      run: |
-        npm ci
-        npm run build --if-present
-        npm test
-      env:
-        CI: true
+      - name: mocha-tests
+        working-directory: js/mocha-tests
+        run: |
+          npm ci
+          npm run build --if-present
+          npm test
+        env:
+          CI: true

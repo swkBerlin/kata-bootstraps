@@ -16,10 +16,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Build
-      working-directory: rust
-      run: cargo build --verbose
-    - name: Run tests
-      working-directory: rust
-      run: cargo test test_should_not_fail --verbose
+      - uses: actions/checkout@v1
+      - name: Build
+        working-directory: rust
+        run: cargo build --verbose
+      - name: Run tests
+        working-directory: rust
+        run: cargo test test_should_not_fail --verbose

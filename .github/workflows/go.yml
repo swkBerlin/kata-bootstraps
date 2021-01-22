@@ -17,8 +17,8 @@ jobs:
 
     strategy:
       matrix:
-        operating-system: [ubuntu-latest, macOS-latest,  windows-latest]
-        go: [  '1.14', '1.13', '1.12' ]
+        operating-system: [ ubuntu-latest, macOS-latest,  windows-latest ]
+        go: [ '1.14', '1.13', '1.12' ]
     name: Go ${{ matrix.go }} Build on ${{ matrix.operating-system }}
 
     steps:
@@ -28,7 +28,7 @@ jobs:
         with:
           go-version: ${{ matrix.go }}
 
-    #### BEGIN testify
+      #### BEGIN testify
       - name: run with testify
         working-directory: golang/testify
         run: go mod tidy && go test kata_test.go -v -run TestGen && go test kata_test.go -v -run TestSomething
@@ -36,9 +36,9 @@ jobs:
       - name: assure one failing test
         working-directory: golang/testify
         run: "sh ../../.scripts/assure_failing_test.sh 'go test kata_test.go -v' 'Error Trace:	kata_test.go:9'"
-    #### END testify
+      #### END testify
 
-    #### BEGIN testify test doubles
+      #### BEGIN testify test doubles
       - name: run with testify
         working-directory: golang/testify
         run: go mod tidy && go test testdoubles_test.go -v -run TestStubIsReturningTrue && go test testdoubles_test.go -v -run TestMockIsCalledWith42
@@ -46,9 +46,9 @@ jobs:
       - name: assure one failing test
         working-directory: golang/testify
         run: "sh ../../.scripts/assure_failing_test.sh 'go test testdoubles_test.go -v -run TestMockIsFailingWhenNotCalledWith42' 'mock: Unexpected Method Call'"
-    #### END testify test doubles
+      #### END testify test doubles
 
-    #### BEGIN ginkgo
+      #### BEGIN ginkgo
       - name: run with ginkgo
         working-directory: golang/ginkgo
         run: go mod tidy
