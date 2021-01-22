@@ -35,7 +35,10 @@ jobs:
       #### BEGIN testify
       - name: run with testify
         working-directory: golang/testify
-        run: go mod tidy && go test kata_test.go -v -run TestGen && go test kata_test.go -v -run TestSomething
+        run: |
+          go mod tidy
+          go test kata_test.go -v -run TestGen
+          go test kata_test.go -v -run TestSomething
 
       - name: assure one failing test
         working-directory: golang/testify
@@ -45,7 +48,10 @@ jobs:
       #### BEGIN testify test doubles
       - name: run with testify
         working-directory: golang/testify
-        run: go mod tidy && go test testdoubles_test.go -v -run TestStubIsReturningTrue && go test testdoubles_test.go -v -run TestMockIsCalledWith42
+        run: |
+          go mod tidy
+          go test testdoubles_test.go -v -run TestStubIsReturningTrue
+          go test testdoubles_test.go -v -run TestMockIsCalledWith42
 
       - name: assure one failing test
         working-directory: golang/testify
