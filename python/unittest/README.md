@@ -4,7 +4,7 @@
 #### Setup
 
 Does not need any additional libraries, as unittest is part of the
-standard Python libarary.
+standard Python library.
 
 
 #### Running the tests
