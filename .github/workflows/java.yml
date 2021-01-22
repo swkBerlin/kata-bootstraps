@@ -50,28 +50,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
 
-      #### BEGIN assertJ
-      - name: build assertJ with maven
-        working-directory: java/assert_j
-        run: mvn -B clean package --file pom.xml -Dtest="ThingTest#it_should_not_fail"
-
-      # gradlew:
-      - name: build with gradlew
-        working-directory: java/assert_j
-        run: ./gradlew test --warning-mode all --tests ThingTest.it_should_not_fail
-
-      # gradle:
-      - uses: eskatos/gradle-command-action@v1
-        with:
-          build-root-directory: java/assert_j
-          gradle-version: current
-          arguments: test --warning-mode all --tests ThingTest.it_should_not_fail
-
-      - name: assure one failing test
-        working-directory: java/assert_j
-        run: "sh ../../.scripts/assure_failing_test.sh './gradlew test' 'ThingTest > it_should_call_for_action() FAILED'"
-      #### END assertJ
-
       #### BEGIN cucumber
       - name: build cucumber with maven
         working-directory: java/cucumber
@@ -189,28 +167,6 @@ jobs:
         working-directory: java/junit5
         run: "sh ../../.scripts/assure_failing_test.sh './gradlew test' 'ThingTest > fail() FAILED'"
       #### END junit5
-
-      #### BEGIN mockito
-      - name: build mockito with maven
-        working-directory: java/mockito
-        run: mvn -B clean package --file pom.xml -Dtest="ThingTest#it_should_not_fail"
-
-      # gradlew:
-      - name: build with gradlew
-        working-directory: java/mockito
-        run: ./gradlew test --warning-mode all --tests ThingTest.it_should_not_fail
-
-      # gradle:
-      - uses: eskatos/gradle-command-action@v1
-        with:
-          build-root-directory: java/mockito
-          gradle-version: current
-          arguments: test --warning-mode all --tests ThingTest.it_should_not_fail
-
-      - name: assure one failing test
-        working-directory: java/mockito
-        run: "sh ../../.scripts/assure_failing_test.sh './gradlew test' 'ThingTest > it_should_call_for_action() FAILED'"
-      #### END mockito
 
       #### BEGIN spock
       - name: build spock with maven
