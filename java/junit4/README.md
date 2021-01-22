@@ -1,6 +1,6 @@
 # Java JUnit4
 
-Minimal setup with Java [JUnit4](https://junit.org/junit4/) to get you started.
+A minimal setup with Java [JUnit4](https://junit.org/junit4/) to get you started.
 
 You can use [gradle](https://gradle.org/) or [maven](https://maven.apache.org/).
 

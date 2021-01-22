@@ -10,6 +10,10 @@ on:
       - 'golang/**'
       - '.github/workflows/go**'
 
+  schedule:
+    # weekly build every FRI
+    - cron: "0 6 * * 5"
+
 jobs:
 
   matrix_build:
@@ -17,38 +21,52 @@ jobs:
 
     strategy:
       matrix:
-        operating-system: [ubuntu-latest, macOS-latest,  windows-latest]
-        go: [  '1.14', '1.13', '1.12' ]
+        operating-system: [ ubuntu-latest, macOS-latest,  windows-latest ]
+        go: [ '1.14', '1.13', '1.12' ]
     name: Go ${{ matrix.go }} Build on ${{ matrix.operating-system }}
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - name: Setup go
         uses: actions/setup-go@v1
         with:
           go-version: ${{ matrix.go }}
 
-    #### BEGIN testify
+      - name: cache go
+        uses: actions/cache@v2
+        with:
+          path: ~/go/pkg/mod
+          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-go-
+
+      #### BEGIN testify
       - name: run with testify
         working-directory: golang/testify
-        run: go mod tidy && go test kata_test.go -v -run TestGen && go test kata_test.go -v -run TestSomething
+        run: |
+          go mod tidy
+          go test kata_test.go -v -run TestGen
+          go test kata_test.go -v -run TestSomething
 
       - name: assure one failing test
         working-directory: golang/testify
-        run: "sh ../../scripts/assure_failing_test.sh 'go test kata_test.go -v' 'Error Trace:	kata_test.go:9'"
-    #### END testify
+        run: "sh ../../.scripts/assure_failing_test.sh 'go test kata_test.go -v' 'Error Trace:	kata_test.go:9'"
+      #### END testify
 
-    #### BEGIN testify test doubles
+      #### BEGIN testify test doubles
       - name: run with testify
         working-directory: golang/testify
-        run: go mod tidy && go test testdoubles_test.go -v -run TestStubIsReturningTrue && go test testdoubles_test.go -v -run TestMockIsCalledWith42
+        run: |
+          go mod tidy
+          go test testdoubles_test.go -v -run TestStubIsReturningTrue
+          go test testdoubles_test.go -v -run TestMockIsCalledWith42
 
       - name: assure one failing test
         working-directory: golang/testify
-        run: "sh ../../scripts/assure_failing_test.sh 'go test testdoubles_test.go -v -run TestMockIsFailingWhenNotCalledWith42' 'mock: Unexpected Method Call'"
-    #### END testify test doubles
+        run: "sh ../../.scripts/assure_failing_test.sh 'go test testdoubles_test.go -v -run TestMockIsFailingWhenNotCalledWith42' 'mock: Unexpected Method Call'"
+      #### END testify test doubles
 
-    #### BEGIN ginkgo
+      #### BEGIN ginkgo
       - name: run with ginkgo
         working-directory: golang/ginkgo
         run: go mod tidy
@@ -56,9 +74,9 @@ jobs:
       - name: run with ginkgo passing test
         working-directory: golang/ginkgo
         # no idea how to just run the passing test with ginkgo, therefore this hack:
-        run: "sh ../../scripts/assure_failing_test.sh 'go test' '1 Passed'"
+        run: "sh ../../.scripts/assure_failing_test.sh 'go test' '1 Passed'"
 
       - name: assure one failing test
         working-directory: golang/ginkgo
-        run: "sh ../../scripts/assure_failing_test.sh 'go test' 'Summarizing 1 Failure:'"
+        run: "sh ../../.scripts/assure_failing_test.sh 'go test' 'Summarizing 1 Failure:'"
     #### END ginkgo

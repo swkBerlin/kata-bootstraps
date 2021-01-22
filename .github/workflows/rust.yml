@@ -10,16 +10,21 @@ on:
       - 'rust/**'
       - '.github/workflows/rust**'
 
+
+  schedule:
+    # weekly build every FRI
+    - cron: "0 6 * * 5"
+
 jobs:
   build:
 
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Build
-      working-directory: rust
-      run: cargo build --verbose
-    - name: Run tests
-      working-directory: rust
-      run: cargo test test_should_not_fail --verbose
+      - uses: actions/checkout@v2
+      - name: Build
+        working-directory: rust
+        run: cargo build --verbose
+      - name: Run tests
+        working-directory: rust
+        run: cargo test test_should_not_fail --verbose

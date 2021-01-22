@@ -1,6 +1,6 @@
 # Kotlin Spek
 
-Minimal setup with Kotlin and spek (http://spekframework.org/) to get you started
+A minimal setup with Kotlin and spek (http://spekframework.org/) to get you started
 
 ## Setup
 

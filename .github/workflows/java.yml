@@ -10,6 +10,10 @@ on:
       - 'java/**'
       - '.github/workflows/java**'
 
+  schedule:
+    # weekly build every FRI
+    - cron: "0 6 * * 5"
+
 jobs:
 
   matrix_build:
@@ -17,17 +21,36 @@ jobs:
 
     strategy:
       matrix:
-        operating-system: [ubuntu-latest, macOS-latest,  windows-latest]
+        operating-system: [ ubuntu-latest, macOS-latest,  windows-latest ]
         java: [ 1.8, 10, 11, 12, 13 ]
     name: Java ${{ matrix.java }} Build on ${{ matrix.operating-system }}
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - name: Setup java
         uses: actions/setup-java@v1
         with:
           java-version: ${{ matrix.java }}
-    #### BEGIN assertJ
+
+      - name: Cache gradle wrapper
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('java/**/*.gradle*', 'java/**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Cache local Maven repository
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('java/**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+      #### BEGIN assertJ
       - name: build assertJ with maven
         working-directory: java/assert_j
         run: mvn -B clean package --file pom.xml -Dtest="ThingTest#it_should_not_fail"
@@ -46,24 +69,24 @@ jobs:
 
       - name: assure one failing test
         working-directory: java/assert_j
-        run: "sh ../../scripts/assure_failing_test.sh './gradlew test' 'ThingTest > it_should_call_for_action() FAILED'"
-    #### END assertJ
+        run: "sh ../../.scripts/assure_failing_test.sh './gradlew test' 'ThingTest > it_should_call_for_action() FAILED'"
+      #### END assertJ
 
-    #### BEGIN cucumber
+      #### BEGIN cucumber
       - name: build cucumber with maven
         working-directory: java/cucumber
         run: mvn -B clean package --file pom.xml
-    #### END cucumber
+      #### END cucumber
 
-    #### BEGIN fitnesse
+      #### BEGIN fitnesse
       - uses: eskatos/gradle-command-action@v1
         with:
           build-root-directory: java/fitnesse
           gradle-version: current
           arguments: test --warning-mode all
-    #### END fitnesse
+      #### END fitnesse
 
-    #### BEGIN hamcrest
+      #### BEGIN hamcrest
       - name: build hamcrest with maven
         working-directory: java/hamcrest
         run: mvn -B clean package --file pom.xml -Dtest="ThingTest#it_should_not_fail"
@@ -82,10 +105,10 @@ jobs:
 
       - name: assure one failing test
         working-directory: java/hamcrest
-        run: "sh ../../scripts/assure_failing_test.sh './gradlew test' 'ThingTest > it_should_call_for_action() FAILED'"
-    #### END hamcrest
+        run: "sh ../../.scripts/assure_failing_test.sh './gradlew test' 'ThingTest > it_should_call_for_action() FAILED'"
+      #### END hamcrest
 
-    #### BEGIN hue4j5
+      #### BEGIN hue4j5
       - name: build hue4j5 with maven
         working-directory: java/hue4j5
         run: mvn -B clean package --file pom.xml -Dtest="ThingTest#it_should_not_fail"
@@ -103,10 +126,10 @@ jobs:
 
       - name: assure one failing test
         working-directory: java/hue4j5
-        run: "sh ../../scripts/assure_failing_test.sh './gradlew test' 'ThingTest > it_should_call_for_action() FAILED'"
-    #### END hue4j5
+        run: "sh ../../.scripts/assure_failing_test.sh './gradlew test' 'ThingTest > it_should_call_for_action() FAILED'"
+      #### END hue4j5
 
-    #### BEGIN jqwik
+      #### BEGIN jqwik
       - name: build jqwik with maven
         working-directory: java/jqwik
         run: mvn -B clean package --file pom.xml
@@ -122,9 +145,9 @@ jobs:
           build-root-directory: java/jqwik
           gradle-version: current
           arguments: test --warning-mode all
-    #### END jqwik
+      #### END jqwik
 
-    #### BEGIN junit4
+      #### BEGIN junit4
       - name: build junit4 with maven
         working-directory: java/junit4
         run: mvn -B clean package --file pom.xml -Dtest="ThingTest#it_should_not_fail"
@@ -142,10 +165,10 @@ jobs:
 
       - name: assure one failing test
         working-directory: java/junit4
-        run: "sh ../../scripts/assure_failing_test.sh './gradlew test' 'ThingTest > it_should_call_for_action FAILED'"
-    #### END junit4
+        run: "sh ../../.scripts/assure_failing_test.sh './gradlew test' 'ThingTest > it_should_call_for_action FAILED'"
+      #### END junit4
 
-    #### BEGIN junit5
+      #### BEGIN junit5
       - name: build junit5 with maven
         working-directory: java/junit5
         run: mvn -B clean package --file pom.xml -Dtest="ThingTest#it_should_not_fail"
@@ -164,10 +187,10 @@ jobs:
 
       - name: assure one failing test
         working-directory: java/junit5
-        run: "sh ../../scripts/assure_failing_test.sh './gradlew test' 'ThingTest > fail() FAILED'"
-     #### END junit5
+        run: "sh ../../.scripts/assure_failing_test.sh './gradlew test' 'ThingTest > fail() FAILED'"
+      #### END junit5
 
-    #### BEGIN mockito
+      #### BEGIN mockito
       - name: build mockito with maven
         working-directory: java/mockito
         run: mvn -B clean package --file pom.xml -Dtest="ThingTest#it_should_not_fail"
@@ -186,20 +209,20 @@ jobs:
 
       - name: assure one failing test
         working-directory: java/mockito
-        run: "sh ../../scripts/assure_failing_test.sh './gradlew test' 'ThingTest > it_should_call_for_action() FAILED'"
-    #### END mockito
+        run: "sh ../../.scripts/assure_failing_test.sh './gradlew test' 'ThingTest > it_should_call_for_action() FAILED'"
+      #### END mockito
 
-    #### BEGIN spock
+      #### BEGIN spock
       - name: build spock with maven
         working-directory: java/spock
         run: mvn -B clean package --file pom.xml -Dtest="ThingSpec#notfail"
 
       - name: assure one failing test
         working-directory: java/spock
-        run: "sh ../../scripts/assure_failing_test.sh 'mvn -B verify' 'ThingSpec.it should call for action:13 Condition not satisfied:'"
-    #### END spock
+        run: "sh ../../.scripts/assure_failing_test.sh 'mvn -B verify' 'ThingSpec.it should call for action:13 Condition not satisfied:'"
+      #### END spock
 
-    #### BEGIN truth
+      #### BEGIN truth
       - name: build truth with maven
         working-directory: java/truth
         run: mvn -B clean package --file pom.xml -Dtest="ThingTest#it_should_not_fail"
@@ -217,5 +240,17 @@ jobs:
 
       - name: assure one failing test
         working-directory: java/truth
-        run: "sh ../../scripts/assure_failing_test.sh './gradlew test' 'truth.ComparisonFailureWithFacts at ThingTest.java:11'"
-    #### END truth
+        run: "sh ../../.scripts/assure_failing_test.sh './gradlew test' 'truth.ComparisonFailureWithFacts at ThingTest.java:11'"
+      #### END truth
+
+  docker_build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      #### BEGIN junit5
+      - name: docker junit5
+        working-directory: java/junit5
+        run: "sh ../../.scripts/assure_failing_test.sh './docker_test.sh' 'ThingTest > fail() FAILED'"
+      #### END junit5

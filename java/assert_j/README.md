@@ -1,6 +1,6 @@
 # Java AssertJ
 
-Minimal setup with Java, [JUnit5](https://junit.org/junit5/) and [AssertJ](http://joel-costigliola.github.io/assertj/index.html) assertions to get you started.
+A minimal setup with Java, [JUnit5](https://junit.org/junit5/) and [AssertJ](http://joel-costigliola.github.io/assertj/index.html) assertions to get you started.
 
 You can use [gradle](https://gradle.org/) or [maven](https://maven.apache.org/)
 

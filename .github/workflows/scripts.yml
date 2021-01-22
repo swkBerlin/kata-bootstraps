@@ -1,0 +1,45 @@
+name: Script CI
+
+on:
+  push:
+    paths:
+      - '.scripts/**'
+      - '.github/workflows/scripts**'
+  pull_request:
+    paths:
+      - '.scripts/**'
+      - '.github/workflows/scripts**'
+
+  schedule:
+    # weekly build every FRI
+    - cron: "0 6 * * 5"
+
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: OK fails and string found
+        working-directory: .scripts
+        run: |
+          rm -rf temp.txt | true
+          sh assure_failing_test.sh 'echo expacted_string && fails' 'expacted_string' > temp.txt
+          grep "Successfully failed a test" temp.txt
+
+      - name: FAIL string found but does not fail
+        working-directory: .scripts
+        run: |
+          rm -rf temp.txt | true
+          ! sh assure_failing_test.sh 'echo expacted_string && true' 'expacted_string' > temp.txt
+          grep "Please make sure there is a failing test example!" temp.txt
+
+      - name: FAIL fails but string not found
+        working-directory: .scripts
+        run: |
+          rm -rf temp.txt | true
+          ! sh assure_failing_test.sh 'echo expacted_string && false' 'string_not_found' > temp.txt
+          grep "Please make sure there is a failing test example!" temp.txt
