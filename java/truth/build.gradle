@@ -10,10 +10,9 @@ repositories {
 
 
 dependencies {
-    testImplementation(
-            'org.junit.jupiter:junit-jupiter:5.5.2',
-            'com.google.truth:truth:1.0'
-    )
+    testImplementation(platform('org.junit:junit-bom:5.7.0'))
+    testImplementation('org.junit.jupiter:junit-jupiter')
+    testImplementation('com.google.truth:truth:1.1.1')
 }
 
 test {
