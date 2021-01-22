@@ -237,4 +237,4 @@ jobs:
       - name: assure one failing test
         working-directory: java/truth
         run: "sh ../../.scripts/assure_failing_test.sh './gradlew test' 'truth.ComparisonFailureWithFacts at ThingTest.java:11'"
-    #### END truth
+      #### END truth
