@@ -11,6 +11,10 @@ on:
       - 'ts/**'
       - '.github/workflows/ts**'
 
+  schedule:
+    # weekly build every FRI
+    - cron: "0 6 * * 5"
+
 jobs:
 
   matrix_build:

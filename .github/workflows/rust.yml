@@ -10,6 +10,11 @@ on:
       - 'rust/**'
       - '.github/workflows/rust**'
 
+
+  schedule:
+    # weekly build every FRI
+    - cron: "0 6 * * 5"
+
 jobs:
   build:
 
