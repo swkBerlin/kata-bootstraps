@@ -32,6 +32,14 @@ jobs:
         with:
           go-version: ${{ matrix.go }}
 
+      - name: cache go
+        uses: actions/cache@v2
+        with:
+          path: ~/go/pkg/mod
+          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-go-
+
       #### BEGIN testify
       - name: run with testify
         working-directory: golang/testify
