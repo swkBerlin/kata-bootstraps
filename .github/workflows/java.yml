@@ -242,3 +242,15 @@ jobs:
         working-directory: java/truth
         run: "sh ../../.scripts/assure_failing_test.sh './gradlew test' 'truth.ComparisonFailureWithFacts at ThingTest.java:11'"
       #### END truth
+
+  docker_build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      #### BEGIN junit5
+      - name: docker junit5
+        working-directory: java/junit5
+        run: "sh ../../.scripts/assure_failing_test.sh './docker_test.sh' 'ThingTest > fail() FAILED'"
+      #### END junit5
