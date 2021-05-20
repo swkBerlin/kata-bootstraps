@@ -26,7 +26,11 @@ To execute the tests either run `./gradlew test`, `mvn test` or run the tests fr
 - [AssertJ 3.18.1](https://assertj.github.io/doc/#assertj-core-3-18-1-release-notes)
 - [Mockito 3.7.7](https://github.com/mockito/mockito/blob/release/3.x/doc/release-notes/official.md/)
 
+
+## Additional Libraries
+- [Vavr](https://www.vavr.io/) a functional library for Java.
+
+
 This repo was tested with [idea](https://www.jetbrains.com/idea) [2020.3.1](https://confluence.jetbrains.com/display/IDEADEV/IntelliJ+IDEA+2020.3.1+%28203.6682.168+build%29+Release+Notes), if you encounter problems please open a issue or send a pull request.
 
 Have fun!
-
