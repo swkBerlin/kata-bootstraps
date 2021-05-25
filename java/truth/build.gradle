@@ -10,7 +10,7 @@ repositories {
 
 
 dependencies {
-    testImplementation(platform('org.junit:junit-bom:5.7.0'))
+    testImplementation(platform('org.junit:junit-bom:5.7.2'))
     testImplementation('org.junit.jupiter:junit-jupiter')
     testImplementation('com.google.truth:truth:1.1.1')
 }
