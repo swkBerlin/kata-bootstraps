@@ -19,13 +19,14 @@ To execute the tests run `mvn integration-test` or run the tests from the IDE yo
 
 in order to display scenario outline steps correctly: ![](docs/feature_steps.png)
 
-use **IDEA >= 2019.3** and click on the feature files or the package with in **src/test/resources** to run all features
+use **IDEA >= 2019.3** and click on the feature files, or the package with in **src/test/resources** to run all features
 
 ![](docs/run_all_features.png)
 
 ## Test Libraries Available from the Get-Go
+
 - [Cucumber 5.1.2](https://github.com/cucumber/cucumber-jvm/tree/v5.1.2)
 
-This repo was tested with idea, if you encounter problems please open a issue or send a pull request.
+This repo was tested with idea, if you encounter problems please open an issue or send a pull request.
 
 Have fun!

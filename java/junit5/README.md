@@ -31,6 +31,6 @@ To execute the tests either run `./gradlew test`, `mvn test` or run the tests fr
 - [Vavr](https://www.vavr.io/) a functional library for Java.
 
 
-This repo was tested with [idea](https://www.jetbrains.com/idea) [2020.3.1](https://confluence.jetbrains.com/display/IDEADEV/IntelliJ+IDEA+2020.3.1+%28203.6682.168+build%29+Release+Notes), if you encounter problems please open a issue or send a pull request.
+This repo was tested with [idea](https://www.jetbrains.com/idea) [2020.3.1](https://confluence.jetbrains.com/display/IDEADEV/IntelliJ+IDEA+2020.3.1+%28203.6682.168+build%29+Release+Notes), if you encounter problems please open an issue or send a pull request.
 
 Have fun!
