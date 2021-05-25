@@ -10,8 +10,8 @@ repositories {
 
 dependencies {
     testImplementation(
-            'org.assertj:assertj-core:3.18.1',
             'junit:junit:4.13.2',
+            'org.assertj:assertj-core:3.19.0',
             'org.mockito:mockito-core:3.7.7'
 
     )

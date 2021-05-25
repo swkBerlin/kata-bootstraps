@@ -38,7 +38,7 @@ To execute the tests either run `./gradlew test`, `mvn test` or run the tests fr
 ## Test Libraries Available from the Get-Go
 - JUnit 5.5.2
 - hue4junit 0.2.1
-- AssertJ 3.14.0
+- [AssertJ 3.19.0](https://assertj.github.io/doc/#assertj-core-3-19-0-release-notes)
 
 This repo was tested with idea, if you encounter problems please open an issue or send a pull request.
 
