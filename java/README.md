@@ -10,11 +10,13 @@ You need to have a [java sdk](https://www.java.com/) installed and also a build 
 ## table of contents
 
 Java >= _1.8_
+  * [junit5](junit5) (**if unsure take this**)
+      * assertj
+      * mockito 
   * [junit4](junit4)
-  * [junit5](junit5)
-  * [assert_j](assert_j)
+      * assertj
+      * mockito 
   * [hamcrest](hamcrest)
-  * [mockito](mockito)
   * [spock](spock)
   * [truth](truth)
   * [hue4j5](hue4j5)
