@@ -10,13 +10,15 @@ compileTestJava {
     options.compilerArgs += '-parameters'
 }
 
-ext.junitPlatformVersion = '1.5.2'
-ext.junitJupiterVersion = '5.5.2'
-ext.jqwikVersion = '1.2.1'
+ext {
+    junitPlatformVersion = '1.7.2'
+    junitJupiterVersion = '5.7.2'
+    jqwikVersion = '1.5.1'
+}
 
 repositories {
     mavenCentral()
-    maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+    //maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
 }
 
 test {
@@ -37,6 +39,6 @@ dependencies {
     testImplementation "net.jqwik:jqwik:${jqwikVersion}"
 
     // Fluent assertions library
-    testImplementation("org.assertj:assertj-core:3.14.0")
+    testImplementation "org.assertj:assertj-core:3.19.0"
 
 }

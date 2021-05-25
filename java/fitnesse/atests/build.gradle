@@ -4,7 +4,7 @@ plugins {
 
 defaultTasks 'compileJava', 'wiki'
 
-def fitnesseVersion = '20201213'
+def fitnesseVersion = '20210410'
 
 configurations {
 	fitnesse
@@ -15,11 +15,11 @@ dependencies {
 
 	implementation "org.fitnesse:fitnesse:${fitnesseVersion}"
 
-    testRuntimeOnly "org.junit.platform:junit-platform-launcher:1.7.0"
-	testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.7.0"
-	testRuntimeOnly "org.junit.vintage:junit-vintage-engine:5.7.0"
+	testRuntimeOnly "org.junit.platform:junit-platform-launcher:1.7.2"
+	testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.7.2"
+	testRuntimeOnly "org.junit.vintage:junit-vintage-engine:5.7.2"
 
-	testImplementation "junit:junit:4.12"
+	testImplementation "junit:junit:4.13.2"
 
 	implementation project(":myapp")
 }
