@@ -1,10 +1,7 @@
 namespace Kata
 {
-    public class HelloWorld
-    {
-        public string SayHelloWorld()
-        {
-            return "Hello World!";
-        }
-    }
+  public class HelloWorld
+  {
+    public string SayHelloWorld() => "Hello World!";
+  }
 }
