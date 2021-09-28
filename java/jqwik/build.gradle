@@ -11,7 +11,7 @@ compileTestJava {
 }
 
 ext {
-    junitPlatformVersion = '1.7.2'
+    junitPlatformVersion = '1.8.1'
     junitJupiterVersion = '5.8.1'
     jqwikVersion = '1.5.6'
 }
