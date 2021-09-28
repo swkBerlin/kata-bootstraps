@@ -4,7 +4,7 @@ plugins {
 
 defaultTasks 'compileJava', 'wiki'
 
-def fitnesseVersion = '20210410'
+def fitnesseVersion = '20210606'
 
 configurations {
 	fitnesse
