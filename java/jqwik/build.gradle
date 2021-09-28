@@ -11,9 +11,9 @@ compileTestJava {
 }
 
 ext {
-    junitPlatformVersion = '1.7.2'
-    junitJupiterVersion = '5.7.2'
-    jqwikVersion = '1.5.1'
+    junitPlatformVersion = '1.8.1'
+    junitJupiterVersion = '5.8.1'
+    jqwikVersion = '1.5.6'
 }
 
 repositories {
@@ -39,6 +39,6 @@ dependencies {
     testImplementation "net.jqwik:jqwik:${jqwikVersion}"
 
     // Fluent assertions library
-    testImplementation "org.assertj:assertj-core:3.19.0"
+    testImplementation "org.assertj:assertj-core:3.21.0"
 
 }
