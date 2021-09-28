@@ -21,7 +21,7 @@ To execute the tests either run `gradlew test`, `mvn test` or run the tests from
 
 ## Test Libraries Available from the Get-Go
 - [JUnit 4.13.2](https://github.com/junit-team/junit4/blob/HEAD/doc/ReleaseNotes4.13.2.md)
-- [AssertJ 3.19.0](https://assertj.github.io/doc/#assertj-core-3-19-0-release-notes)
+- [AssertJ 3.21.0](https://assertj.github.io/doc/#assertj-core-release-notes)
 - [Mockito 3.10.0](https://github.com/mockito/mockito/releases)
 
 This repo was tested with [idea](https://www.jetbrains.com/idea) [2020.3.1](https://confluence.jetbrains.com/display/IDEADEV/IntelliJ+IDEA+2020.3.1+%28203.6682.168+build%29+Release+Notes), if you encounter problems please open an issue or send a pull request.

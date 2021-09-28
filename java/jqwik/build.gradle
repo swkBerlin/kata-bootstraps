@@ -39,6 +39,6 @@ dependencies {
     testImplementation "net.jqwik:jqwik:${jqwikVersion}"
 
     // Fluent assertions library
-    testImplementation "org.assertj:assertj-core:3.19.0"
+    testImplementation "org.assertj:assertj-core:3.21.0"
 
 }
