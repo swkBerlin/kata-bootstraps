@@ -1,6 +1,8 @@
 ﻿Tennis
 About this Kata
-This Kata is about implementing a simple tennis game.
+This Kata is about implementing a simple tennis game and display the score.
+There is a scoreboard that you can access via it's interface an update the displayed score
+for the crowd to see.
 
 The scoring system is rather simple:
 
@@ -26,6 +28,13 @@ equal, the score is “deuce”.
 If at least three points have been scored by each side and a player has one 
 more point than his opponent, the score of the game is “advantage” for the 
 player in the lead.
+
+I will win everytime. I want to conquer the world....
+|*						|
+|	*					|
+|		*				|
+
+Display <--- Game
 
 
 

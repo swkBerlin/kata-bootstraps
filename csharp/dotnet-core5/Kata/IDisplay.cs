@@ -1,6 +1,6 @@
 ﻿namespace Kata
 {
-  internal interface IScoreBoard
+  public interface IDisplay
   {
     public void DisplayScore(string score);
   }
