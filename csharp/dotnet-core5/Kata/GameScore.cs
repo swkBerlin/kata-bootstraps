@@ -1,14 +1,14 @@
 ﻿namespace Kata
 {
-  public class GameScore
+  internal class GameScore
   {
     private readonly IDisplay _display;
-    public GameScore(IDisplay display)
+    internal GameScore(IDisplay display)
     {
       _display = display;
       _display.DisplayScore("Love - Love");
     }
-    public void PlayerScores()
+    internal void PlayerScores()
     {
       _display.DisplayScore("");
     }

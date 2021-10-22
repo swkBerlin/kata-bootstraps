@@ -1,7 +1,7 @@
 ﻿namespace Kata
 {
-  public interface IDisplay
+  internal interface IDisplay
   {
-    public void DisplayScore(string score);
+    internal void DisplayScore(string score);
   }
 }
