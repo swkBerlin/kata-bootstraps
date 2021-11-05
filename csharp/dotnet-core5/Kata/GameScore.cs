@@ -7,16 +7,18 @@ namespace Kata
     internal const string Love = "Love";
     internal const string Fifteen = "15";
     internal const string Thirty = "30";
-    private readonly IDisplay _display;
+    internal const string Forty = "40";
+    internal const string Deuce = "Deuce";
+    private readonly IDisplay display;
     private readonly List<string> scoreOrder = new ()
     {
-      Love, Fifteen, Thirty
+      Love, Fifteen, Thirty, Forty, Deuce
     };
     private int countPlayerOne;
     private int countPlayerTwo;
     internal GameScore(IDisplay display)
     {
-      _display = display;
+      this.display = display;
       countPlayerOne = 0;
       countPlayerTwo = 0;
       BeautifyScore();
@@ -36,9 +38,14 @@ namespace Kata
 
     private void BeautifyScore()
     {
-      _display.DisplayScore($"{scoreOrder[countPlayerOne]} - {scoreOrder[countPlayerTwo]}");
+      if ((countPlayerOne == 3 && countPlayerTwo == 3) || (countPlayerOne == 4 && countPlayerTwo == 4))
+      {
+        display.DisplayScore($"{Deuce}");
+      }
+      else
+      {
+        display.DisplayScore($"{scoreOrder[countPlayerOne]} - {scoreOrder[countPlayerTwo]}");
+      }
     }
-
-
   }
 }

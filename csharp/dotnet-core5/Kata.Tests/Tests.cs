@@ -9,80 +9,128 @@ namespace Kata.Tests
 {
   public class Tests
   {
-    private readonly Mock<IDisplay> _displayMock;
-    private readonly GameScore _gameScore;
+    private readonly Mock<IDisplay> displayMock;
+    private readonly GameScore gameScore;
 
     private enum Player
     {
       One = 1,
       Two = 2
     };
+    
+    /*
+     *  Cursor parking
+     */
 
     public Tests()
     {
-      _displayMock = new Mock<IDisplay>();
-      _gameScore = new GameScore(_displayMock.Object);
+      displayMock = new Mock<IDisplay>();
+      gameScore = new GameScore(displayMock.Object);
     }
 
+    #region UnitOfWork_StateUnderTest_ExpectedBehavior
+
     [Fact]
-    public void InitializeGameScore_ShouldBeLove()
+    public void GameScore_Construct_InvokesDisplayScoreWithLoveLove()
     {
-      _displayMock.Verify(x => x.DisplayScore($"{GameScore.Love} - {GameScore.Love}"), Times.Once);
+      displayMock.Verify(x => x.DisplayScore($"{GameScore.Love} - {GameScore.Love}"), Times.Once);
     }
 
     [Fact]
-    public void PlayerScores_ShouldCallDisplayScoreTwice()
-    {
-      SimulateGame(Player.One);
-      _displayMock.Verify(x => x.DisplayScore(It.IsAny<string>()), Times.Exactly(2));
-    }
-
-    [Fact]
-    public void PlayerOneScoresOnce_ShouldBe15Love()
+    public void GameScore_PlayerOneScoresOnce_InvokesDisplayScoreTwice()
     {
       SimulateGame(Player.One);
-      _displayMock.Verify(x => x.DisplayScore($"{GameScore.Fifteen} - {GameScore.Love}"), Times.Once);
+      displayMock.Verify(x => x.DisplayScore(It.IsAny<string>()), Times.Exactly(2));
     }
 
     [Fact]
-    public void PlayerOneScoresTwice_ShouldBe30Love()
+    public void GameScore_PlayerOneScoresOnce_InvokesDisplayScoreWith15LoveOnce()
+    {
+      SimulateGame(Player.One);
+      displayMock.Verify(x => x.DisplayScore($"{GameScore.Fifteen} - {GameScore.Love}"), Times.Once);
+    }
+
+    #endregion
+
+    #region Given_Preconditions_When_StateUnderTest_Then_ExpectedBehavior
+
+    [Fact]
+    public void Given_GameScore_When_PlayerOneScoresTwice_Then_DisplayScoreInvokedWith30Love()
     {
       SimulateGame(Player.One, Player.One);
-      _displayMock.Verify(x => x.DisplayScore($"{GameScore.Thirty} - {GameScore.Love}"), Times.Once);
+      displayMock.Verify(x => x.DisplayScore($"{GameScore.Thirty} - {GameScore.Love}"), Times.Once);
     }
 
     [Fact]
-    public void PlayerTwoScoresOnce_ShouldBeLove15()
+    public void Given_GameScore_When_PlayerTwoScoresOnce_Then_DisplayScoreInvokedWithLove15()
     {
       SimulateGame(Player.Two);
-      _displayMock.Verify(x => x.DisplayScore($"{GameScore.Love} - {GameScore.Fifteen}"), Times.Once);
+      displayMock.Verify(x => x.DisplayScore($"{GameScore.Love} - {GameScore.Fifteen}"), Times.Once);
     }
 
     [Fact]
-    public void PlayerTwoScoresTwice_ShouldBeLove30()
+    public void Given_GameScore_When_PlayerTwoScoresTwice_Then_DisplayScoreInvokedWithLove30()
     {
       SimulateGame(Player.Two, Player.Two);
-      _displayMock.Verify(x => x.DisplayScore($"{GameScore.Love} - {GameScore.Thirty}"), Times.Once);
+      displayMock.Verify(x => x.DisplayScore($"{GameScore.Love} - {GameScore.Thirty}"), Times.Once);
+    }
+
+    #endregion
+
+    #region Should_ExpectedBehavior_When_StateUnderTest 
+
+    [Fact]
+    public void Should_InvokeDisplayScoreWith1515Once_When_BothPlayersScoreOnce()
+    {
+      SimulateGame(Player.One, Player.Two);
+      displayMock.Verify(x => x.DisplayScore($"{GameScore.Fifteen} - {GameScore.Fifteen}"), Times.Once);
     }
 
     [Fact]
-    public void PlayerOneScoresOnce_PlayerTwoScoresOnce_ShouldBeLove30()
+    public void Should_InvokeDisplayScoreWithLove40_When_PlayerTwoScoresThreeTimes()
     {
-      SimulateGame(Player.One, Player.Two);
-      _displayMock.Verify(x => x.DisplayScore($"{GameScore.Fifteen} - {GameScore.Fifteen}"), Times.Once);
+      SimulateGame(Player.Two, Player.Two, Player.Two);
+      displayMock.Verify(x => x.DisplayScore($"{GameScore.Love} - {GameScore.Forty}"), Times.Once);
+    }
+
+    [Fact]
+    public void Should_InvokeDisplayScoreWithDeuce_When_BothPlayersScoreThreeTimes()
+    {
+      SimulateGame(Player.One, Player.One, Player.One, 
+        Player.Two, Player.Two, Player.Two);
+      displayMock.Verify(x => x.DisplayScore($"{GameScore.Deuce}"), Times.Once);
+    }
+
+    // TODO: Make pretty, ie refactor BeautifyScore method
+    [Fact]
+    public void Should_InvokeDisplayScoreWithDeuceTwice_When_PlayersAlternateScoringEightTimes()
+    {
+      SimulateGame(
+        Player.One,
+        Player.Two,
+        Player.One,
+        Player.Two,
+        Player.One,
+        Player.Two,
+        Player.One,
+        Player.Two
+        );
+      displayMock.Verify(x => x.DisplayScore($"{GameScore.Deuce}"), Times.Exactly(2));
     }
     
+    #endregion
+
     private void SimulateGame(params Player[] playerScores)
     {
       foreach (Player player in playerScores)
       {
         if (player == Player.One)
         {
-          _gameScore.PlayerOneScores();
+          gameScore.PlayerOneScores();
         }
         else if( player == Player.Two)
         {
-          _gameScore.PlayerTwoScores();
+          gameScore.PlayerTwoScores();
         }
       }
     }
