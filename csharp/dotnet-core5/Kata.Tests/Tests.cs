@@ -75,6 +75,20 @@ namespace Kata.Tests
       displayMock.Verify(x => x.DisplayScore($"{GameScore.Love} - {GameScore.Thirty}"), Times.Once);
     }
 
+    [Fact]
+    public void Given_GameScore_When_PlayerOneScoresFourTimes_Then_DisplayScoreInvokedWithPlayerOneWins()
+    {
+      SimulateGame(Player.One, Player.One, Player.One, Player.One);
+      displayMock.Verify(x=>x.DisplayScore(GameScore.PlayerOneWins));
+    }
+
+    [Fact]
+    public void Given_GameScore_When_PlayerTwoScoresFourTimes_Then_DisplayScoreInvokedWithPlayerTwoWins()
+    {
+      SimulateGame(Player.Two, Player.Two, Player.Two, Player.Two);
+      displayMock.Verify(x=>x.DisplayScore(GameScore.PlayerTwoWins));
+    }
+
     #endregion
 
     #region Should_ExpectedBehavior_When_StateUnderTest 
@@ -96,25 +110,30 @@ namespace Kata.Tests
     [Fact]
     public void Should_InvokeDisplayScoreWithDeuce_When_BothPlayersScoreThreeTimes()
     {
-      SimulateGame(Player.One, Player.One, Player.One, 
-        Player.Two, Player.Two, Player.Two);
+      SimulateFromDeuceGame();
       displayMock.Verify(x => x.DisplayScore($"{GameScore.Deuce}"), Times.Once);
     }
 
-    // TODO: Make pretty, ie refactor BeautifyScore method
     [Fact]
-    public void Should_InvokeDisplayScoreWithDeuceTwice_When_PlayersAlternateScoringEightTimes()
+    public void Should_InvokeDisplayScoreWithAdvantageOnce_When_PlayersOneScoresAfterDeuce()
     {
-      SimulateGame(
-        Player.One,
-        Player.Two,
-        Player.One,
-        Player.Two,
-        Player.One,
-        Player.Two,
-        Player.One,
-        Player.Two
-        );
+      SimulateFromDeuceGame(Player.One);
+      displayMock.Verify(x => x.DisplayScore($"{GameScore.Deuce}"), Times.Once);
+      displayMock.Verify(x => x.DisplayScore($"{GameScore.PlayerOneAdvantage}"), Times.Once);
+    }
+
+    [Fact]
+    public void Should_InvokeDisplayScoreWithAdvantageOnce_When_PlayersTwoScoresAfterDeuce()
+    {
+      SimulateFromDeuceGame(Player.Two);
+      displayMock.Verify(x => x.DisplayScore($"{GameScore.Deuce}"), Times.Once);
+      displayMock.Verify(x => x.DisplayScore($"{GameScore.PlayerTwoAdvantage}"), Times.Once);
+    }
+
+    [Fact]
+    public void Should_InvokeDisplayScoreWithDeuceTwice_When_BothPlayersScoreAfterDeuce()
+    {
+      SimulateFromDeuceGame(Player.One, Player.Two);
       displayMock.Verify(x => x.DisplayScore($"{GameScore.Deuce}"), Times.Exactly(2));
     }
     
@@ -133,6 +152,18 @@ namespace Kata.Tests
           gameScore.PlayerTwoScores();
         }
       }
+    }
+
+    private void SimulateFromDeuceGame(params Player[] playerScores)
+    {
+      SimulateGame(
+        Player.One,
+        Player.Two,
+        Player.One,
+        Player.Two,
+        Player.One,
+        Player.Two);
+      SimulateGame(playerScores);
     }
   }
 }

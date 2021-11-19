@@ -9,6 +9,10 @@ namespace Kata
     internal const string Thirty = "30";
     internal const string Forty = "40";
     internal const string Deuce = "Deuce";
+    internal const string PlayerOneAdvantage = "Advantage Player One";
+    internal const string PlayerTwoAdvantage = "Advantage Player Two";
+    internal const string PlayerOneWins = "Player One Wins!!!";
+    internal const string PlayerTwoWins = "Player Two Wins!!!";
     private readonly IDisplay display;
     private readonly List<string> scoreOrder = new ()
     {
@@ -38,14 +42,43 @@ namespace Kata
 
     private void BeautifyScore()
     {
-      if ((countPlayerOne == 3 && countPlayerTwo == 3) || (countPlayerOne == 4 && countPlayerTwo == 4))
+      // I'm not really happy :(
+      // :__(
+      if (IsGameDeuce())
       {
         display.DisplayScore($"{Deuce}");
+      }
+      else if (IsGamePlayerOneAdvantage())
+      {
+        display.DisplayScore($"{PlayerOneAdvantage}");
+      }
+      else if (IsPlayerTwoAdvantage())
+      {
+        display.DisplayScore($"{PlayerTwoAdvantage}");
+      }
+      else if (IsPlayerOneWins())
+      {
+        display.DisplayScore($"{PlayerOneWins}");
+      }
+      else if (IsPlayerTwoWins())
+      {
+        display.DisplayScore($"{PlayerTwoWins}");
       }
       else
       {
         display.DisplayScore($"{scoreOrder[countPlayerOne]} - {scoreOrder[countPlayerTwo]}");
       }
     }
+
+    // TODO: make these better
+    private bool IsPlayerTwoWins() => countPlayerTwo == 4;
+
+    private bool IsPlayerOneWins() => countPlayerOne == 4;
+
+    private bool IsPlayerTwoAdvantage() => countPlayerTwo > 3 && (countPlayerTwo - countPlayerOne == 1);
+
+    private bool IsGamePlayerOneAdvantage() => countPlayerOne > 3 && (countPlayerOne - countPlayerTwo == 1);
+
+    private bool IsGameDeuce() => (countPlayerOne == countPlayerTwo) && countPlayerOne > 2;
   }
 }
