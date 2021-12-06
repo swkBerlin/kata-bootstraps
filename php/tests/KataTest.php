@@ -13,7 +13,7 @@ class KataTest extends TestCase
 
     public function testDummy()
     {
-        $kata = new Kata();
+        $kat = new Kata();
         $this->assertTrue(false);
     }
 
