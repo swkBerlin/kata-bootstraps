@@ -26,3 +26,4 @@ Java >= _1.8_
 
   [java-ci-badge]:https://github.com/swkBerlin/kata-bootstraps/workflows/Java%20CI/badge.svg "CI build status"
   [ci-actions]: https://github.com/swkBerlin/kata-bootstraps/actions
+Testing push
