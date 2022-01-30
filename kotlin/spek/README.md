@@ -21,9 +21,9 @@ by installing the spek plugin from Jetbrains
 
 
 ## Optimized for Usage of
-- Kotlin 1.1
-- Gradle 3.4
-- IntelliJ Idea 2017
+- Kotlin 1.6.0
+- Gradle 7.3.3
+- IntelliJ Idea
 
 It might work with other setups, but that is not tested. Pull requests welcome!
 
