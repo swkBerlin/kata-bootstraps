@@ -1,28 +1,32 @@
-import org.amshove.kluent.`should equal`
-import org.jetbrains.spek.api.Spek
-import org.jetbrains.spek.api.dsl.given
-import org.jetbrains.spek.api.dsl.it
-import org.jetbrains.spek.data_driven.data
-import org.jetbrains.spek.data_driven.on
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.spekframework.spek2.Spek
+import org.spekframework.spek2.style.gherkin.Feature
 
 class ThingDataDrivenSpec : Spek({
 
-    given("a thing") {
+    Feature("a thing") {
 
-        val thing = Thing()
+        val thing by memoized { Thing() }
 
-        val testData = arrayOf(
+        val testData = mapOf(
                 //         food          result
                 //------|-----------|------------------------
-                data("chocolate", "Dog eats chocolate."),
-                data("bone",      "Dog eats fish.")
+                Pair("chocolate", "Dog eats chocolate."),
+                Pair("bone",      "Dog eats fish.")
         )
+        testData.forEach { (food, expected) ->
 
-        on("call for action %s", with = *testData) { food, expected ->
-            val value = thing.callForAction(food)
+            Scenario("call for action $food") {
 
-            it("returns $expected") {
-                value `should equal` expected
+                lateinit var value: String
+
+                When("") {
+                    value = thing.callForAction(food)
+                }
+
+                Then("returns $expected") {
+                    assertEquals( expected, value)
+                }
             }
         }
     }
