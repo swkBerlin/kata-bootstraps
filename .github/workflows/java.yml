@@ -57,7 +57,7 @@ jobs:
       #### END cucumber
 
       #### BEGIN fitnesse
-      - uses: eskatos/gradle-command-action@v1
+      - uses: eskatos/gradle-command-action@v2.1.3
         with:
           build-root-directory: java/fitnesse
           gradle-version: current
@@ -75,7 +75,7 @@ jobs:
         run: ./gradlew test --warning-mode all --tests ThingTest.it_should_not_fail
 
       # gradle:
-      - uses: eskatos/gradle-command-action@v1
+      - uses: eskatos/gradle-command-action@v2.1.3
         with:
           build-root-directory: java/hamcrest
           gradle-version: current
@@ -96,7 +96,7 @@ jobs:
         run: ./gradlew test --warning-mode all --tests ThingTest.it_should_not_fail
 
       # gradle:
-      - uses: eskatos/gradle-command-action@v1
+      - uses: eskatos/gradle-command-action@v2.1.3
         with:
           build-root-directory: java/hue4j5
           gradle-version: current
@@ -118,7 +118,7 @@ jobs:
         run: ./gradlew test --warning-mode all
 
       # gradle:
-      - uses: eskatos/gradle-command-action@v1
+      - uses: eskatos/gradle-command-action@v2.1.3
         with:
           build-root-directory: java/jqwik
           gradle-version: current
@@ -135,7 +135,7 @@ jobs:
         run: ./gradlew test --warning-mode all --tests ThingTest.it_should_not_fail
 
       # gradle:
-      - uses: eskatos/gradle-command-action@v1
+      - uses: eskatos/gradle-command-action@v2.1.3
         with:
           build-root-directory: java/junit4
           gradle-version: current
@@ -157,7 +157,7 @@ jobs:
         run: ./gradlew test --warning-mode all --tests ThingTest.it_should_not_fail
 
       # gradle:
-      - uses: eskatos/gradle-command-action@v1
+      - uses: eskatos/gradle-command-action@v2.1.3
         with:
           build-root-directory: java/junit5
           gradle-version: current
@@ -188,7 +188,7 @@ jobs:
         run: ./gradlew test --warning-mode all --tests ThingTest.it_should_not_fail
 
       # gradle:
-      - uses: eskatos/gradle-command-action@v1
+      - uses: eskatos/gradle-command-action@v2.1.3
         with:
           build-root-directory: java/truth
           gradle-version: current
