@@ -22,7 +22,7 @@ jobs:
     strategy:
       matrix:
         operating-system: [ ubuntu-latest, macOS-latest,  windows-latest ]
-        java: [ 8, 11, 15, 16, 17 ]
+        java: [ 8, 11, 16, 17 ]
     name: Java ${{ matrix.java }} Build on ${{ matrix.operating-system }}
 
     steps:
