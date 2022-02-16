@@ -13,12 +13,12 @@ updates:
       interval: "weekly"
 
   - package-ecosystem: "gradle"
-    directory: "/"
+    directory: "java/**"
     schedule:
       interval: "weekly"
 
   - package-ecosystem: "maven"
-    directory: "/"
+    directory: "java/**"
     schedule:
       interval: "weekly"
 
