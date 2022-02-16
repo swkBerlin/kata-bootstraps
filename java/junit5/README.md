@@ -23,7 +23,7 @@ To execute the tests either run `./gradlew test`, `mvn test` or run the tests fr
 
 ## Test Libraries Available from the Get-Go
 - [JUnit 5.8.1](https://junit.org/junit5/docs/snapshot/release-notes/#release-notes-5.8.1)
-- [AssertJ 3.21.0](https://assertj.github.io/doc/#assertj-core-release-notes)
+- [AssertJ 3.22.0](https://assertj.github.io/doc/#assertj-core-release-notes)
 - [Mockito 3.12.3](https://github.com/mockito/mockito/releases)
 
 

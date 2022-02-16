@@ -17,4 +17,4 @@ To execute the tests either run `./gradlew test`, `mvn test` or run the tests fr
 
 ## Test Libraries Available from the Get-Go
 - [jqwik 1.5.6](https://jqwik.net/release-notes.html#15x)
-- [AssertJ 3.21.0](https://assertj.github.io/doc/#assertj-core-release-notes)
+- [AssertJ 3.22.0](https://assertj.github.io/doc/#assertj-core-release-notes)
