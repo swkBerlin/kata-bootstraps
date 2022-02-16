@@ -28,7 +28,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Setup go
-        uses: actions/setup-go@v1
+        uses: actions/setup-go@v2.2.0
         with:
           go-version: ${{ matrix.go }}
 
