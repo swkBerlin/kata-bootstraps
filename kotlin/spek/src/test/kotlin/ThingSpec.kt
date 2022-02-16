@@ -1,26 +1,33 @@
-import org.amshove.kluent.*
-import org.jetbrains.spek.api.Spek
-import org.jetbrains.spek.api.dsl.describe
-import org.jetbrains.spek.api.dsl.it
-import org.jetbrains.spek.api.dsl.on
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.spekframework.spek2.Spek
+import org.spekframework.spek2.style.gherkin.Feature
 
 class ThingSpec: Spek({
-    describe("a thing") {
-        val thing = Thing()
+    Feature("a thing") {
+        val thing by memoized { Thing() }
 
-        on("call for action") {
-            val value = thing.callForAction()
+        Scenario("call for action") {
+            lateinit var value: String
 
-            it("should return dog") {
-                value `should equal` "Food"
+            When("calling for action") {
+                value = thing.callForAction()
+            }
+
+            Then("should return dog") {
+                assertEquals("Food", value)
             }
         }
 
-        on("call for action with bone") {
-            val value = thing.callForAction("bone")
+        Scenario("call for action with bone") {
 
-            it("should return bone") {
-                value `should equal` "fish"
+            lateinit var value: String
+
+            When("calling for action with bone") {
+                value = thing.callForAction("bone")
+            }
+
+            Then("should return bone") {
+                assertEquals("fish", value)
             }
         }
     }
