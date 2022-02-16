@@ -23,7 +23,7 @@ jobs:
       matrix:
         operating-system: [ ubuntu-latest ]
         # TODO fix me:  windows-latest, macOS-latest,
-        java: [ 8, 10 ]
+        java: [ 8, 11 ]
         # TODO fix me: 11, 12, 13
     name: Scala ${{ matrix.java }} Build on ${{ matrix.operating-system }}
 
