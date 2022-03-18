@@ -1,18 +1,21 @@
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
-public class ThingTest {
+
+class ThingTest {
 
     @Test
     void fail() {
         Thing thing = new Thing();
         String value = thing.callForAction();
-        assertEquals("Food", value);
+        assertThat(value)
+                .isEqualTo("Food");
     }
 
     @Test
     void it_should_not_fail() {
-        assertTrue(true);
+        assertThat(42)
+                .isEqualTo(42);
     }
 }
