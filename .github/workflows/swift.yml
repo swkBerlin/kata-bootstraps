@@ -1,0 +1,48 @@
+name: Swift CI
+
+on:
+  push:
+    paths:
+      - 'swift/**'
+      - '.github/workflows/swift**'
+  pull_request:
+    paths:
+      - 'swift/**'
+      - '.github/workflows/swift**'
+
+  schedule:
+    # weekly build every FRI
+    - cron: "0 6 * * 5"
+
+jobs:
+  xctest-check:
+    strategy:
+      matrix:
+        operating-system: [ ubuntu-latest, macOS-latest ]
+    runs-on: ${{ matrix.operating-system }}
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_13.2.app/Contents/Developer
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build
+        working-directory: swift/KataXCTest
+        run: swift build
+      - name: Run tests
+        working-directory: swift/KataXCTest
+        continue-on-error: true
+        run: swift test
+
+
+  quick-checks:
+    runs-on: macOS-latest
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_13.2.app/Contents/Developer
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build
+        working-directory: swift/KataQuick
+        run: swift build
+      - name: Run Tests
+        working-directory: swift/KataQuick
+        continue-on-error: true
+        run: swift test
