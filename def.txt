@@ -4,4 +4,4 @@ test matej1
 test ben
 test adam
 test norbert
-test slu
+test slu2
