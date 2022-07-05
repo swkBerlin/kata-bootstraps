@@ -5,6 +5,7 @@ class Thing {
     }
 
     fun callForAction(food: String): String {
+        println("sleep")
         return "Dog eats $food."
     }
 }
