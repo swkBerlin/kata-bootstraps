@@ -1,6 +1,6 @@
 class HelloWorld {
   static greet() {
-    return 'Hello from Valeriya!';
+    return 'Hello, world!';
   }
 }
 
