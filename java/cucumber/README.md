@@ -15,6 +15,27 @@ Open as preexisting project in your favorite IDE.
 
 To execute the tests run `mvn integration-test` or run the tests from the IDE you are using
 
+## Running with docker compose
+
+With this method you don't have to install java on your computer. 
+The tests will be run inside a docker container.
+It may be slower to run than having a real Jdk installed on your machine.
+
+Prerequisites : install a recent version on docker.
+At first, the docker image and the maven dependencies wil download.
+Then, when running again, it will be fast to run.
+
+```shell
+# Run with java 8
+docker compose run java8
+# Run with java 11
+docker compose run java11
+# Run with java 17
+docker compose run java17
+# Run with java 18
+docker compose run java18
+```
+
 ## IDEA hint
 
 in order to display scenario outline steps correctly: ![](docs/feature_steps.png)
