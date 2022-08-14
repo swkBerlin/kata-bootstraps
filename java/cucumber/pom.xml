@@ -9,16 +9,15 @@
     <description>Cucumber for the JVM</description>
 
     <properties>
-        <cucumber.version>5.1.2</cucumber.version>
+        <cucumber.version>7.5.0</cucumber.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>${maven.compiler.source}</maven.compiler.target>
-        <junit-jupiter.version>5.5.2</junit-jupiter.version>
-        <junit-platform.version>1.8.1</junit-platform.version>
+        <junit-jupiter.version>5.9.0</junit-jupiter.version>
+        <junit-platform.version>1.9.0</junit-platform.version>
         <minimum.maven.version>3.6.0</minimum.maven.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
-
 
     <dependencies>
         <dependency>
