@@ -1,0 +1,55 @@
+# Run maven integration test against different jdks
+services:
+  java8: # LTS — March 2014
+    image: maven:3-jdk-8-slim
+    working_dir: /kata
+    volumes:
+      - ./:/kata
+      - ./.volumes/maven-repo-java8:/root/.m2
+    command:
+      - mvn
+      - -Dmaven.compiler.source=1.8
+      - clean
+      - integration-test
+  java11: # LTS — September 2018
+    image: maven:3-openjdk-11-slim
+    working_dir: /kata
+    volumes:
+      - ./:/kata
+      - ./.volumes/maven-repo-java11:/root/.m2
+    command:
+      - mvn
+      - -Dmaven.compiler.source=11
+      - clean
+      - integration-test
+  java17: # LTS — September 2021
+    image: maven:3-openjdk-17-slim
+    working_dir: /kata
+    volumes:
+      - ./:/kata
+      - ./.volumes/maven-repo-java17:/root/.m2
+    command:
+      - mvn
+      - -Dmaven.compiler.source=17
+      - clean
+      - integration-test
+  java18: # March 2022
+    image: maven:3-openjdk-18-slim
+    working_dir: /kata
+    volumes:
+      - ./:/kata
+      - ./.volumes/maven-repo-java18:/root/.m2
+    command:
+      - mvn
+      - -Dmaven.compiler.source=18
+      - clean
+      - integration-test
+  gradle: # Gradle latest (2022-08-14 : java openjdk 17.0.4+8, gradle 7.5.1)
+    image: gradle
+    working_dir: /kata
+    volumes:
+      - ./:/kata
+      - ./.volumes/gradle:/home/gradle/.gradle
+    command:
+      - gradle
+      - test

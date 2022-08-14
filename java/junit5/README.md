@@ -21,6 +21,29 @@ Run `./gradlew idea` to build [idea](https://www.jetbrains.com/idea) project.
 
 To execute the tests either run `./gradlew test`, `mvn test` or run the tests from the IDE you are using
 
+## Running with docker compose
+
+With this method you don't have to install java on your computer.
+The tests will be run inside a docker container.
+It may be slower to run than having a real Jdk installed on your machine.
+
+Prerequisites : install a recent version on docker.
+At first, the docker image and the maven dependencies wil download.
+Then, when running again, it will be fast to run.
+
+```shell
+# Run with java 8
+docker compose run java8
+# Run with java 11
+docker compose run java11
+# Run with java 17
+docker compose run java17
+# Run with java 18
+docker compose run java18
+# Run with gradle latest
+docker compose run gradle
+```
+
 ## Test Libraries Available from the Get-Go
 - [JUnit 5.8.2](https://junit.org/junit5/docs/snapshot/release-notes/#release-notes-5.8.2)
 - [AssertJ 3.22.0](https://assertj.github.io/doc/#assertj-core-release-notes)
