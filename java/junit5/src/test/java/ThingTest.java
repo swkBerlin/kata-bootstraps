@@ -10,7 +10,7 @@ class ThingTest {
         Thing thing = new Thing();
         String value = thing.callForAction();
         assertThat(value)
-                .isEqualTo("Dog");
+                .isEqualTo("Food");
     }
 
     @Test
