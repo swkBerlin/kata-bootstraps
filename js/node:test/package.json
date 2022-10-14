@@ -1,0 +1,14 @@
+{
+  "name": "node-test",
+  "type": "module",
+  "description": "unit test template for native Node.js unit tests",
+  "version": "0.0.0-development",
+  "scripts": {
+    "test": "node test/*.test.js"
+  },
+  "author": "Markus Tacker <m@coderbyheart.com>",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.8.0"
+  }
+}
