@@ -1,0 +1,51 @@
+name: Clojure CI
+
+on:
+  push:
+    paths:
+      - 'clojure/**'
+      - '.github/workflows/clojure**'
+  pull_request:
+    paths:
+      - 'clojure/**'
+      - '.github/workflows/clojure**'
+
+  schedule:
+    # weekly build every FRI
+    - cron: "0 6 * * 5"
+
+jobs:
+  matrix_build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      max-parallel: 4
+      matrix:
+        java: [ 8, 11, 16, 17, 19 ]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup java ${{ matrix.java }}
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: ${{ matrix.java }}
+      - name: Setup Clojure 1.11.1
+        uses: DeLaGuardo/setup-clojure@master
+        with:
+          cli: '1.11.1.1165'
+      - name: Cache All The Things
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.m2/repository
+            ~/.gitlibs
+            ~/.clojure
+            ~/.cpcache
+            ~/clojure/deps-cli/.cpcache
+          key: ${{ runner.os }}-${{ hashFiles('clojure/deps-cli/deps.edn') }}
+
+      #### BEGIN deps-cli
+      - name: assure one failing test (deps-cli)
+        working-directory: clojure/deps-cli
+        run: "sh ../../.scripts/assure_failing_test.sh 'clojure -X:test' 'FAIL in (a-test)'"
+      #### END deps-cli
