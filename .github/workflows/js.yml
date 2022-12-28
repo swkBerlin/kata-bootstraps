@@ -25,18 +25,13 @@ jobs:
         operating-system: [ ubuntu-latest ]
         #TODO
         # , macOS-latest,  windows-latest
-        node-version: [10.x, 12.x, 14.x, 16.x, 18.x]
-        include:
-          - node-version: 18.x
-            node-test: enabled
-
+        node-version: [ 10.x, 12.x, 14.x, 15.x ]
     name: Node.js ${{ matrix.node-version }} Build on ${{ matrix.operating-system }}
 
     steps:
-      - uses: actions/checkout@v3
-
+      - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v2.5.1
         with:
           node-version: ${{ matrix.node-version }}
 
@@ -66,11 +61,3 @@ jobs:
           npm test
         env:
           CI: true
-
-      - name: node-test
-        if: matrix.node-test = 'enabled'
-        working-directory: js/node-test
-        run: |
-          npm test
-          # assure one failing test
-          sh ../../.scripts/assure_failing_test.sh 'node test/HelloWorld.test.js' 'fail 1'
