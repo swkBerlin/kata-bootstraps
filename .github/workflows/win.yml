@@ -1,0 +1,19 @@
+name: Windows CI
+
+on:
+  push:
+  pull_request:
+  schedule:
+    # weekly build every FRI
+    - cron: "0 6 * * 5"
+
+jobs:
+
+  win_checkout_job:
+    name: Checkout works on Windows
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: checkout on windows
+        run: dir
