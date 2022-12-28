@@ -68,7 +68,7 @@ jobs:
           CI: true
 
       - name: node-test
-        if: matrix.node-test = 'enabled'
+        if: matrix.node-test == 'enabled'
         working-directory: js/node-test
         run: |
           npm test
