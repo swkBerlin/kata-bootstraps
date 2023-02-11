@@ -42,3 +42,11 @@ jobs:
       run: "sh ../../.scripts/assure_failing_test.sh 'ruby test/foo_test.rb' '1) Failure:\nFooTest#test_ask_returns_an_answer'"
 
     #### END ruby minitest
+
+
+    #### BEGIN ruby rspec
+    - name: ruby rspec
+      working-directory: ruby/rspec
+      run: "bundle install && sh ../../.scripts/assure_failing_test.sh 'bundle exec rspec' 'Failure/Error: expect(42).to eq(43)'"
+
+    #### END ruby rspec
