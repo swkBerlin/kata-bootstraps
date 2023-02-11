@@ -8,6 +8,7 @@
 [![js-ci-badge]][ci-actions]
 [![ts-ci-badge]][ci-actions]
 [![go-ci-badge]][ci-actions]
+[![ruby-ci-badge]][ci-actions]
 
 
 
@@ -36,4 +37,5 @@ You are welcome to contribute by submitting likewise a min setup for your langua
 [js-ci-badge]:../../../kata-bootstraps/workflows/js%20CI/badge.svg "CI build status"
 [ts-ci-badge]:../../../kata-bootstraps/workflows/ts%20CI/badge.svg "CI build status"
 [go-ci-badge]:../../../kata-bootstraps/workflows/GO%20CI/badge.svg "CI build status"
+[ruby-ci-badge]:../../../kata-bootstraps/workflows/Ruby%20CI/badge.svg "CI build status"
 [ci-actions]:../../../kata-bootstraps/actions
