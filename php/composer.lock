@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "12d41dc6190078a27e9ecc22a7844ced",
+    "content-hash": "58674ae639eb47d7fd70cef05cba182f",
     "packages": [
         {
             "name": "myclabs/deep-copy",
@@ -571,12 +571,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "3039c2ea3e870563572549c62be09a4478b1afd4"
+                "reference": "7b0163f5803c2651a456de46554d5ae7acb315fc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/3039c2ea3e870563572549c62be09a4478b1afd4",
-                "reference": "3039c2ea3e870563572549c62be09a4478b1afd4",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/7b0163f5803c2651a456de46554d5ae7acb315fc",
+                "reference": "7b0163f5803c2651a456de46554d5ae7acb315fc",
                 "shasum": ""
             },
             "require": {
@@ -664,7 +664,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-02-20T14:56:54+00:00"
+            "time": "2023-02-20T16:40:21+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -1775,7 +1775,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "^8.0"
+        "php": "^8.1"
     },
     "platform-dev": [],
     "plugin-api-version": "2.1.0"
