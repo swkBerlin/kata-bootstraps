@@ -23,7 +23,7 @@ jobs:
     env:
       DEVELOPER_DIR: /Applications/Xcode_13.2.app/Contents/Developer
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Build
         working-directory: swift/KataXCTest
         run: swift build
@@ -38,7 +38,7 @@ jobs:
     env:
       DEVELOPER_DIR: /Applications/Xcode_13.2.app/Contents/Developer
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Build
         working-directory: swift/KataQuick
         run: swift build
