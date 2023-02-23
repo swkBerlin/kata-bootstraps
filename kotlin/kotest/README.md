@@ -6,14 +6,14 @@ A minimal setup with Kotlin and [Kotest](https://kotest.io/) to get you started.
 
     git clone https://github.com/swkBerlin/kata-bootstraps
     cd kotlin/kotest
-    gradle idea
+    ./gradlew idea
 
 Open the directory in Idea.
 
 
 ## Running Tests
 
-To execute the tests run `gradle test` or run the tests from the IDE you are using (e.g. IntelliJ).
+To execute the tests run `./gradlew test` or run the tests from the IDE you are using (e.g. IntelliJ).
 
 
 ## Optimized for Usage of
