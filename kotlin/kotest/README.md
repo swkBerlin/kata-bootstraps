@@ -1,11 +1,11 @@
-# Kotlin Kotlintest
+# Kotlin Kotest
 
-A minimal setup with Kotlin and kotlintest to get you started
+A minimal setup with Kotlin and [Kotest](https://kotest.io/) to get you started.
 
 ## Setup
 
     git clone https://github.com/swkBerlin/kata-bootstraps
-    cd kotlin/kotlintest
+    cd kotlin/kotest
     gradle idea
 
 Open the directory in Idea.
@@ -13,13 +13,12 @@ Open the directory in Idea.
 
 ## Running Tests
 
-To execute the tests run `gradle test` or run the tests from the IDE you are using (e.g. IntelliJ)
+To execute the tests run `gradle test` or run the tests from the IDE you are using (e.g. IntelliJ).
 
 
 ## Optimized for Usage of
-- Kotlin 1.1
-- Gradle 3.4
-- IntelliJ Idea 2017
+- Kotlin 1.18.10/Java17
+- Gradle 7.3.3
+- IntelliJ Idea 2022
 
 It might work with other setups, but that is not tested. Pull requests welcome!
-
