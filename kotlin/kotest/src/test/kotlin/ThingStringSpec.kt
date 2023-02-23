@@ -19,7 +19,7 @@ class ThingStringSpec : StringSpec() { init {
             headers("food",      "result"),
             //-----|-----------|------------------------
             row    ("chocolate", "Dog eats chocolate."),
-            row    ("bone",      "Dog eats bone.")
+            row    ("bone",      "Dog eats fish.")
         )
         forAll(testTable) { food, result ->
             thing.callForAction(food) shouldBe result

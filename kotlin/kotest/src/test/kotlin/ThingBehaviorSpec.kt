@@ -10,7 +10,7 @@ class ThingBehaviorSpec : BehaviorSpec() { init {
             val value = thing.callForAction()
 
             then("result should be dog") {
-                value shouldBe "Dog"
+                value shouldBe "Food"
             }
         }
 
@@ -18,7 +18,7 @@ class ThingBehaviorSpec : BehaviorSpec() { init {
             val value = thing.callForAction("bone")
 
             then("result should be: Dog eats bone.") {
-                value shouldBe "Dog eats bone."
+                value shouldBe "Dog eats fish."
             }
         }
     }
