@@ -1,5 +1,5 @@
-import io.kotlintest.shouldBe
-import io.kotlintest.specs.BehaviorSpec
+import io.kotest.core.spec.style.BehaviorSpec
+import io.kotest.matchers.shouldBe
 
 class ThingBehaviorSpec : BehaviorSpec() { init {
 
@@ -10,7 +10,7 @@ class ThingBehaviorSpec : BehaviorSpec() { init {
             val value = thing.callForAction()
 
             then("result should be dog") {
-                value shouldBe "Food"
+                value shouldBe "Dog"
             }
         }
 
@@ -18,7 +18,7 @@ class ThingBehaviorSpec : BehaviorSpec() { init {
             val value = thing.callForAction("bone")
 
             then("result should be: Dog eats bone.") {
-                value shouldBe "Dog eats fish."
+                value shouldBe "Dog eats bone."
             }
         }
     }

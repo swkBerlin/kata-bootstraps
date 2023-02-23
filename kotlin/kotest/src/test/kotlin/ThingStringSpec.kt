@@ -1,9 +1,9 @@
-import io.kotlintest.shouldBe
-import io.kotlintest.specs.StringSpec
-import io.kotlintest.tables.forAll
-import io.kotlintest.tables.headers
-import io.kotlintest.tables.row
-import io.kotlintest.tables.table
+import io.kotest.core.spec.style.StringSpec
+import io.kotest.data.forAll
+import io.kotest.data.headers
+import io.kotest.data.row
+import io.kotest.data.table
+import io.kotest.matchers.shouldBe
 
 class ThingStringSpec : StringSpec() { init {
     "it should callForAction" {
@@ -19,7 +19,7 @@ class ThingStringSpec : StringSpec() { init {
             headers("food",      "result"),
             //-----|-----------|------------------------
             row    ("chocolate", "Dog eats chocolate."),
-            row    ("bone",      "Dog eats fish.")
+            row    ("bone",      "Dog eats bone.")
         )
         forAll(testTable) { food, result ->
             thing.callForAction(food) shouldBe result
