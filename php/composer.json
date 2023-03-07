@@ -25,5 +25,11 @@
       "Tests\\": "tests/"
     }
   },
+  "scripts": {
+    "test": "phpunit --bootstrap vendor/autoload.php tests"
+  },
+  "scripts-descriptions": {
+    "test": "Run PHPUnit tests."
+  },
   "minimum-stability": "dev"
 }

@@ -1,25 +1,23 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests;
 
 use PHPUnit\Framework\TestCase;
 use swkberlin\Kata;
 
-require __DIR__ . '/../vendor/autoload.php';
-
 class KataTest extends TestCase
 {
-
-
-    public function testDummy()
+    public function testDummy(): void
     {
         $kata = new Kata();
+        $this->assertInstanceOf(Kata::class, $kata);
         $this->assertTrue(false);
     }
 
-    public function testNotFailing()
+    public function testNotFailing(): void
     {
         $this->assertTrue(true);
     }
-
 }
