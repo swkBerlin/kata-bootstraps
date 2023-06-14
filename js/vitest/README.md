@@ -1,4 +1,4 @@
-# Jest unit tests
+# Vite unit tests
 
 This folder contains a unit test template for [Vitest](https://vitest.dev).
 
