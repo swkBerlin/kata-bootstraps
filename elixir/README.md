@@ -25,3 +25,4 @@ Mix has a lot more to offer, thy this if you want to learn more:
     mix help
 
 Welcome to the friendly world of Elixir! (♥͡_♥͡)
+
