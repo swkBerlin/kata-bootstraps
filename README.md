@@ -49,5 +49,9 @@ You are welcome to contribute by submitting likewise a min setup for your langua
 [js-ci-badge]:https://github.com/swkBerlin/kata-bootstraps/workflows/js%20CI/badge.svg "CI build status"
 [ts-ci-badge]:https://github.com/swkBerlin/kata-bootstraps/workflows/ts%20CI/badge.svg "CI build status"
 [go-ci-badge]:https://github.com/swkBerlin/kata-bootstraps/workflows/GO%20CI/badge.svg "CI build status"
+<<<<<<< HEAD
+[ci-actions]:https://github.com/swkBerlin/kata-bootstraps/actions
+>>>>>>> 06f01f1016fb99e97882a042564c4b7539b6b3cd
+=======
 [ci-actions]:https://github.com/swkBerlin/kata-bootstraps/actions
 >>>>>>> 06f01f1016fb99e97882a042564c4b7539b6b3cd
