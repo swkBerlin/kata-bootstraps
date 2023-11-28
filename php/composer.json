@@ -30,6 +30,5 @@
   },
   "scripts-descriptions": {
     "test": "Run PHPUnit tests."
-  },
-  "minimum-stability": "dev"
+  }
 }
