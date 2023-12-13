@@ -55,5 +55,3 @@ You are welcome to contribute by submitting likewise a min setup for your langua
 =======
 [ci-actions]:https://github.com/swkBerlin/kata-bootstraps/actions
 >>>>>>> 06f01f1016fb99e97882a042564c4b7539b6b3cd
-
-dummy change 
