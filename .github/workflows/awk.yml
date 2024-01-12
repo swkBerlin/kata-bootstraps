@@ -27,11 +27,11 @@ jobs:
       run: |
         rm -rf result.txt | true
         make test > result.txt
-        grep "1 failed" result
+        grep "1 failed" result.txt
 
     - name: The others PASS
       working-directory: awk
       run: |
         rm -rf result.txt | true
         make test > result.txt
-        grep "3 passed" result
+        grep "3 passed" result.txt
