@@ -23,12 +23,14 @@ jobs:
     - uses: actions/checkout@v3
 
     - name: One test FAILs
+      working-directory: awk
       run: |
         rm -rf result.txt | true
         make test > result.txt
         grep "1 failed" result
 
     - name: The others PASS
+      working-directory: awk
       run: |
         rm -rf result.txt | true
         make test > result.txt
