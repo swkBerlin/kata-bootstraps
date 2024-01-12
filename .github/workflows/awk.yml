@@ -1,0 +1,35 @@
+name: AWK CI
+
+on:
+  push:
+    paths:
+      - 'awk/**'
+      - '.github/workflows/awk**'
+  pull_request:
+    paths:
+      - 'awk/**'
+      - '.github/workflows/awk**'
+
+  schedule:
+    # weekly build every FRI
+    - cron: "0 6 * * 5"
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: One test FAILs
+      run: |
+        rm -rf result.txt | true
+        make test > result.txt
+        grep "1 failed" result
+
+    - name: The others PASS
+      run: |
+        rm -rf result.txt | true
+        make test > result.txt
+        grep "3 passed" result
