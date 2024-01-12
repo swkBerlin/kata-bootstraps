@@ -2,7 +2,7 @@ VPATH = src test
 
 .DEFAULT_GOAL:= run
 
-.PHONY: run test TAGs
+.PHONY: run test TAGS
 
 run:
 	@./src/wee.awk input
