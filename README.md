@@ -29,6 +29,7 @@ You are welcome to contribute by submitting likewise a min setup for your langua
 ----
 [Cookiecutter](https://github.com/audreyr/cookiecutter) has a similar goal and also supports multiple languages for setting up a bare project.
 
+<<<<<<< HEAD
 [java-ci-badge]:../../../kata-bootstraps/workflows/Java%20CI/badge.svg "CI build status"
 [php-ci-badge]:../../../kata-bootstraps/workflows/PHP%20CI/badge.svg "CI build status"
 [rust-ci-badge]:../../../kata-bootstraps/workflows/Rust%20CI/badge.svg "CI build status"
@@ -39,3 +40,18 @@ You are welcome to contribute by submitting likewise a min setup for your langua
 [go-ci-badge]:../../../kata-bootstraps/workflows/GO%20CI/badge.svg "CI build status"
 [ruby-ci-badge]:../../../kata-bootstraps/workflows/Ruby%20CI/badge.svg "CI build status"
 [ci-actions]:../../../kata-bootstraps/actions
+=======
+[java-ci-badge]:https://github.com/swkBerlin/kata-bootstraps/workflows/Java%20CI/badge.svg "CI build status"
+[php-ci-badge]:https://github.com/swkBerlin/kata-bootstraps/workflows/PHP%20CI/badge.svg "CI build status"
+[rust-ci-badge]:https://github.com/swkBerlin/kata-bootstraps/workflows/Rust%20CI/badge.svg "CI build status"
+[python-ci-badge]:https://github.com/swkBerlin/kata-bootstraps/workflows/Python%20CI/badge.svg "CI build status"
+[scala-ci-badge]:https://github.com/swkBerlin/kata-bootstraps/workflows/Scala%20CI/badge.svg "CI build status"
+[js-ci-badge]:https://github.com/swkBerlin/kata-bootstraps/workflows/js%20CI/badge.svg "CI build status"
+[ts-ci-badge]:https://github.com/swkBerlin/kata-bootstraps/workflows/ts%20CI/badge.svg "CI build status"
+[go-ci-badge]:https://github.com/swkBerlin/kata-bootstraps/workflows/GO%20CI/badge.svg "CI build status"
+<<<<<<< HEAD
+[ci-actions]:https://github.com/swkBerlin/kata-bootstraps/actions
+>>>>>>> 06f01f1016fb99e97882a042564c4b7539b6b3cd
+=======
+[ci-actions]:https://github.com/swkBerlin/kata-bootstraps/actions
+>>>>>>> 06f01f1016fb99e97882a042564c4b7539b6b3cd

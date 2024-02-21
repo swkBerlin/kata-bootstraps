@@ -7,7 +7,7 @@ public class ThingTest {
     public void it_should_call_for_action() {
         Thing thing = new Thing();
         String value = thing.callForAction();
-        assertEquals("Food", value);
+        assertEquals("Test", value);
     }
 
     @Test

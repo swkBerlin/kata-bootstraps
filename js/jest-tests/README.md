@@ -29,3 +29,5 @@ npm run test:cover
 ```
 
 Note: coverage is also included in watch mode.
+
+To push or not to push.

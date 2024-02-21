@@ -16,4 +16,4 @@ Open folder in editor or IDE
 
 `<any modern browser>` SpecRunner.html
 
-It might work with other setups, but that is not tested. Pull requests welcome!
+It might work with other setups, but that is not tested. Pull requests welcome!!!
