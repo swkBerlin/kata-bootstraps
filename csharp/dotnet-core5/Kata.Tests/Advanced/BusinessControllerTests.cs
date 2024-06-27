@@ -1,4 +1,4 @@
-using FluentAssertions;
+﻿using FluentAssertions;
 using Kata.Advanced;
 using NSubstitute;
 using Xunit;

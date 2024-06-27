@@ -1,5 +1,5 @@
 export class Hiker {
   public getAnswer() {
-    return 6 * 9
+    return 6 * 7
   }
 }

@@ -24,5 +24,15 @@ Java >= _1.8_
   * [cucumber](cucumber)
   * [fitnesse](fitnesse)
 
+<<<<<<< HEAD
   [java-ci-badge]:../../../../kata-bootstraps/workflows/Java%20CI/badge.svg "CI build status"
   [ci-actions]:../../../../kata-bootstraps/actions
+=======
+  [java-ci-badge]:https://github.com/swkBerlin/kata-bootstraps/workflows/Java%20CI/badge.svg "CI build status"
+  [ci-actions]: https://github.com/swkBerlin/kata-bootstraps/actions
+<<<<<<< HEAD
+Testing push
+>>>>>>> 06f01f1016fb99e97882a042564c4b7539b6b3cd
+=======
+Testing push
+>>>>>>> 06f01f1016fb99e97882a042564c4b7539b6b3cd
