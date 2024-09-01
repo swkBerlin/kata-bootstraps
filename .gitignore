@@ -39,3 +39,4 @@ clojure/**/.nrepl-port
 python/pytest/.pytest_cache
 python/pytest/__pycache__
 /.vs
+*.lutconfig
