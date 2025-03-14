@@ -1,0 +1,15 @@
+name: kata
+version: 0.1.0
+
+targets:
+  kata:
+    main: src/kata.cr
+
+crystal: '>= 1.14.0'
+
+license: MIT
+
+development_dependencies:
+  spectator:
+    gitlab: arctic-fox/spectator
+    version: ~> 0.12.0
