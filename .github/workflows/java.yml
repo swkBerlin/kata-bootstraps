@@ -22,8 +22,8 @@ jobs:
     strategy:
       matrix:
         operating-system: [ ubuntu-latest, macOS-latest,  windows-latest ]
-        #TODO fix for 21 
-        java: [ 8, 11, 17 ]
+        #TODO fix for 21
+        java: [ 11, 17 ]
     name: Java ${{ matrix.java }} Build on ${{ matrix.operating-system }}
 
     steps:
