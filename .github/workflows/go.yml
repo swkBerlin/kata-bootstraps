@@ -22,18 +22,18 @@ jobs:
     strategy:
       matrix:
         operating-system: [ ubuntu-latest, macOS-latest,  windows-latest ]
-        go: [ '1.14', '1.13', '1.12' ]
+        go: [ '>=1.14.0' ]
     name: Go ${{ matrix.go }} Build on ${{ matrix.operating-system }}
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Setup go
-        uses: actions/setup-go@v2.2.0
+        uses: actions/setup-go@v5
         with:
           go-version: ${{ matrix.go }}
 
       - name: cache go
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: ~/go/pkg/mod
           key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
