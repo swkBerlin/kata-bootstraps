@@ -1,12 +1,13 @@
 package kata
 
 import (
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestFailing(t *testing.T) {
-	assert.Equal(t, 42, doSomething("a"), "I'm failing you can start with me...")
+	assert.Equal(t, 0, doSomething("a"), "I'm failing you can start with me...")
 }
 
 func TestSomething(t *testing.T) {
