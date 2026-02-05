@@ -1,0 +1,28 @@
+{
+    "name": "java-11",
+    "image": "mcr.microsoft.com/devcontainers/java:11",
+    "forwardPorts": [
+        9000
+    ],
+    "portsAttributes": {
+        "9000": {
+            "label": "open Fitnesse Wiki",
+            "onAutoForward": "openBrowser"
+        }
+    },
+    "features": {
+        "ghcr.io/devcontainers/features/java:1": {
+            "version": "none",
+            "installGradle": "true",
+            "gradleVersion": "7.6"
+        }
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "java.vscode-java-pack"
+            ]
+        }
+    },
+    "postCreateCommand": "gradle wiki"
+}
