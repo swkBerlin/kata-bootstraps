@@ -14,6 +14,10 @@ on:
     # weekly build every FRI
     - cron: "0 6 * * 5"
 
+
+env:
+  GRADLE_VERSION: 7.6
+
 jobs:
 
   matrix_build:
@@ -68,7 +72,7 @@ jobs:
         with:
           build-root-directory: java/fitnesse
           #fitnesse breaks with 8.0
-          gradle-version: 7.6
+          gradle-version: ${{ env.GRADLE_VERSION }}
           arguments: test --warning-mode all
       #### END fitnesse
 
@@ -86,7 +90,7 @@ jobs:
       - uses: eskatos/gradle-command-action@v2
         with:
           build-root-directory: java/hamcrest
-          gradle-version: current
+          gradle-version: ${{ env.GRADLE_VERSION }}
           arguments: test --warning-mode all --tests ThingTest.it_should_not_fail
 
       - name: assure one failing test
@@ -107,7 +111,7 @@ jobs:
       - uses: eskatos/gradle-command-action@v2
         with:
           build-root-directory: java/hue4j5
-          gradle-version: current
+          gradle-version: ${{ env.GRADLE_VERSION }}
           arguments: test --warning-mode all --tests ThingTest.it_should_not_fail
 
       - name: assure one failing test
@@ -129,7 +133,7 @@ jobs:
       - uses: eskatos/gradle-command-action@v2
         with:
           build-root-directory: java/jqwik
-          gradle-version: current
+          gradle-version: ${{ env.GRADLE_VERSION }}
           arguments: test --warning-mode all
       #### END jqwik
 
@@ -146,7 +150,7 @@ jobs:
       - uses: eskatos/gradle-command-action@v2
         with:
           build-root-directory: java/junit4
-          gradle-version: current
+          gradle-version: ${{ env.GRADLE_VERSION }}
           arguments: test --warning-mode all --tests ThingTest.it_should_not_fail
 
       - name: assure one failing test
@@ -168,7 +172,7 @@ jobs:
       - uses: eskatos/gradle-command-action@v2
         with:
           build-root-directory: java/junit5
-          gradle-version: current
+          gradle-version: ${{ env.GRADLE_VERSION }}
           arguments: test --warning-mode all --tests ThingTest.it_should_not_fail
 
       - name: assure one failing test
@@ -199,7 +203,7 @@ jobs:
       - uses: eskatos/gradle-command-action@v2
         with:
           build-root-directory: java/truth
-          gradle-version: current
+          gradle-version: ${{ env.GRADLE_VERSION }}
           arguments: test --warning-mode all --tests ThingTest.it_should_not_fail
 
       - name: assure one failing test
