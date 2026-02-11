@@ -3,9 +3,19 @@ name: Sync devcontainer folders to per-folder branches
 on:
   push:
     branches: [ master ] # change to main if needed
+  workflow_dispatch:
+    inputs:
+      always_sync:
+        description: "If true, push ALL <lang>/<framework> folders that contain .devcontainer (even if unchanged). If false, push only changed folders."
+        required: false
+        default: "false"
 
 permissions:
   contents: write
+
+env:
+  # For workflow_dispatch you can set this input; for push it falls back to "false"
+  ALWAYS_SYNC: ${{ github.event.inputs.always_sync || 'false' }}
 
 jobs:
   sync:
@@ -16,107 +26,85 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Detect changed <lang>/<framework> folders that have a .devcontainer
+      - name: Determine folders to sync
         id: detect
         shell: bash
         run: |
           set -euo pipefail
           REPO="$GITHUB_WORKSPACE"
+          MODE="${ALWAYS_SYNC,,}"
 
-          echo "== Debug: workspace =="
-          echo "GITHUB_WORKSPACE=$GITHUB_WORKSPACE"
-          pwd
-          ls -la
-          echo
-
-          BEFORE="${{ github.event.before }}"
-          AFTER="${{ github.sha }}"
-
-          echo "== Debug: BEFORE/AFTER raw =="
-          echo "BEFORE=$BEFORE"
-          echo "AFTER =$AFTER"
-          echo
-
-          if [[ "$BEFORE" == "0000000000000000000000000000000000000000" ]]; then
-            echo "== Debug: BEFORE all zeros; using AFTER^ =="
-            BEFORE="$(git -C "$REPO" rev-parse "$AFTER^" 2>/dev/null || true)"
-          fi
-
-          if [[ -z "${BEFORE:-}" ]]; then
-            echo "== Debug: No valid BEFORE commit; nothing to do =="
-            echo "pairs=" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-
-          echo "== Debug: git status =="
-          git -C "$REPO" status --porcelain=v1 || true
-          echo
-
-          echo "== Debug: changed files =="
-          git -C "$REPO" --no-pager diff --name-only "$BEFORE" "$AFTER" || true
-          echo
-
-          mapfile -t files < <(git -C "$REPO" diff --name-only "$BEFORE" "$AFTER" || true)
-
-          # Unique "<lang>/<framework>"
-          pairs="$(printf "%s\n" "${files[@]}" \
-            | awk -F/ 'NF>=2 {print $1"/"$2}' \
-            | sort -u)"
-
-          echo "== Debug: candidate pairs =="
-          printf "%s\n" $pairs || true
-          echo
+          echo "Sync mode: ALWAYS_SYNC=$MODE"
 
           kept=()
-          while IFS= read -r p; do
-            [[ -z "$p" ]] && continue
-            echo "== Debug: checking '$p' for '$REPO/$p/.devcontainer' =="
 
-            if [[ -e "$REPO/$p/.devcontainer" ]]; then
-              echo "   -> FOUND .devcontainer (keeping)"
-              kept+=("$p")
-            else
-              echo "   -> NOT FOUND (skipping)"
+          if [[ "$MODE" == "true" ]]; then
+            # Sync ALL <lang>/<framework> dirs that have a .devcontainer (file or directory)
+            while IFS= read -r d; do
+              [[ -z "$d" ]] && continue
+              # d like "./java/fitnesse" -> pair "java/fitnesse"
+              pair="${d#./}"
+              if [[ -e "$REPO/$pair/.devcontainer" ]]; then
+                kept+=("$pair")
+              fi
+            done < <(find "$REPO" -mindepth 2 -maxdepth 2 -type d -not -path "*/.git/*" -printf "%P\n" | sort -u)
+
+          else
+            # Sync only changed <lang>/<framework> dirs that have a .devcontainer
+            BEFORE="${{ github.event.before }}"
+            AFTER="${{ github.sha }}"
+
+            # Edge case: first push
+            if [[ "$BEFORE" == "0000000000000000000000000000000000000000" ]]; then
+              BEFORE="$(git -C "$REPO" rev-parse "$AFTER^" 2>/dev/null || true)"
             fi
-          done <<< "$pairs"
+
+            if [[ -z "${BEFORE:-}" ]]; then
+              echo "No valid BEFORE commit; nothing to do."
+              echo "pairs=" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+
+            mapfile -t files < <(git -C "$REPO" diff --name-only "$BEFORE" "$AFTER" || true)
+
+            pairs="$(printf "%s\n" "${files[@]}" \
+              | awk -F/ 'NF>=2 {print $1"/"$2}' \
+              | sort -u)"
+
+            while IFS= read -r p; do
+              [[ -z "$p" ]] && continue
+              if [[ -e "$REPO/$p/.devcontainer" ]]; then
+                kept+=("$p")
+              fi
+            done <<< "$pairs"
+          fi
+
+          # De-dupe (just in case), output newline list
+          mapfile -t kept_sorted < <(printf "%s\n" "${kept[@]:-}" | sort -u)
+
+          echo "Found folders with .devcontainer to sync:"
+          if [[ ${#kept_sorted[@]} -eq 0 ]]; then
+            echo " - (none)"
+          else
+            printf " - %s\n" "${kept_sorted[@]}"
+          fi
 
           {
             echo "pairs<<EOF"
-            printf "%s\n" "${kept[@]}"
+            printf "%s\n" "${kept_sorted[@]}"
             echo "EOF"
           } >> "$GITHUB_OUTPUT"
 
-          echo
-          echo "== Debug: final folders to sync =="
-          printf " - %s\n" "${kept[@]:-}"
-          echo
-
-      - name: Sync each folder to its <lang>-<framework> branch
+      - name: Sync folders to <lang>-<framework> branches (single-commit branches)
         if: steps.detect.outputs.pairs != ''
         shell: bash
         run: |
           set -euo pipefail
           REPO="$GITHUB_WORKSPACE"
-
-          echo "== Debug: starting sync step =="
-          echo "Repo: $REPO"
-          echo "Current dir: $(pwd)"
-          echo
-
-          # Always operate from the workspace
           cd "$REPO"
-
-          echo "== Debug: verify repo is valid =="
-          ls -la
-          git -C "$REPO" rev-parse --is-inside-work-tree
-          echo
 
           git -C "$REPO" config user.name  "github-actions[bot]"
           git -C "$REPO" config user.email "github-actions[bot]@users.noreply.github.com"
-
-          echo "== Debug: folders to sync (raw output) =="
-          printf "%s\n" "${{ steps.detect.outputs.pairs }}"
-          echo
 
           while IFS= read -r pair; do
             [[ -z "$pair" ]] && continue
@@ -125,72 +113,33 @@ jobs:
             fw="${pair##*/}"
             branch="${lang}-${fw}"
 
-            echo
-            echo "=================================================="
-            echo "== Debug: Syncing '$pair' -> branch '$branch' =="
-            echo "=================================================="
+            echo "----"
+            echo "Syncing '$pair' -> branch '$branch'"
 
-            echo "== Debug: show source folder (on master checkout) =="
-            ls -la "$REPO/$pair" || { echo "ERROR: missing source folder '$pair'"; exit 1; }
-            echo
-
-            echo "== Debug: stage source into /tmp/src =="
+            # Stage source folder contents into /tmp/src
             rm -rf /tmp/src
             mkdir -p /tmp/src
             rsync -a "$REPO/$pair/" /tmp/src/
-            echo "-- /tmp/src top --"
-            ls -la /tmp/src || true
-            echo "-- /tmp/src depth2 --"
-            find /tmp/src -maxdepth 2 -print || true
-            echo
 
-            echo "== Debug: fetch branch (may not exist) =="
-            git -C "$REPO" fetch origin "$branch" && echo "Fetched origin/$branch" || echo "No remote branch yet (ok)"
-            echo
+            # Create an orphan branch so the branch history is NOT preserved (single-commit branch)
+            git -C "$REPO" checkout --orphan "$branch"
 
-            echo "== Debug: checkout/create branch =="
-            if git -C "$REPO" show-ref --verify --quiet "refs/remotes/origin/$branch"; then
-              echo "Remote exists: origin/$branch"
-              git -C "$REPO" checkout -B "$branch" "origin/$branch"
-            else
-              echo "Creating orphan branch: $branch"
-              git -C "$REPO" checkout --orphan "$branch"
-            fi
-            echo "Now on: $(git -C "$REPO" branch --show-current)"
-            echo
-
-            echo "== Debug: confirm still a repo (this is where you were failing) =="
-            echo "pwd=$(pwd)"
-            ls -la
-            git -C "$REPO" rev-parse --is-inside-work-tree
-            echo
-
-            echo "== Debug: clean branch contents safely =="
+            # Clean working tree safely (keep git metadata)
             git -C "$REPO" rm -r --ignore-unmatch . >/dev/null 2>&1 || true
             git -C "$REPO" clean -fdx || true
-            echo "status after clean:"
-            git -C "$REPO" status --porcelain=v1 || true
-            echo
 
-            echo "== Debug: copy /tmp/src into branch root =="
+            # Copy folder contents into branch root
             rsync -a /tmp/src/ "$REPO"/
-            echo "status after copy:"
-            git -C "$REPO" status --porcelain=v1 || true
-            echo
 
-            echo "== Debug: stage and diff summary =="
             git -C "$REPO" add -A
-            git -C "$REPO" --no-pager diff --cached --stat || true
-            echo
 
             if git -C "$REPO" diff --cached --quiet; then
-              echo "== Debug: no changes to commit for $branch =="
+              echo "No changes to commit for '$branch' (skipping push)"
             else
-              echo "== Debug: commit and push =="
-              git -C "$REPO" commit -m "Sync ${pair} from master [skip ci]"
-              git -C "$REPO" push -u origin "$branch"
+              git -C "$REPO" commit -m "Sync ${pair} from master"
+              git -C "$REPO" push --force -u origin "$branch"
+              echo "Pushed branch '$branch'"
             fi
 
-            echo "== Debug: return to master =="
             git -C "$REPO" checkout master
           done <<< "${{ steps.detect.outputs.pairs }}"
