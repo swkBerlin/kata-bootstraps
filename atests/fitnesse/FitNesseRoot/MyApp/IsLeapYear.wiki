@@ -1,0 +1,9 @@
+---
+Test
+---
+!|LeapYear|
+|year|isLeap?|
+|2012| true  | 
+|2000| true |
+|1900| false |
+|2111| false  |
