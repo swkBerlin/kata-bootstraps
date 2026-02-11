@@ -1,5 +1,5 @@
 {
-    "name": "dotnet-11",
+    "name": "dotnet-10",
     "image": "mcr.microsoft.com/dotnet/sdk:10.0-alpine3.22",
     "customizations": {
         "vscode": {
