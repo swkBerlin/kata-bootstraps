@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       always_sync:
-        description: "If true, push ALL <lang>/<framework> folders that contain .devcontainer (even if unchanged). If false, push only changed folders."
+        description: "If true, push ALL <lang>/<framework> folders that contain .devcontainer. If false, push only changed folders."
         required: false
         default: "false"
 
@@ -14,7 +14,6 @@ permissions:
   contents: write
 
 env:
-  # For workflow_dispatch you can set this input; for push it falls back to "false"
   ALWAYS_SYNC: ${{ github.event.inputs.always_sync || 'false' }}
 
 jobs:
@@ -34,27 +33,20 @@ jobs:
           REPO="$GITHUB_WORKSPACE"
           MODE="${ALWAYS_SYNC,,}"
 
-          echo "Sync mode: ALWAYS_SYNC=$MODE"
-
           kept=()
 
           if [[ "$MODE" == "true" ]]; then
-            # Sync ALL <lang>/<framework> dirs that have a .devcontainer (file or directory)
-            while IFS= read -r d; do
-              [[ -z "$d" ]] && continue
-              # d like "./java/fitnesse" -> pair "java/fitnesse"
-              pair="${d#./}"
+            # All <lang>/<framework> dirs (depth 2) that contain .devcontainer
+            while IFS= read -r pair; do
+              [[ -z "$pair" ]] && continue
               if [[ -e "$REPO/$pair/.devcontainer" ]]; then
                 kept+=("$pair")
               fi
-            done < <(find "$REPO" -mindepth 2 -maxdepth 2 -type d -not -path "*/.git/*" -printf "%P\n" | sort -u)
-
+            done < <(find "$REPO" -mindepth 2 -maxdepth 2 -type d -printf "%P\n" | sort -u)
           else
-            # Sync only changed <lang>/<framework> dirs that have a .devcontainer
             BEFORE="${{ github.event.before }}"
             AFTER="${{ github.sha }}"
 
-            # Edge case: first push
             if [[ "$BEFORE" == "0000000000000000000000000000000000000000" ]]; then
               BEFORE="$(git -C "$REPO" rev-parse "$AFTER^" 2>/dev/null || true)"
             fi
@@ -71,18 +63,17 @@ jobs:
               | awk -F/ 'NF>=2 {print $1"/"$2}' \
               | sort -u)"
 
-            while IFS= read -r p; do
-              [[ -z "$p" ]] && continue
-              if [[ -e "$REPO/$p/.devcontainer" ]]; then
-                kept+=("$p")
+            while IFS= read -r pair; do
+              [[ -z "$pair" ]] && continue
+              if [[ -e "$REPO/$pair/.devcontainer" ]]; then
+                kept+=("$pair")
               fi
             done <<< "$pairs"
           fi
 
-          # De-dupe (just in case), output newline list
           mapfile -t kept_sorted < <(printf "%s\n" "${kept[@]:-}" | sort -u)
 
-          echo "Found folders with .devcontainer to sync:"
+          echo "Folders with .devcontainer to sync:"
           if [[ ${#kept_sorted[@]} -eq 0 ]]; then
             echo " - (none)"
           else
@@ -95,7 +86,7 @@ jobs:
             echo "EOF"
           } >> "$GITHUB_OUTPUT"
 
-      - name: Sync folders to <lang>-<framework> branches (single-commit branches)
+      - name: Sync folders to <lang>-<framework> branches (no history)
         if: steps.detect.outputs.pairs != ''
         shell: bash
         run: |
@@ -114,21 +105,21 @@ jobs:
             branch="${lang}-${fw}"
 
             echo "----"
-            echo "Syncing '$pair' -> branch '$branch'"
+            echo "Syncing '$pair' -> '$branch'"
 
-            # Stage source folder contents into /tmp/src
+            # Copy source folder content to temp
             rm -rf /tmp/src
             mkdir -p /tmp/src
             rsync -a "$REPO/$pair/" /tmp/src/
 
-            # Create an orphan branch so the branch history is NOT preserved (single-commit branch)
+            # Create a history-free branch snapshot
             git -C "$REPO" checkout --orphan "$branch"
 
-            # Clean working tree safely (keep git metadata)
-            git -C "$REPO" rm -r --ignore-unmatch . >/dev/null 2>&1 || true
-            git -C "$REPO" clean -fdx || true
+            # CRITICAL FIX: wipe working tree (including untracked) but keep .git
+            # This prevents accidentally committing the whole repo.
+            find "$REPO" -mindepth 1 -maxdepth 1 -name ".git" -prune -o -exec rm -rf {} +
 
-            # Copy folder contents into branch root
+            # Copy only the folder content into branch root
             rsync -a /tmp/src/ "$REPO"/
 
             git -C "$REPO" add -A
@@ -138,7 +129,7 @@ jobs:
             else
               git -C "$REPO" commit -m "Sync ${pair} from master"
               git -C "$REPO" push --force -u origin "$branch"
-              echo "Pushed branch '$branch'"
+              echo "Pushed '$branch'"
             fi
 
             git -C "$REPO" checkout master
