@@ -1,0 +1,109 @@
+name: Sync devcontainer folders to per-folder branches
+
+on:
+  push:
+    branches: [ master ]  # change to main if needed
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout master
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Detect changed <lang>/<framework> folders that have a .devcontainer
+        id: detect
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          BEFORE="${{ github.event.before }}"
+          AFTER="${{ github.sha }}"
+
+          # Handle edge cases (e.g., first push) where "before" can be all zeros
+          if [[ "$BEFORE" == "0000000000000000000000000000000000000000" ]]; then
+            echo "First push detected; comparing against previous commit."
+            BEFORE="$(git rev-parse "$AFTER^" 2>/dev/null || echo "")"
+          fi
+
+          if [[ -z "${BEFORE:-}" ]]; then
+            echo "No valid BEFORE commit; nothing to do."
+            echo "pairs=" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          # List changed files between BEFORE and AFTER
+          mapfile -t files < <(git diff --name-only "$BEFORE" "$AFTER")
+
+          # Extract unique "<lang>/<framework>" pairs
+          pairs="$(printf "%s\n" "${files[@]}" \
+            | awk -F/ 'NF>=2 {print $1"/"$2}' \
+            | sort -u)"
+
+          # Keep only pairs where that folder contains a ".devcontainer" (file or dir)
+          kept=()
+          while IFS= read -r p; do
+            [[ -z "$p" ]] && continue
+            if [[ -e "$p/.devcontainer" ]]; then
+              kept+=("$p")
+            fi
+          done <<< "$pairs"
+
+          # Output as newline-delimited list
+          {
+            echo "pairs<<EOF"
+            printf "%s\n" "${kept[@]}"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+          echo "Will sync these folders:"
+          printf " - %s\n" "${kept[@]:-}"
+
+      - name: Sync each folder to its <lang>-<framework> branch
+        if: steps.detect.outputs.pairs != ''
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          while IFS= read -r pair; do
+            [[ -z "$pair" ]] && continue
+
+            lang="${pair%%/*}"
+            fw="${pair##*/}"
+            branch="${lang}-${fw}"
+
+            echo "=== Syncing $pair -> $branch ==="
+
+            # Create a clean staging dir with the source folder contents
+            rm -rf /tmp/src
+            mkdir -p /tmp/src
+            rsync -a --delete "${pair}/" /tmp/src/
+
+            # Fetch target branch if it exists
+            git fetch origin "$branch" || true
+
+            # Create / reset local branch
+            if git show-ref --verify --quiet "refs/remotes/origin/$branch"; then
+              git checkout -B "$branch" "origin/$branch"
+            else
+              git checkout --orphan "$branch"
+              git rm -rf . >/dev/null 2>&1 || true
+            fi
+
+            # branch root becomes the folder contents
+            # Wipe branch working tree (keep .git)
+            find . -mindepth 1 -maxdepth 1 ! -name ".git" -exec rm -rf {} +
+
+            rsync -a --delete /tmp/src/ ./
+
+            # Go back to master for the next loop
+            git checkout master
+          done <<< "${{ steps.detect.outputs.pairs }}"
