@@ -1,0 +1,12 @@
+{
+    "name": "dotnet-11",
+    "image": "mcr.microsoft.com/dotnet/sdk:10.0-alpine3.22",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-dotnettools.csharp",
+                "MS-vsliveshare.vsliveshare"
+            ]
+        }
+    }
+}

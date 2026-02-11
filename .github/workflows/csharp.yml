@@ -1,0 +1,40 @@
+name: C# CI
+
+on:
+  push:
+    paths:
+      - 'csharp/dotnet/**'
+      - '.github/workflows/csharp**'
+  pull_request:
+    paths:
+      - 'csharp/dotnet/**'
+      - '.github/workflows/csharp**'
+
+  schedule:
+    # weekly build every FRI
+    - cron: "0 6 * * 5"
+
+jobs:
+  run:
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      matrix:
+        operating-system: [ ubuntu-latest, windows-latest, macOS-latest ]
+        dotnet-version: [ '8.0', '9.0', '10.0' ]
+    name: C# ${{ matrix.dotnet-versions }} testing on ${{ matrix.operating-system }}
+    steps:
+      - name: checkout
+        uses: actions/checkout@v6
+
+      - name: setup dotnet
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: ${{ matrix.dotnet-version }}
+
+      - name: test
+        working-directory: csharp/dotnet
+        run: dotnet test --filter "Category!=Failing"
+
+      - name: assure one failing test
+        working-directory: csharp/dotnet
+        run: "sh ../../.scripts/assure_failing_test.sh 'dotnet test' 'ailed Life_the_Universe_and_Everything'"
