@@ -37,4 +37,4 @@ jobs:
 
       - name: assure one failing test
         working-directory: csharp/dotnet
-        run: "sh ../../.scripts/assure_failing_test.sh 'dotnet test' 'failed: 1'"
+        run: "sh ../../.scripts/assure_failing_test.sh 'dotnet test' 'ailed Life_the_Universe_and_Everything'"
