@@ -1,0 +1,44 @@
+name: C++ CI
+
+on:
+  push:
+    paths:
+      - 'cpp/googlemock/**'
+      - '.github/workflows/cpp**'
+  pull_request:
+    paths:
+      - 'cpp/googlemock/**'
+      - '.github/workflows/cpp**'
+
+  schedule:
+    # weekly build every FRI
+    - cron: "0 6 * * 5"
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    name: C++ GoogleMock testing on ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: install dependencies
+        run: sudo apt-get install -y libgmock-dev
+
+      - name: test
+        working-directory: cpp/googlemock
+        run: make test
+
+      - name: assure one failing test
+        working-directory: cpp/googlemock
+        run: "sh ../../.scripts/assure_failing_test.sh './kata_tests' 'life_the_universe_and_everything'"
+
+  docker_build:
+    runs-on: ghcr.io/cyber-dojo-languages/clangpp_googlemock:806bfec
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: docker googlemock
+        working-directory: cpp/googlemock
+        run: "sh ../../.scripts/assure_failing_test.sh './docker_test.sh' 'life_the_universe_and_everything'"
