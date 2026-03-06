@@ -1,0 +1,12 @@
+{
+    "name": "cpp-googlemock",
+    "image": "ghcr.io/cyber-dojo-languages/clangpp_googlemock:806bfec",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-vscode.cpptools",
+                "MS-vsliveshare.vsliveshare"
+            ]
+        }
+    }
+}
