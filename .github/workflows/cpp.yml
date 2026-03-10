@@ -27,14 +27,14 @@ jobs:
 
       - name: test
         working-directory: cpp/googlemock
-        run: make test
+        run: make test_filterout_failing
 
       - name: assure one failing test
         working-directory: cpp/googlemock
         run: "sh ../../.scripts/assure_failing_test.sh './kata_tests' 'life_the_universe_and_everything'"
 
   docker_build:
-    runs-on: ghcr.io/cyber-dojo-languages/clangpp_googlemock:806bfec
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
