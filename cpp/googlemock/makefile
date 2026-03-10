@@ -17,7 +17,7 @@ OBJ_FILES = $(CPP_FILES:.cpp=.o)
 
 .PHONY: test
 test: kata_tests
-	./kata_tests --gtest_filter=-*life_the_universe_and_everything
+	./kata_tests
 
 kata_tests: $(OBJ_FILES)
 	$(CXX) $(CXXFLAGS) $^ $(GTEST_LIBS) -o $@
