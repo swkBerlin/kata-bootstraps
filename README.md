@@ -1,5 +1,6 @@
 # kata-bootstraps
 
+[![cpp-ci-badge]][ci-actions]
 [![csharp-ci-badge]][ci-actions]
 [![go-ci-badge]][ci-actions]
 [![java-ci-badge]][ci-actions]
@@ -30,6 +31,7 @@ You are welcome to contribute by submitting likewise a min setup for your langua
 ----
 [Cookiecutter](https://github.com/audreyr/cookiecutter) has a similar goal and also supports multiple languages for setting up a bare project.
 
+[cpp-ci-badge]:../../../kata-bootstraps/workflows/C%2B%2B%20CI/badge.svg "CI build status"
 [csharp-ci-badge]:../../../kata-bootstraps/workflows/C%23%20CI/badge.svg "CI build status"
 [go-ci-badge]:../../../kata-bootstraps/workflows/GO%20CI/badge.svg "CI build status"
 [java-ci-badge]:../../../kata-bootstraps/workflows/Java%20CI/badge.svg "CI build status"
