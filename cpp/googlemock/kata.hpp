@@ -1,6 +1,16 @@
-#pragma once
+#ifndef KATA_INCLUDED
+#define KATA_INCLUDED
 
-class Kata {
+class Logger;
+
+class Kata
+{
 public:
-    static int answer();
+    Kata();
+    explicit Kata(Logger &);
+    int answer();
+private:
+    Logger & logger;
 };
+
+#endif

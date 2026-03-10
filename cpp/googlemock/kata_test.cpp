@@ -1,14 +1,19 @@
 #include "kata.hpp"
+#include "mock_logger.hpp"
 #include <gmock/gmock.h>
 
-using ::testing::Eq;
+using namespace ::testing;
 
 TEST(KataTest, passing)
 {
     SUCCEED();
 }
 
-TEST(KataTest, life_the_universe_and_everything)
+TEST(Kata, life_the_universe_and_everything)
 {
-    ASSERT_THAT(Kata::answer(), Eq(42));
+    MockLogger logger;
+    EXPECT_CALL(logger, log("Kata::answer()")).Times(Exactly(1));
+    Kata arthur(logger);
+    ASSERT_THAT(arthur.answer(), Eq(42));
 }
+

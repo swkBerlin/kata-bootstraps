@@ -23,7 +23,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: install dependencies
-        run: sudo apt-get install -y libgmock-dev
+        run: sudo apt-get install -y clang libgmock-dev
 
       - name: test
         working-directory: cpp/googlemock

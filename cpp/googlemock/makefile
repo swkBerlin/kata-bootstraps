@@ -1,3 +1,5 @@
+CXX = clang++
+
 CXXFLAGS += -I.
 CXXFLAGS += -std=c++17
 CXXFLAGS += -Wall
