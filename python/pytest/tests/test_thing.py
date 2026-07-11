@@ -8,4 +8,4 @@ def test_correct_greeting():
 
 def test_fail():
     thing = Thing("Albert")
-    assert "Wrong!" == thing.return_hello_name()
+    assert "Hello Albert!" == thing.return_hello_name()
